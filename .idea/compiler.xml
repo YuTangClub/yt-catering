@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="backend-manager-dao" />
+        <module name="backend-manager-interface" />
+        <module name="backend-manager-pojo" />
+        <module name="backend-manager-service" />
+        <module name="backend-manager-web" />
+        <module name="client-manager-dao" />
+        <module name="client-manager-interface" />
+        <module name="client-manager-pojo" />
+        <module name="client-manager-service" />
+        <module name="client-manager-web" />
+        <module name="commons" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="backend-manager" target="1.8" />
+      <module name="backend-manager-dao" target="1.8" />
+      <module name="backend-manager-interface" target="1.8" />
+      <module name="backend-manager-pojo" target="1.8" />
+      <module name="backend-manager-service" target="1.8" />
+      <module name="backend-manager-web" target="1.8" />
+      <module name="client-manager" target="1.8" />
+      <module name="client-manager-dao" target="1.8" />
+      <module name="client-manager-interface" target="1.8" />
+      <module name="client-manager-pojo" target="1.8" />
+      <module name="client-manager-service" target="1.8" />
+      <module name="client-manager-web" target="1.8" />
+      <module name="commons" target="1.8" />
+      <module name="parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

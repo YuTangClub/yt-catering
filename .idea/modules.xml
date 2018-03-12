@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager-dao/backend-manager-dao.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager-dao/backend-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager-interface/backend-manager-interface.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager-interface/backend-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager-pojo/backend-manager-pojo.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager-pojo/backend-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager-service/backend-manager-service.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager-service/backend-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-manager/backend-manager-web/backend-manager-web.iml" filepath="$PROJECT_DIR$/backend-manager/backend-manager-web/backend-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager.iml" filepath="$PROJECT_DIR$/client-manager/client-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager-dao/client-manager-dao.iml" filepath="$PROJECT_DIR$/client-manager/client-manager-dao/client-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager-interface/client-manager-interface.iml" filepath="$PROJECT_DIR$/client-manager/client-manager-interface/client-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager-pojo/client-manager-pojo.iml" filepath="$PROJECT_DIR$/client-manager/client-manager-pojo/client-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager-service/client-manager-service.iml" filepath="$PROJECT_DIR$/client-manager/client-manager-service/client-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-manager/client-manager-web/client-manager-web.iml" filepath="$PROJECT_DIR$/client-manager/client-manager-web/client-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
+    </modules>
+  </component>
+</project>

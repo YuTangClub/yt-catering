@@ -1,0 +1,6 @@
+body {
+    width:100%;overflow:auto;
+}
+.am-center{ text-align:center; }
+.am-left{float:left;}
+.am-right{float:right;}
