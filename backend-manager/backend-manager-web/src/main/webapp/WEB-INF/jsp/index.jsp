@@ -20,7 +20,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="${pageContext.request.contextPath}/index">Admin v1.0</a>
+        <a href="${pageContext.request.contextPath}/index">鱼塘 Catering</a>
     </div>
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
@@ -59,7 +59,10 @@
             </dl>
         </li>
         <li class="layui-nav-item to-index">
-            <a href="/">前台首页</a>
+            <a href="${pageContext.request.contextPath}/index">后台首页</a>
+        </li>
+        <li class="layui-nav-item to-index">
+            <a href="${pageContext.request.contextPath}/index">前台收银</a>
         </li>
     </ul>
 
@@ -70,6 +73,76 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe68e;</i>
+                    <cite>首页</cite>
+                    <i class="iconfont nav_right">&#xe603;</i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe61d;</i>
+                    <cite>菜品管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>菜品列表</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>菜品分类</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>口味管理</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>加料管理</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe62a;</i>
+                    <cite>桌台管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>桌台列表</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe63c;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
@@ -122,44 +195,8 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe705;</i>
-                    <cite>文章管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>文章列表</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/category">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>分类管理</cite>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>订单管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表</cite>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>管理员管理</cite>
+                    <cite>员工管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
@@ -191,8 +228,50 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6ce;</i>
-                    <cite>系统统计</cite>
+                    <i class="layui-icon">&#xe63c;</i>
+                    <cite>财务对账</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>收支管理</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>每日收益</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe756;</i>
+                    <cite>营销中心</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>菜品促销</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>返券促销</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon">&#xe629;</i>
+                    <cite>经营数据</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
