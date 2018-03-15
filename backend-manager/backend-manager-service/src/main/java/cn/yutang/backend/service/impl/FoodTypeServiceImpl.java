@@ -1,8 +1,7 @@
 package cn.yutang.backend.service.impl;
 
-import cn.yutang.backend.dao.FoodtypeCustomMapper;
-import cn.yutang.backend.dao.FoodtypeMapper;
-import cn.yutang.backend.pojo.po.Foodtype;
+import cn.yutang.backend.dao.FoodTypeCustomMapper;
+import cn.yutang.backend.pojo.po.FoodType;
 import cn.yutang.backend.pojo.po.Shop;
 import cn.yutang.backend.service.IFoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,10 @@ import java.util.List;
 public class FoodTypeServiceImpl implements IFoodTypeService {
 
 	@Autowired
-	FoodtypeCustomMapper foodtypeCustomMapper;
+	FoodTypeCustomMapper foodTypeCustomMapper;
 
 	@Override
-	public List<Foodtype> listFoodtypeByShop(Shop shop) {
-		return foodtypeCustomMapper.listAllByShop(shop);
+	public List<FoodType> listFoodtypeByShop(Shop shop) {
+		return foodTypeCustomMapper.listAllByShop(shop);
 	}
 }

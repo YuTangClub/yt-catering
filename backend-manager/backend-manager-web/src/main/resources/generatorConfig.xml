@@ -56,6 +56,15 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="general" tableName="Shop"/>
+        <table schema="general" tableName="CookMethod" domainObjectName="CookMethod"/>
+        <table schema="general" tableName="CookMethodDetail" domainObjectName="CookMethodDetail"/>
+        <table schema="general" tableName="DinnerTable" domainObjectName="DinnerTable"/>
+        <table schema="general" tableName="DinnerTableType" domainObjectName="DinnerTableType"/>
+        <table schema="general" tableName="Employee" domainObjectName="Employee"/>
+        <table schema="general" tableName="Food" domainObjectName="Food"/>
+        <table schema="general" tableName="FoodOrderDetail" domainObjectName="FoodOrderDetail"/>
+        <table schema="general" tableName="FoodOrders" domainObjectName="FoodOrders"/>
+        <table schema="general" tableName="FoodType" domainObjectName="FoodType"/>
+        <table schema="general" tableName="Shop" domainObjectName="Shop"/>
     </context>
 </generatorConfiguration>
