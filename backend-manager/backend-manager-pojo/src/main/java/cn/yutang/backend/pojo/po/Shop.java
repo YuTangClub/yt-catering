@@ -1,8 +1,12 @@
 package cn.yutang.backend.pojo.po;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@Component
+@Scope(value = "prototype")
 public class Shop implements Serializable {
     /**
      *
@@ -11,7 +15,7 @@ public class Shop implements Serializable {
      *
      * @mbg.generated
      */
-    private String shopId;
+    private Integer shopId;
 
     /**
      *
@@ -128,7 +132,7 @@ public class Shop implements Serializable {
      *
      * @mbg.generated
      */
-    public String getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
@@ -140,8 +144,8 @@ public class Shop implements Serializable {
      *
      * @mbg.generated
      */
-    public void setShopId(String shopId) {
-        this.shopId = shopId == null ? null : shopId.trim();
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
     }
 
     /**

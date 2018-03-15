@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" errorPage="./pages/404.jsp" %>
 <!doctype html>
 <html lang="en">
 
@@ -73,11 +73,11 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
-            <li>
+            <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="layui-icon">&#xe68e;</i>
                     <cite>首页</cite>
-                    <i class="iconfont nav_right">&#xe603;</i>
+                    <i class="iconfont nav_right">&#xe697;</i>
                 </a>
             </li>
             <li>
@@ -88,25 +88,25 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                        <a _href="${pageContext.request.contextPath}/pages/food/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>菜品列表</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                        <a _href="${pageContext.request.contextPath}/pages/food/category">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>菜品分类</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                        <a _href="${pageContext.request.contextPath}/pages/food/cook-method">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>口味管理</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                        <a _href="${pageContext.request.contextPath}/pages/food/ingredient">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>加料管理</cite>
                         </a>
@@ -121,7 +121,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                        <a _href="${pageContext.request.contextPath}/pages/table/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>桌台列表</cite>
                         </a>
@@ -229,20 +229,14 @@
             <li>
                 <a href="javascript:;">
                     <i class="layui-icon">&#xe63c;</i>
-                    <cite>财务对账</cite>
+                    <cite>财务管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                        <a _href="${pageContext.request.contextPath}/pages/finance/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>收支管理</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>每日收益</cite>
+                            <cite>财务对账</cite>
                         </a>
                     </li>
                 </ul>
@@ -255,13 +249,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                        <a _href="${pageContext.request.contextPath}/pages/marketing/discount">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>菜品促销</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/order/list">
+                        <a _href="${pageContext.request.contextPath}/pages/marketing/coupon">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>返券促销</cite>
                         </a>
@@ -370,22 +364,16 @@
         base: '${pageContext.request.contextPath}/static/js/'
         ,version: '101100'
     }).use('admin');
-    layui.use(['jquery','admin'], function(){
-        var $ = layui.jquery;
-        $(function(){
-            var login = JSON.parse(localStorage.getItem("login"));
-            if(login){
-                if(login=0){
-                    window.location.href='${pageContext.request.contextPath}/login';
-                    return false;
-                }else{
-                    return false;
-                }
-            }else{
-                window.location.href='${pageContext.request.contextPath}/login';
-                return false;
-            }
-        });
+    layui.use(['jquery','admin','layer'], function(){
+        var $ = layui.jquery
+            ,layer = layui.layer;
+        if(${sessionShop == null}){
+            layer.msg("登录超时",{
+                time:1000
+            },function () {
+                location.href = "${pageContext.request.contextPath}/login";
+            })
+        }
     });
 
 </script>

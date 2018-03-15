@@ -9,7 +9,7 @@
   <!-- 配置监听（通知工程使用spring框架） -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-*.xml</param-value>
+    <param-value>classpath:spring/spring-*.xml</param-value>
   </context-param>
 
   <listener>

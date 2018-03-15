@@ -1,7 +1,12 @@
 package cn.yutang.backend.pojo.po;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
+@Component
+@Scope(value = "prototype")
 public class Cookmethod implements Serializable {
     /**
      *

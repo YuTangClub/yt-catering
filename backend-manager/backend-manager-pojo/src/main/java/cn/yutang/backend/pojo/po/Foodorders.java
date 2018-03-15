@@ -1,8 +1,12 @@
 package cn.yutang.backend.pojo.po;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@Component
+@Scope(value = "prototype")
 public class Foodorders implements Serializable {
     /**
      *
