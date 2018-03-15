@@ -8,7 +8,7 @@ layui.use(['table', 'jquery', 'admin'], function() {
 		admin = layui.admin;
 
 	table.render({
-		elem: '#articleList',
+		elem: '#foodList',
 		cellMinWidth: 80,
 		cols: [
 			[{

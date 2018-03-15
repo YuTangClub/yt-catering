@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
-    <script src="${pageContext.request.contextPath}/static/js/food/list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath}/static/js/food/list.js" type="text/javascript"
+            charset="utf-8"></script>
 
     <!--<script type="text/javascript" src="../../static/js/admin.js"></script>-->
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -43,71 +44,77 @@
 </head>
 
 <body>
-<div class="weadmin-nav">
-	<span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">文章管理</a>
-        <a><cite>文章列表</cite></a>
-    </span>
-    <a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right"
-       href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">&#x1002;</i></a>
-</div>
-<div class="weadmin-body">
-    <div class="layui-row">
-        <!-- 搜索条 -->
-        <form class="layui-form layui-col-md12 we-search">
-            <label class="layui-form-label">菜品搜索：</label>
-            <div class="layui-input-inline">
-                <select name="cateid">
-                    <option value="">请选择分类</option>
-                    <c:forEach items="${foodtypeList}" var="ft" >
-                        <option value="${ft.ftId}">${ft.ftName}</option>
-                    </c:forEach>
-                </select>
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">全部商品</li>
+        <li>库存不足</li>
+        <li>已下架</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="weadmin-body layui-col-md9">
+                <div class="layui-row">
+                    <!-- 搜索条 -->
+                    <form class="layui-form layui-col-md12 we-search">
+                        <label class="layui-form-label">菜品搜索：</label>
+                        <div class="layui-input-inline">
+                            <select name="cateid">
+                                <option value="">请选择分类</option>
+                                <c:forEach items="${foodtypeList}" var="ft">
+                                    <option value="${ft.ftId}">${ft.ftName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
+                            <input type="text" name="keyword" placeholder="请输入菜品关键字" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <button class="layui-btn" lay-submit lay-filter="sreach"><i
+                                class="layui-icon">&#xe615;</i></button>
+                    </form>
+                </div>
+                <div class="weadmin-block demoTable">
+                    <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除
+                    </button>
+                    <button class="layui-btn" data-type="Recommend"><i class="layui-icon">&#xe6c6;</i>推荐
+                    </button>
+                    <button class="layui-btn" data-type="Top"><i class="layui-icon">&#xe619;</i>置顶</button>
+                    <button class="layui-btn" data-type="Review"><i class="layui-icon">&#xe6b2;</i>审核</button>
+                    <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i
+                            class="layui-icon">&#xe61f;</i>添加
+                    </button>
+                    <span class="fr" style="line-height:40px">共有数据：88 条</span>
+                </div>
+                <table class="layui-hide" id="foodList"></table>
+
+
+                <script type="text/html" id="recommendTpl">
+                    <input type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐" {{d.recommend}}>
+                </script>
+                <script type="text/html" id="topTpl">
+                    <input type="checkbox" name="show" lay-skin="switch" lay-text="已置顶|未置顶" {{d.top}}>
+                </script>
+                <script type="text/html" id="reviewTpl">
+                    <input type="checkbox" name="lock" value="10002" title="审核" lay-filter="lockDemo">
+                </script>
+                <script type="text/html" id="operateTpl">
+                    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+                        <i class="layui-icon">&#xe642;</i>
+                    </a>
+                    <a title="查看" onclick="WeAdminShow('查看文章','./show',600,400)" href="javascript:;">
+                        <i class="layui-icon">&#xe63c;</i>
+                    </a>
+                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                        <i class="layui-icon">&#xe640;</i>
+                    </a>
+                </script>
             </div>
-            <div class="layui-inline">
-                <input type="text" name="keyword" placeholder="请输入菜品关键字" autocomplete="off" class="layui-input">
-            </div>
-            <button class="layui-btn" lay-submit lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+        </div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
     </div>
-    <div class="weadmin-block demoTable">
-        <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除
-        </button>
-        <button class="layui-btn" data-type="Recommend"><i class="layui-icon">&#xe6c6;</i>推荐</button>
-        <button class="layui-btn" data-type="Top"><i class="layui-icon">&#xe619;</i>置顶</button>
-        <button class="layui-btn" data-type="Review"><i class="layui-icon">&#xe6b2;</i>审核</button>
-        <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i class="layui-icon">&#xe61f;</i>添加
-        </button>
-        <span class="fr" style="line-height:40px">共有数据：88 条</span>
-    </div>
-    <table class="layui-hide" id="articleList"></table>
-
-
-    <script type="text/html" id="recommendTpl">
-        <input type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐" {{d.recommend}}>
-    </script>
-    <script type="text/html" id="topTpl">
-        <input type="checkbox" name="show" lay-skin="switch" lay-text="已置顶|未置顶" {{d.top}}>
-    </script>
-    <script type="text/html" id="reviewTpl">
-        <input type="checkbox" name="lock" value="10002" title="审核" lay-filter="lockDemo">
-    </script>
-    <script type="text/html" id="operateTpl">
-        <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
-            <i class="layui-icon">&#xe642;</i>
-        </a>
-        <a title="查看" onclick="WeAdminShow('查看文章','./show',600,400)" href="javascript:;">
-            <i class="layui-icon">&#xe63c;</i>
-        </a>
-        <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-            <i class="layui-icon">&#xe640;</i>
-        </a>
-    </script>
-
-
 </div>
+
 </body>
 
 </html>
