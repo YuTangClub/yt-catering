@@ -1,10 +1,9 @@
 
 
-import cn.yutang.backend.dao.FoodtypeCustomMapper;
-import cn.yutang.backend.dao.ShopMapper;
-import cn.yutang.backend.pojo.po.Foodtype;
-import cn.yutang.backend.pojo.po.Shop;
-import cn.yutang.backend.service.IShopService;
+import cn.yutang.backend.dao.FoodCustomMapper;
+import cn.yutang.backend.dao.FoodMapper;
+import cn.yutang.backend.pojo.po.Food;
+import cn.yutang.commons.page.Page;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,18 @@ import java.util.List;
 @ContextConfiguration({"classpath*:spring/spring-service.xml","classpath*:spring/spring-dao.xml"})
 public class GeneralTest {
 
-	/*@Autowired
-	IShopService shopService;
-
 	@Autowired
-	ShopMapper shopMapper;
+	FoodCustomMapper mapper;
 
-	@Autowired
-	FoodtypeCustomMapper foodtypeCustomMapper;
+
 
 	@Test
 	public void verifyShop() {
-		Shop shop = new Shop();
-		shop.setShopId(1);
-		List<Foodtype> foodtypeList = foodtypeCustomMapper.listAllByShop(shop);
-	}*/
+		/*Page page = new Page();
+		page.setPage(1);
+		page.setLimit(5);
+		Food food = new Food();
+		food.setFdName("小");
+		Integer count = mapper.countTotal(food);*/
+	}
 }

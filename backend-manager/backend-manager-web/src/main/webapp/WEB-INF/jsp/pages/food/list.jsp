@@ -52,7 +52,7 @@
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <div class="weadmin-body layui-col-md9">
+            <div class="weadmin-body layui-col-md12">
                 <div class="layui-row">
                     <!-- 搜索条 -->
                     <form class="layui-form layui-col-md12 we-search">
@@ -83,9 +83,25 @@
                     <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i
                             class="layui-icon">&#xe61f;</i>添加
                     </button>
-                    <span class="fr" style="line-height:40px">共有数据：88 条</span>
+                    <span class="fr" style="line-height:40px">共有数据：count 条</span>
                 </div>
                 <table class="layui-hide" id="foodList"></table>
+                <%--<table class="layui-table" lay-data="{ url:'list.do', page:true, id:'test'}" lay-filter="test">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:checkbox}"><input type="checkbox"></th>
+                        <th lay-data="{field:'fdImg', sort: true}">图片</th>
+                        <th lay-data="{field:'fdName'}">菜品名称</th>
+                        <th lay-data="{field:'fdPrice', sort: true}">价格</th>
+                        <th lay-data="{field:'fdMprice', sort: true}">会员价</th>
+                        <th lay-data="{field:'fdRecommend'}">推荐</th>
+                        <th lay-data="{field:'fdStock', sort: true}">库存</th>
+                        <th lay-data="{field:'fdStatus', sort: true}">状态</th>
+                        <th lay-data="{field:'fdUnit'}">单位</th>
+                        <th lay-data="{field:'fdRemark'}">简介</th>
+                    </tr>
+                    </thead>
+                </table>--%>
 
 
                 <script type="text/html" id="recommendTpl">

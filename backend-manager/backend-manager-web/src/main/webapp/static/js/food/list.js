@@ -2,10 +2,11 @@ layui.extend({
 	admin: '{/}../../static/js/admin'
 });
 
-layui.use(['table', 'jquery', 'admin'], function() {
+layui.use(['table', 'jquery', 'admin','laypage'], function() {
 	var table = layui.table,
 		$ = layui.jquery,
-		admin = layui.admin;
+		admin = layui.admin
+        ,laypage = layui.laypage;
 
 	table.render({
 		elem: '#foodList',
@@ -26,19 +27,23 @@ layui.use(['table', 'jquery', 'admin'], function() {
 			}, {
                 field: 'fdStock',title: '库存',sort: true
             }, {
-				field: 'fdStatus',title: '状态',unresize: true
+				field: 'fdStatus',title: '状态',templet: '#recommendTpl'
 			}, {
-				field: 'fdUnit',title: '单位',templet: '#topTpl',unresize: true
+				field: 'fdUnit',title: '单位'
 			}, {
-				field: 'fdRemark',title: '简介',templet: '#reviewTpl',unresize: true
+				field: 'fdRemark',title: '简介'
 			},{
 				field: 'operate',title: '操作',toolbar: '#operateTpl',unresize: true
 			}]
 		],
-		url:"./food/",
+		url:"list.do",
 		event: true,
-		page: true
+		page: true,
+		limit:10,
+		limits:[10,20,50]
 	});
+
+
 	var active = {
 		getCheckData: function() { //获取选中数据
 			var checkStatus = table.checkStatus('articleList'),
