@@ -115,15 +115,15 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="layui-icon">&#xe62a;</i>
-                    <cite>桌台管理</cite>
+                    <i class="layui-icon">&#xe617;</i>
+                    <cite>餐桌管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/table/list">
+                        <a _href="./pages/dinnertable/DTList">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>桌台列表</cite>
+                            <cite>餐桌列表</cite>
                         </a>
                     </li>
                 </ul>

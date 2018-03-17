@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yutang.backend.dao.DinnerTableCustomMapper" >
+
+    <sql id="Base_Column_List1" >
+        i.tb_id as tbId, i.tb_name as tbName, i.tb_status as tbStatus, i.order_date as orderDate,
+        i.tt_id as ttId, i.shop_id as shopId, s.shop_name as shopName, t.tt_name as ttName
+    </sql>
+
+    <sql id="Where_Clause">
+        <where>
+            i.tb_status != 2
+            <if test="query != null and query.keyWord != null and query.keyWord != ''">
+                and i.tb_name like '%${query.keyWord}%'
+            </if>
+            <if test="query != null and query.status != null and query.status != 0">
+                and i.tb_status = #{query.status}
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectByPage" resultType="cn.yutang.backend.pojo.vo.DinnerTableCustom">
+        select
+        <include refid="Base_Column_List1" />
+        from dinnertable i
+        left join dinnertabletype t on i.tt_id=t.tt_id
+        left join shop s on i.shop_id=s.shop_id
+        <include refid="Where_Clause"></include>
+        order by i.tb_status,
+        i.tb_id
+        limit #{page.offset},#{page.limit}
+    </select>
+
+    <select id="countDinnertable" resultType="_long">
+        select count(1)
+        from dinnertable i
+        <include refid="Where_Clause"></include>
+    </select>
+
+</mapper>

@@ -601,6 +601,66 @@ public class FoodOrdersExample {
             addCriterion("shop_id not between", value1, value2, "shopId");
             return (Criteria) this;
         }
+
+        public Criteria andOrTotalpriceIsNull() {
+            addCriterion("or_totalPrice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceIsNotNull() {
+            addCriterion("or_totalPrice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceEqualTo(Double value) {
+            addCriterion("or_totalPrice =", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceNotEqualTo(Double value) {
+            addCriterion("or_totalPrice <>", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceGreaterThan(Double value) {
+            addCriterion("or_totalPrice >", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("or_totalPrice >=", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceLessThan(Double value) {
+            addCriterion("or_totalPrice <", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceLessThanOrEqualTo(Double value) {
+            addCriterion("or_totalPrice <=", value, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceIn(List<Double> values) {
+            addCriterion("or_totalPrice in", values, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceNotIn(List<Double> values) {
+            addCriterion("or_totalPrice not in", values, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceBetween(Double value1, Double value2) {
+            addCriterion("or_totalPrice between", value1, value2, "orTotalprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrTotalpriceNotBetween(Double value1, Double value2) {
+            addCriterion("or_totalPrice not between", value1, value2, "orTotalprice");
+            return (Criteria) this;
+        }
     }
 
     /**

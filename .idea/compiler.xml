@@ -26,6 +26,7 @@
       <module name="backend-manager-pojo" target="1.8" />
       <module name="backend-manager-service" target="1.8" />
       <module name="backend-manager-web" target="1.8" />
+      <module name="catering-parent" target="1.8" />
       <module name="client-manager" target="1.8" />
       <module name="client-manager-dao" target="1.8" />
       <module name="client-manager-interface" target="1.8" />
@@ -33,7 +34,6 @@
       <module name="client-manager-service" target="1.8" />
       <module name="client-manager-web" target="1.8" />
       <module name="commons" target="1.8" />
-      <module name="parent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

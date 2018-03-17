@@ -1,12 +1,12 @@
 package cn.yutang.backend.controller;
 
+import cn.yutang.backend.pojo.dto.MessageResult;
+import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
 import cn.yutang.backend.pojo.po.FoodType;
 import cn.yutang.backend.pojo.po.Shop;
 import cn.yutang.backend.service.IFoodService;
 import cn.yutang.backend.service.IFoodTypeService;
-import cn.yutang.commons.page.Page;
-import cn.yutang.commons.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,14 +38,14 @@ public class FoodController {
 
 	@ResponseBody
 	@RequestMapping("/list.do")
-	public PageResult listFoodDo(HttpSession session, Page page, Food food, Model model){
+	public MessageResult listFoodDo(HttpSession session, Page page, Food food, Model model){
 
 		//获取商品集合
 		Shop shop = (Shop) session.getAttribute("sessionShop");
 		List<Food> foodList = foodService.listFoodByPage(page,food);
 		Integer count = foodService.countTotal(food);
 		//将数据封装如PageResult
-		PageResult<Food> result = new PageResult();
+		MessageResult<Food> result = new MessageResult();
 		result.setCount(count);
 		result.setData(foodList);
 

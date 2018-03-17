@@ -1,7 +1,7 @@
 package cn.yutang.backend.service;
 
+import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
-import cn.yutang.commons.page.Page;
 
 import java.util.List;
 

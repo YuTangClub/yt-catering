@@ -262,7 +262,7 @@ public class DinnerTableExample {
             return (Criteria) this;
         }
 
-        public Criteria andTbIdIn(List<Integer> values) {
+        public Criteria andTbIdIn(List<Long> values) {
             addCriterion("tb_id in", values, "tbId");
             return (Criteria) this;
         }
