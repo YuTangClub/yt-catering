@@ -29,8 +29,4 @@ public class BackendIndexController {
 	public String toPageTwo(@PathVariable String page1, @PathVariable String page2){
 		return "pages/"+page1+"/"+page2;
 	}
-
-
-
-
 }
