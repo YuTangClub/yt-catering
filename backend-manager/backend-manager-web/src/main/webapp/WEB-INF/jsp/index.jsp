@@ -82,6 +82,27 @@
             </li>
             <li>
                 <a href="javascript:;">
+                    <i class="iconfont">&#xe705;</i>
+                    <cite>前台收银</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/cashier/order">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>收银台</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/cashier/tbList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>开台管理</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
                     <i class="layui-icon">&#xe61d;</i>
                     <cite>菜品管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>

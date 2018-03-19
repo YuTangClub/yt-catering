@@ -58,7 +58,7 @@
                     <form class="layui-form layui-col-md12 we-search">
                         <label class="layui-form-label">菜品搜索：</label>
                         <div class="layui-input-inline">
-                            <select name="cateid">
+                            <select name="ftId" id="ftId">
                                 <option value="">请选择分类</option>
                                 <c:forEach items="${foodtypeList}" var="ft">
                                     <option value="${ft.ftId}">${ft.ftName}</option>
@@ -66,7 +66,7 @@
                             </select>
                         </div>
                         <div class="layui-inline">
-                            <input type="text" name="keyword" placeholder="请输入菜品关键字" autocomplete="off"
+                            <input type="text" name="fdName" placeholder="请输入菜品关键字" autocomplete="off"
                                    class="layui-input">
                         </div>
                         <button class="layui-btn" lay-submit lay-filter="sreach"><i
@@ -85,30 +85,21 @@
                     </button>
                     <span class="fr" style="line-height:40px">共有数据：count 条</span>
                 </div>
-                <table class="layui-hide" id="foodList"></table>
-                <%--<table class="layui-table" lay-data="{ url:'list.do', page:true, id:'test'}" lay-filter="test">
-                    <thead>
-                    <tr>
-                        <th lay-data="{type:checkbox}"><input type="checkbox"></th>
-                        <th lay-data="{field:'fdImg', sort: true}">图片</th>
-                        <th lay-data="{field:'fdName'}">菜品名称</th>
-                        <th lay-data="{field:'fdPrice', sort: true}">价格</th>
-                        <th lay-data="{field:'fdMprice', sort: true}">会员价</th>
-                        <th lay-data="{field:'fdRecommend'}">推荐</th>
-                        <th lay-data="{field:'fdStock', sort: true}">库存</th>
-                        <th lay-data="{field:'fdStatus', sort: true}">状态</th>
-                        <th lay-data="{field:'fdUnit'}">单位</th>
-                        <th lay-data="{field:'fdRemark'}">简介</th>
-                    </tr>
-                    </thead>
-                </table>--%>
+                <table class="layui-hide" id="foodList" lay-filter="searchResult"></table>
+
 
 
                 <script type="text/html" id="recommendTpl">
-                    <input type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐" {{d.recommend}}>
+                    <input class="demoCheck" data-type="setRecommend" type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend" onclick="setRecommend()" {{d.fdRecommend ==1?"checked":""}}>
                 </script>
-                <script type="text/html" id="topTpl">
-                    <input type="checkbox" name="show" lay-skin="switch" lay-text="已置顶|未置顶" {{d.top}}>
+                <script type="text/html" id="statusTpl">
+                    <input type="checkbox" name="zzz" lay-skin="switch" lay-text="上架|已下架" {{d.fdStatus ==1?"checked":""}}>
+                </script>
+                <script type="text/html" id="priceTpl">
+                    <span >{{d.fdPrice + '/元'}}</span>
+                </script>
+                <script type="text/html" id="mpriceTpl">
+                    <span >{{d.fdMprice + '/元'}}</span>
                 </script>
                 <script type="text/html" id="reviewTpl">
                     <input type="checkbox" name="lock" value="10002" title="审核" lay-filter="lockDemo">
