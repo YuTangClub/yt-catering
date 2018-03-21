@@ -2,6 +2,7 @@ package cn.yutang.backend.pojo.vo;
 
 import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OrderCondition  implements Serializable {
@@ -20,16 +21,22 @@ public class OrderCondition  implements Serializable {
         this.shopId = shopId;
     }
 
-    public Date getOrBegintime() {
-        return orBegintime;
+    public String getOrBegintime() {
+        if(orBegintime != null){
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(orBegintime);
+        }
+        return null;
     }
 
     public void setOrBegintime(Date orBegintime) {
         this.orBegintime = orBegintime;
     }
 
-    public Date getOrEndtime() {
-        return orEndtime;
+    public String getOrEndtime() {
+        if (orEndtime != null) {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(orEndtime);
+        }
+        return null;
     }
 
     public void setOrEndtime(Date orEndtime) {

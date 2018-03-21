@@ -360,8 +360,8 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
         //var rows = $("#foodList").datagrid("getRows");
         var trs = $(obj).parents('tr')
         var tds = $(obj).parents('tr').children('td');
-        var fdName = cols.eq(2);
-        var fdRecommend = cols.eq(5);
+        var fdName = cols.eq(2).text;
+        var fdRecommend = cols.eq(5).text;
         var input = fdRecommend.children('input')
         if (title == null || title == '') {
             title = false;

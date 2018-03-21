@@ -28,7 +28,7 @@ public class FoodOrderDetail implements Serializable {
      *
      * @mbg.generated
      */
-    private String fdId;
+    private Integer fdId;
 
     /**
      *
@@ -121,7 +121,7 @@ public class FoodOrderDetail implements Serializable {
      *
      * @mbg.generated
      */
-    public String getFdId() {
+    public Integer getFdId() {
         return fdId;
     }
 
@@ -133,8 +133,8 @@ public class FoodOrderDetail implements Serializable {
      *
      * @mbg.generated
      */
-    public void setFdId(String fdId) {
-        this.fdId = fdId == null ? null : fdId.trim();
+    public void setFdId(Integer fdId) {
+        this.fdId = fdId;
     }
 
     /**

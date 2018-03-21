@@ -8,7 +8,7 @@
     -->
     <id column="odt_id" jdbcType="VARCHAR" property="odtId" />
     <result column="or_id" jdbcType="VARCHAR" property="orId" />
-    <result column="fd_id" jdbcType="VARCHAR" property="fdId" />
+    <result column="fd_id" jdbcType="INTEGER" property="fdId" />
     <result column="fd_count" jdbcType="INTEGER" property="fdCount" />
     <result column="cook_method" jdbcType="VARCHAR" property="cookMethod" />
     <result column="shop_id" jdbcType="INTEGER" property="shopId" />
@@ -140,7 +140,7 @@
     insert into FoodOrderDetail (odt_id, or_id, fd_id, 
       fd_count, cook_method, shop_id
       )
-    values (#{odtId,jdbcType=VARCHAR}, #{orId,jdbcType=VARCHAR}, #{fdId,jdbcType=VARCHAR}, 
+    values (#{odtId,jdbcType=VARCHAR}, #{orId,jdbcType=VARCHAR}, #{fdId,jdbcType=INTEGER}, 
       #{fdCount,jdbcType=INTEGER}, #{cookMethod,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}
       )
   </insert>
@@ -178,7 +178,7 @@
         #{orId,jdbcType=VARCHAR},
       </if>
       <if test="fdId != null">
-        #{fdId,jdbcType=VARCHAR},
+        #{fdId,jdbcType=INTEGER},
       </if>
       <if test="fdCount != null">
         #{fdCount,jdbcType=INTEGER},
@@ -215,7 +215,7 @@
         or_id = #{record.orId,jdbcType=VARCHAR},
       </if>
       <if test="record.fdId != null">
-        fd_id = #{record.fdId,jdbcType=VARCHAR},
+        fd_id = #{record.fdId,jdbcType=INTEGER},
       </if>
       <if test="record.fdCount != null">
         fd_count = #{record.fdCount,jdbcType=INTEGER},
@@ -239,7 +239,7 @@
     update FoodOrderDetail
     set odt_id = #{record.odtId,jdbcType=VARCHAR},
       or_id = #{record.orId,jdbcType=VARCHAR},
-      fd_id = #{record.fdId,jdbcType=VARCHAR},
+      fd_id = #{record.fdId,jdbcType=INTEGER},
       fd_count = #{record.fdCount,jdbcType=INTEGER},
       cook_method = #{record.cookMethod,jdbcType=VARCHAR},
       shop_id = #{record.shopId,jdbcType=INTEGER}
@@ -258,7 +258,7 @@
         or_id = #{orId,jdbcType=VARCHAR},
       </if>
       <if test="fdId != null">
-        fd_id = #{fdId,jdbcType=VARCHAR},
+        fd_id = #{fdId,jdbcType=INTEGER},
       </if>
       <if test="fdCount != null">
         fd_count = #{fdCount,jdbcType=INTEGER},
@@ -279,7 +279,7 @@
     -->
     update FoodOrderDetail
     set or_id = #{orId,jdbcType=VARCHAR},
-      fd_id = #{fdId,jdbcType=VARCHAR},
+      fd_id = #{fdId,jdbcType=INTEGER},
       fd_count = #{fdCount,jdbcType=INTEGER},
       cook_method = #{cookMethod,jdbcType=VARCHAR},
       shop_id = #{shopId,jdbcType=INTEGER}

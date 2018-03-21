@@ -62,8 +62,8 @@
         <!--<table schema="general" tableName="DinnerTableType" domainObjectName="DinnerTableType"/>-->
         <!--<table schema="general" tableName="Employee" domainObjectName="Employee"/>-->
         <!--<table schema="general" tableName="Food" domainObjectName="Food"/>-->
-        <!--<table schema="general" tableName="FoodOrderDetail" domainObjectName="FoodOrderDetail"/>-->
-        <table schema="general" tableName="FoodOrders" domainObjectName="FoodOrders"/>
+        <table schema="general" tableName="FoodOrderDetail" domainObjectName="FoodOrderDetail"/>
+        <!--<table schema="general" tableName="FoodOrders" domainObjectName="FoodOrders"/>-->
         <!--<table schema="general" tableName="FoodType" domainObjectName="FoodType"/>-->
         <!--<table schema="general" tableName="Shop" domainObjectName="Shop"/>-->
     </context>
