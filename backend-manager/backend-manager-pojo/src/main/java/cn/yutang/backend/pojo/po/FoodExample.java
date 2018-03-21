@@ -834,76 +834,6 @@ public class FoodExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopIdIsNull() {
-            addCriterion("shop_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdIsNotNull() {
-            addCriterion("shop_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdEqualTo(String value) {
-            addCriterion("shop_id =", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotEqualTo(String value) {
-            addCriterion("shop_id <>", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdGreaterThan(String value) {
-            addCriterion("shop_id >", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdGreaterThanOrEqualTo(String value) {
-            addCriterion("shop_id >=", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdLessThan(String value) {
-            addCriterion("shop_id <", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdLessThanOrEqualTo(String value) {
-            addCriterion("shop_id <=", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdLike(String value) {
-            addCriterion("shop_id like", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotLike(String value) {
-            addCriterion("shop_id not like", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdIn(List<String> values) {
-            addCriterion("shop_id in", values, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotIn(List<String> values) {
-            addCriterion("shop_id not in", values, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdBetween(String value1, String value2) {
-            addCriterion("shop_id between", value1, value2, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotBetween(String value1, String value2) {
-            addCriterion("shop_id not between", value1, value2, "shopId");
-            return (Criteria) this;
-        }
-
         public Criteria andFdRecommendIsNull() {
             addCriterion("fd_recommend is null");
             return (Criteria) this;
@@ -961,6 +891,66 @@ public class FoodExample {
 
         public Criteria andFdRecommendNotBetween(Integer value1, Integer value2) {
             addCriterion("fd_recommend not between", value1, value2, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIsNull() {
+            addCriterion("shop_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIsNotNull() {
+            addCriterion("shop_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdEqualTo(Integer value) {
+            addCriterion("shop_id =", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotEqualTo(Integer value) {
+            addCriterion("shop_id <>", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdGreaterThan(Integer value) {
+            addCriterion("shop_id >", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shop_id >=", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdLessThan(Integer value) {
+            addCriterion("shop_id <", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shop_id <=", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIn(List<Integer> values) {
+            addCriterion("shop_id in", values, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotIn(List<Integer> values) {
+            addCriterion("shop_id not in", values, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id between", value1, value2, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id not between", value1, value2, "shopId");
             return (Criteria) this;
         }
     }

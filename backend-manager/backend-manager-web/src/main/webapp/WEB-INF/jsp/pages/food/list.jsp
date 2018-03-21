@@ -69,7 +69,7 @@
                             <input type="text" name="fdName" placeholder="请输入菜品关键字" autocomplete="off"
                                    class="layui-input">
                         </div>
-                        <button class="layui-btn" lay-submit lay-filter="sreach"><i
+                        <button class="layui-btn" lay-submit lay-filter="search"><i
                                 class="layui-icon">&#xe615;</i></button>
                     </form>
                 </div>
@@ -90,10 +90,14 @@
 
 
                 <script type="text/html" id="recommendTpl">
-                    <input class="demoCheck" data-type="setRecommend" type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend" onclick="setRecommend()" {{d.fdRecommend ==1?"checked":""}}>
+                    <form class="layui-form">
+                        <input class="demoCheck" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend" value="{{d.fdId}}" {{d.fdRecommend ==1?"checked":""}}>
+                    </form>
                 </script>
                 <script type="text/html" id="statusTpl">
-                    <input type="checkbox" name="zzz" lay-skin="switch" lay-text="上架|已下架" {{d.fdStatus ==1?"checked":""}}>
+                    <form class="layui-form">
+                        <input type="checkbox" lay-filter="fdStatus" name="fdStatus" lay-skin="switch" lay-text="上架|已下架" value="{{d.fdId}}" {{d.fdStatus ==1?"checked":""}}>
+                    </form>
                 </script>
                 <script type="text/html" id="priceTpl">
                     <span >{{d.fdPrice + '/元'}}</span>
@@ -101,15 +105,9 @@
                 <script type="text/html" id="mpriceTpl">
                     <span >{{d.fdMprice + '/元'}}</span>
                 </script>
-                <script type="text/html" id="reviewTpl">
-                    <input type="checkbox" name="lock" value="10002" title="审核" lay-filter="lockDemo">
-                </script>
                 <script type="text/html" id="operateTpl">
-                    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+                    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', this, 600, 400)" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
-                    </a>
-                    <a title="查看" onclick="WeAdminShow('查看文章','./show',600,400)" href="javascript:;">
-                        <i class="layui-icon">&#xe63c;</i>
                     </a>
                     <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                         <i class="layui-icon">&#xe640;</i>

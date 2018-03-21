@@ -27,7 +27,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="fdName" name="fdName" required="" lay-verify="required"
-                       autocomplete="off" value="admin" class="layui-input">
+                       autocomplete="off"  class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

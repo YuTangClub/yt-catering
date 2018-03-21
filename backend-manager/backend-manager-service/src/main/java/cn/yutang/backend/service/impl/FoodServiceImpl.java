@@ -24,4 +24,9 @@ public class FoodServiceImpl implements IFoodService {
 	public Integer countTotal(Food food) {
 		return foodCustomMapper.countTotal(food);
 	}
+
+	@Override
+	public Integer setFoodById(Food food) {
+		return foodCustomMapper.updateByPrimaryKeySelective(food);
+	}
 }

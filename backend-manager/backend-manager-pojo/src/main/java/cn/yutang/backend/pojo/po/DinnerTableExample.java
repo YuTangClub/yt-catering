@@ -232,32 +232,32 @@ public class DinnerTableExample {
             return (Criteria) this;
         }
 
-        public Criteria andTbIdEqualTo(Integer value) {
+        public Criteria andTbIdEqualTo(Long value) {
             addCriterion("tb_id =", value, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdNotEqualTo(Integer value) {
+        public Criteria andTbIdNotEqualTo(Long value) {
             addCriterion("tb_id <>", value, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdGreaterThan(Integer value) {
+        public Criteria andTbIdGreaterThan(Long value) {
             addCriterion("tb_id >", value, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTbIdGreaterThanOrEqualTo(Long value) {
             addCriterion("tb_id >=", value, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdLessThan(Integer value) {
+        public Criteria andTbIdLessThan(Long value) {
             addCriterion("tb_id <", value, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTbIdLessThanOrEqualTo(Long value) {
             addCriterion("tb_id <=", value, "tbId");
             return (Criteria) this;
         }
@@ -267,17 +267,17 @@ public class DinnerTableExample {
             return (Criteria) this;
         }
 
-        public Criteria andTbIdNotIn(List<Integer> values) {
+        public Criteria andTbIdNotIn(List<Long> values) {
             addCriterion("tb_id not in", values, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdBetween(Integer value1, Integer value2) {
+        public Criteria andTbIdBetween(Long value1, Long value2) {
             addCriterion("tb_id between", value1, value2, "tbId");
             return (Criteria) this;
         }
 
-        public Criteria andTbIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTbIdNotBetween(Long value1, Long value2) {
             addCriterion("tb_id not between", value1, value2, "tbId");
             return (Criteria) this;
         }
@@ -532,6 +532,76 @@ public class DinnerTableExample {
             return (Criteria) this;
         }
 
+        public Criteria andTbQrcodeIsNull() {
+            addCriterion("tb_qrcode is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeIsNotNull() {
+            addCriterion("tb_qrcode is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeEqualTo(String value) {
+            addCriterion("tb_qrcode =", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeNotEqualTo(String value) {
+            addCriterion("tb_qrcode <>", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeGreaterThan(String value) {
+            addCriterion("tb_qrcode >", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeGreaterThanOrEqualTo(String value) {
+            addCriterion("tb_qrcode >=", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeLessThan(String value) {
+            addCriterion("tb_qrcode <", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeLessThanOrEqualTo(String value) {
+            addCriterion("tb_qrcode <=", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeLike(String value) {
+            addCriterion("tb_qrcode like", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeNotLike(String value) {
+            addCriterion("tb_qrcode not like", value, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeIn(List<String> values) {
+            addCriterion("tb_qrcode in", values, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeNotIn(List<String> values) {
+            addCriterion("tb_qrcode not in", values, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeBetween(String value1, String value2) {
+            addCriterion("tb_qrcode between", value1, value2, "tbQrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andTbQrcodeNotBetween(String value1, String value2) {
+            addCriterion("tb_qrcode not between", value1, value2, "tbQrcode");
+            return (Criteria) this;
+        }
+
         public Criteria andShopIdIsNull() {
             addCriterion("shop_id is null");
             return (Criteria) this;
@@ -542,62 +612,52 @@ public class DinnerTableExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopIdEqualTo(String value) {
+        public Criteria andShopIdEqualTo(Integer value) {
             addCriterion("shop_id =", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotEqualTo(String value) {
+        public Criteria andShopIdNotEqualTo(Integer value) {
             addCriterion("shop_id <>", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdGreaterThan(String value) {
+        public Criteria andShopIdGreaterThan(Integer value) {
             addCriterion("shop_id >", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdGreaterThanOrEqualTo(String value) {
+        public Criteria andShopIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("shop_id >=", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdLessThan(String value) {
+        public Criteria andShopIdLessThan(Integer value) {
             addCriterion("shop_id <", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdLessThanOrEqualTo(String value) {
+        public Criteria andShopIdLessThanOrEqualTo(Integer value) {
             addCriterion("shop_id <=", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdLike(String value) {
-            addCriterion("shop_id like", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotLike(String value) {
-            addCriterion("shop_id not like", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdIn(List<String> values) {
+        public Criteria andShopIdIn(List<Integer> values) {
             addCriterion("shop_id in", values, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotIn(List<String> values) {
+        public Criteria andShopIdNotIn(List<Integer> values) {
             addCriterion("shop_id not in", values, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdBetween(String value1, String value2) {
+        public Criteria andShopIdBetween(Integer value1, Integer value2) {
             addCriterion("shop_id between", value1, value2, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotBetween(String value1, String value2) {
+        public Criteria andShopIdNotBetween(Integer value1, Integer value2) {
             addCriterion("shop_id not between", value1, value2, "shopId");
             return (Criteria) this;
         }

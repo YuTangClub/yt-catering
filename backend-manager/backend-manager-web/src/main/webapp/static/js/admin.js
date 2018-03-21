@@ -326,38 +326,43 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
         });
     }
 
-    function editUser(i) {
-        //编辑按钮的方法
-        var rows = $("#userGrid").datagrid("getRows");
-        layer.open({
-            title: false,
-            type: 2,
-            closeBtn: false,
-            area: ['420px', '560px'],
-            skin: 'layui-layer-rim',
-            //加上边框
-            content: ['/Admin/ShowForm/EditUserInfo', 'no'],
-            success: function (layero, index) {
-                var body = layer.getChildFrame('body', index);
-                //巧妙的地方在这里哦
-                body.contents().find("#userName").val(rows[i].UserName);
-                body.contents().find("#mail").val(rows[i].MailBox);
-                if (rows[i].Tel != "-") {
-                    body.contents().find("#tel").val(rows[i].Tel);
-                }
-                if (rows[i].Mobile != "-") {
-                    body.contents().find("#mobile").val(rows[i].Mobile);
-                }
-                body.contents().find("#addr").val(rows[i].Addr);
-                body.contents().find("#isstutas").val(rows[i].IsStatus);
-            }
-        });
-    }
+    // function editUser(i) {
+    //     //编辑按钮的方法
+    //     var rows = $("#userGrid").datagrid("getRows");
+    //     layer.open({
+    //         title: false,
+    //         type: 2,
+    //         closeBtn: false,
+    //         area: ['420px', '560px'],
+    //         skin: 'layui-layer-rim',
+    //         //加上边框
+    //         content: ['/Admin/ShowForm/EditUserInfo', 'no'],
+    //         success: function (layero, index) {
+    //             var body = layer.getChildFrame('body', index);
+    //             //巧妙的地方在这里哦
+    //             body.contents().find("#userName").val(rows[i].UserName);
+    //             body.contents().find("#mail").val(rows[i].MailBox);
+    //             if (rows[i].Tel != "-") {
+    //                 body.contents().find("#tel").val(rows[i].Tel);
+    //             }
+    //             if (rows[i].Mobile != "-") {
+    //                 body.contents().find("#mobile").val(rows[i].Mobile);
+    //             }
+    //             body.contents().find("#addr").val(rows[i].Addr);
+    //             body.contents().find("#isstutas").val(rows[i].IsStatus);
+    //         }
+    //     });
+    // }
 
     /*弹出层+传递ID参数*/
-    window.WeAdminEdit = function (title, url, id, w, h) {
+    window.WeAdminEdit = function (title, url, obj, w, h) {
         debugger
-        var rows = $("#foodList").datagrid("getRows");
+        //var rows = $("#foodList").datagrid("getRows");
+        var trs = $(obj).parents('tr')
+        var tds = $(obj).parents('tr').children('td');
+        var fdName = cols.eq(2);
+        var fdRecommend = cols.eq(5);
+        var input = fdRecommend.children('input')
         if (title == null || title == '') {
             title = false;
         }

@@ -49,7 +49,7 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
     /*
     * 查询结果分页
     * */
-    form.on('submit(sreach)', function (data) {
+    form.on('submit(search)', function (data) {
         //debugger
         table.reload('foodList', {
             url: "list.do",
@@ -58,14 +58,51 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
         return false;
     });
 
-    /*
-    * 绑定table的onclick事件
-    * */
-    table.on('checkbox(searchResult)',function (obj) {
-        debugger
-        console.log(obj.checked); //当前是否选中状态
-        console.log(obj.data); //选中行的相关数据
-        console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
+    form.on('switch(fdRecommend)',function (data) {
+        //debugger;
+        var flag = data.elem.checked;
+        var fdId = data.value;
+        var fdRecommend = 0;
+        if(flag){
+            fdRecommend = 1;
+        }
+        $.post(
+            "edit.do",
+            {
+                "fdRecommend":fdRecommend,
+                "fdId":fdId
+            },
+            function (msg) {
+                if(msg == "1"){
+                    layer.msg('设置成功',{icon:1,time:1000})
+                }
+            },
+            "text"
+        );
+    })
+
+
+    form.on('switch(fdStatus)',function (data) {
+        //debugger;
+        var flag = data.elem.checked;
+        var fdId = data.value;
+        var fdStatus = 0;
+        if(flag){
+            fdStatus = 1;
+        }
+        $.post(
+            "edit.do",
+            {
+                "fdStatus":fdStatus,
+                "fdId":fdId
+            },
+            function (msg) {
+                if(msg == "1"){
+                    layer.msg('设置成功',{icon:1,time:1000})
+                }
+            },
+            "text"
+        );
     })
 
 

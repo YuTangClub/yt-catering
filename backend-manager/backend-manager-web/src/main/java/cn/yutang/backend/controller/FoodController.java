@@ -37,6 +37,19 @@ public class FoodController {
 	}
 
 	@ResponseBody
+	@RequestMapping("/edit.do")
+	public String editFoodDo(Food food){
+
+		//通过id以及可选条件，设置food的属性
+		Integer result = foodService.setFoodById(food);
+		if(result > 0){
+			return "1";
+		}
+
+		return "0";
+	}
+
+	@ResponseBody
 	@RequestMapping("/list.do")
 	public MessageResult listFoodDo(HttpSession session, Page page, Food food, Model model){
 

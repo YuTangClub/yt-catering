@@ -12,4 +12,7 @@ public interface IFoodService {
 
 	//获取符合要求的总数
 	Integer countTotal(Food food);
+
+	//通过id设置food的可选属性
+	Integer setFoodById(Food food);
 }
