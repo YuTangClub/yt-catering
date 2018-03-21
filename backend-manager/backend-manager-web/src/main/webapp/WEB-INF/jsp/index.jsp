@@ -123,20 +123,26 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe705;</i>
-                    <cite>文章管理</cite>
+                    <cite>前台收银</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/list">
+                        <a _href="${pageContext.request.contextPath}/pages/cashier/order">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>文章列表</cite>
+                            <cite>收银台</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/article/category">
+                        <a _href="${pageContext.request.contextPath}/pages/cashier/tbList">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>分类管理</cite>
+                            <cite>开台管理</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/pages/cashier/order">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>餐饮结算</cite>
                         </a>
                     </li>
                 </ul>

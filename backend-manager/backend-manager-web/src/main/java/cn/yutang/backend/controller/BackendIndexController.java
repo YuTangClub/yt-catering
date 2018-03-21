@@ -23,10 +23,10 @@ public class BackendIndexController {
 		return "pages/"+page;
 	}
 
-	@RequestMapping(value = "/pages/{page1}/{page2}",method = RequestMethod.GET)
+	/*@RequestMapping(value = "/pages/{page1}/{page2}",method = RequestMethod.GET)
 	public String toPageTwo(@PathVariable String page1, @PathVariable String page2){
 		return "pages/"+page1+"/"+page2;
-	}
+	}*/
 
 
 

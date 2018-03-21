@@ -504,6 +504,196 @@ public class FoodExample {
             return (Criteria) this;
         }
 
+        public Criteria andFdStockIsNull() {
+            addCriterion("fd_stock is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockIsNotNull() {
+            addCriterion("fd_stock is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockEqualTo(Integer value) {
+            addCriterion("fd_stock =", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockNotEqualTo(Integer value) {
+            addCriterion("fd_stock <>", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockGreaterThan(Integer value) {
+            addCriterion("fd_stock >", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockGreaterThanOrEqualTo(Integer value) {
+            addCriterion("fd_stock >=", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockLessThan(Integer value) {
+            addCriterion("fd_stock <", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockLessThanOrEqualTo(Integer value) {
+            addCriterion("fd_stock <=", value, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockIn(List<Integer> values) {
+            addCriterion("fd_stock in", values, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockNotIn(List<Integer> values) {
+            addCriterion("fd_stock not in", values, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockBetween(Integer value1, Integer value2) {
+            addCriterion("fd_stock between", value1, value2, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStockNotBetween(Integer value1, Integer value2) {
+            addCriterion("fd_stock not between", value1, value2, "fdStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusIsNull() {
+            addCriterion("fd_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusIsNotNull() {
+            addCriterion("fd_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusEqualTo(Integer value) {
+            addCriterion("fd_status =", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusNotEqualTo(Integer value) {
+            addCriterion("fd_status <>", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusGreaterThan(Integer value) {
+            addCriterion("fd_status >", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("fd_status >=", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusLessThan(Integer value) {
+            addCriterion("fd_status <", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("fd_status <=", value, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusIn(List<Integer> values) {
+            addCriterion("fd_status in", values, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusNotIn(List<Integer> values) {
+            addCriterion("fd_status not in", values, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusBetween(Integer value1, Integer value2) {
+            addCriterion("fd_status between", value1, value2, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("fd_status not between", value1, value2, "fdStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitIsNull() {
+            addCriterion("fd_unit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitIsNotNull() {
+            addCriterion("fd_unit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitEqualTo(String value) {
+            addCriterion("fd_unit =", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitNotEqualTo(String value) {
+            addCriterion("fd_unit <>", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitGreaterThan(String value) {
+            addCriterion("fd_unit >", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitGreaterThanOrEqualTo(String value) {
+            addCriterion("fd_unit >=", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitLessThan(String value) {
+            addCriterion("fd_unit <", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitLessThanOrEqualTo(String value) {
+            addCriterion("fd_unit <=", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitLike(String value) {
+            addCriterion("fd_unit like", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitNotLike(String value) {
+            addCriterion("fd_unit not like", value, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitIn(List<String> values) {
+            addCriterion("fd_unit in", values, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitNotIn(List<String> values) {
+            addCriterion("fd_unit not in", values, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitBetween(String value1, String value2) {
+            addCriterion("fd_unit between", value1, value2, "fdUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdUnitNotBetween(String value1, String value2) {
+            addCriterion("fd_unit not between", value1, value2, "fdUnit");
+            return (Criteria) this;
+        }
+
         public Criteria andFdRemarkIsNull() {
             addCriterion("fd_remark is null");
             return (Criteria) this;
@@ -641,6 +831,126 @@ public class FoodExample {
 
         public Criteria andFdImgNotBetween(String value1, String value2) {
             addCriterion("fd_img not between", value1, value2, "fdImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendIsNull() {
+            addCriterion("fd_recommend is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendIsNotNull() {
+            addCriterion("fd_recommend is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendEqualTo(Integer value) {
+            addCriterion("fd_recommend =", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendNotEqualTo(Integer value) {
+            addCriterion("fd_recommend <>", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendGreaterThan(Integer value) {
+            addCriterion("fd_recommend >", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendGreaterThanOrEqualTo(Integer value) {
+            addCriterion("fd_recommend >=", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendLessThan(Integer value) {
+            addCriterion("fd_recommend <", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendLessThanOrEqualTo(Integer value) {
+            addCriterion("fd_recommend <=", value, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendIn(List<Integer> values) {
+            addCriterion("fd_recommend in", values, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendNotIn(List<Integer> values) {
+            addCriterion("fd_recommend not in", values, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendBetween(Integer value1, Integer value2) {
+            addCriterion("fd_recommend between", value1, value2, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andFdRecommendNotBetween(Integer value1, Integer value2) {
+            addCriterion("fd_recommend not between", value1, value2, "fdRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIsNull() {
+            addCriterion("shop_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIsNotNull() {
+            addCriterion("shop_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdEqualTo(Integer value) {
+            addCriterion("shop_id =", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotEqualTo(Integer value) {
+            addCriterion("shop_id <>", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdGreaterThan(Integer value) {
+            addCriterion("shop_id >", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shop_id >=", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdLessThan(Integer value) {
+            addCriterion("shop_id <", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shop_id <=", value, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdIn(List<Integer> values) {
+            addCriterion("shop_id in", values, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotIn(List<Integer> values) {
+            addCriterion("shop_id not in", values, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id between", value1, value2, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id not between", value1, value2, "shopId");
             return (Criteria) this;
         }
     }

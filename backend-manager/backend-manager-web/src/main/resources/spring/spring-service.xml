@@ -13,7 +13,7 @@
                 http://www.springframework.org/schema/aop
                 http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="cn.yutang.backend.service"></context:component-scan>
+    <context:component-scan base-package="cn.yutang.backend.service.impl"></context:component-scan>
     <context:component-scan base-package="cn.yutang.backend.pojo"></context:component-scan>
     <context:annotation-config></context:annotation-config>
 
@@ -29,12 +29,12 @@
     </bean>
 
     <!--multipartResolver配置-->
-    <bean id="multipartResolver"
+    <!--<bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
           p:defaultEncoding="UTF-8"
           p:maxUploadSize="5242880"
           p:uploadTempDir="file://Users/yu/Downloads/Temp"
-    />
+    />-->
 
     <!--可以使用注解代替以下配置 -->
     <tx:annotation-driven></tx:annotation-driven>
