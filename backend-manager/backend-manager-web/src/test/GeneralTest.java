@@ -67,24 +67,24 @@ public class GeneralTest {
 
 	}
 
-	@Test
-	public void testFtpUpload() throws IOException {
-		//创建FTPClient客户端
-		FTPClient ftpClient = new FTPClient();
-		//创建FTP连接
-		ftpClient.connect("139.224.9.221",21);
-		//登录
-		ftpClient.login("ftpuser","yup123yup");
-		//读取本地文件
-		FileInputStream fileInputStream = new FileInputStream(new File("/Users/yu/Pictures/teamviewer.tiff"));
-		//配置上传参数
-		ftpClient.changeWorkingDirectory("/home/ftpuser/www/img");
-		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-		//上传文件
-		ftpClient.storeFile("teamviewer.tiff",fileInputStream);
-		//关闭连接
-		fileInputStream.close();
-		ftpClient.logout();
-
-	}
+//	@Test
+//	public void testFtpUpload() throws IOException {
+//		//创建FTPClient客户端
+//		FTPClient ftpClient = new FTPClient();
+//		//创建FTP连接
+//		ftpClient.connect("139.224.9.221",21);
+//		//登录
+//		ftpClient.login("ftpuser","yup123yup");
+//		//读取本地文件
+//		FileInputStream fileInputStream = new FileInputStream(new File("/Users/yu/Pictures/teamviewer.tiff"));
+//		//配置上传参数
+//		ftpClient.changeWorkingDirectory("/home/ftpuser/www/img");
+//		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+//		//上传文件
+//		ftpClient.storeFile("teamviewer.tiff",fileInputStream);
+//		//关闭连接
+//		fileInputStream.close();
+//		ftpClient.logout();
+//
+//	}
 }

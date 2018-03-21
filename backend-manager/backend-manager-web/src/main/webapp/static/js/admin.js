@@ -358,11 +358,17 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
     window.WeAdminEdit = function (title, url, obj, w, h) {
         debugger
         //var rows = $("#foodList").datagrid("getRows");
-        var trs = $(obj).parents('tr')
-        var tds = $(obj).parents('tr').children('td');
-        var fdName = cols.eq(2).text;
-        var fdRecommend = cols.eq(5).text;
-        var input = fdRecommend.children('input')
+        var cols = $(obj).parents('tr').children('td');
+        var fdName = cols.eq(2).text();
+        var fdPrice = cols.eq(3).text();
+        var fdMprice = cols.eq(4).text();
+        var fdMprice = cols.eq(5).text();
+        var fdStock = cols.eq(5).text();
+        var fdStatus = cols.eq(6).text();
+        var fdUnit = cols.eq(7).text();
+        var fdRemark = cols.eq(8).text();
+
+
         if (title == null || title == '') {
             title = false;
         }
@@ -392,7 +398,14 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
                 //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
                 debugger;
                 var body = layer.getChildFrame('body', index);
-                body.contents().find("#dataId").val(id);
+                body.contents().find("#fdName").val(fdName);
+                body.contents().find("#fdPrice").val(fdPrice);
+                body.contents().find("#fdMprice").val(fdMprice);
+                body.contents().find("#fdStock").val(fdStock);
+                body.contents().find("#fdStatus").val(fdStatus);
+                body.contents().find("#fdUnit").val(fdUnit);
+                body.contents().find("#fdRemark").val(fdRemark);
+                body.contents().find("#fdName").val(fdName);
                 console.log(id);
             },
             error: function (layero, index) {
