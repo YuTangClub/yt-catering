@@ -356,13 +356,20 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
 
     /*弹出层+传递ID参数*/
     window.WeAdminEdit = function (title, url, obj, w, h) {
-        debugger
+
         //var rows = $("#foodList").datagrid("getRows");
-        var trs = $(obj).parents('tr')
-        var tds = $(obj).parents('tr').children('td');
-        var fdName = cols.eq(2).text;
-        var fdRecommend = cols.eq(5).text;
-        var input = fdRecommend.children('input')
+        var cols = $(obj).parents('tr').children('td');
+        var fdName = cols.eq(2).text();
+        var fdPrice = cols.eq(3).text();
+        var fdMprice = cols.eq(4).text();
+        var fdRecommend = cols.eq(5).find('#fdRecommend').get(0).checked;
+        var fdStock = cols.eq(6).text();
+        var fdStatus = cols.eq(7).find("#fdStatus").get(0).checked;
+        var fdUnit = cols.eq(8).text();
+        var fdRemark = cols.eq(9).text();
+
+
+
         if (title == null || title == '') {
             title = false;
         }
@@ -388,16 +395,30 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
             shade: 0.4,
             title: title,
             content: url,
+            btn:['按钮一', '按钮二'],
             success: function (layero, index) {
                 //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
-                debugger;
+                //debugger;
                 var body = layer.getChildFrame('body', index);
-                body.contents().find("#dataId").val(id);
+                body.contents().find("#fdName").val(fdName);
+                body.contents().find("#fdPrice").val(fdPrice);
+                body.contents().find("#fdMprice").val(fdMprice);
+                body.contents().find("#fdStock").val(fdStock);
+                body.contents().find("#fdUnit").val(fdUnit);
+                body.contents().find("#fdRemark").val(fdRemark);
+
+                debugger
+                body.contents().find("#fdRecommend").attr('checked',fdRecommend);
+                body.contents().find("#fdStatus").attr('checked',fdStatus);
+                var temp = body.contents().find("#fdRecommend");
+
+
                 console.log(id);
             },
             error: function (layero, index) {
                 alert("aaa");
-            }
+            },
+
         });
     }
 

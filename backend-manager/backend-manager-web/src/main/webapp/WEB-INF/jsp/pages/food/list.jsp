@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 
@@ -91,19 +92,13 @@
 
                 <script type="text/html" id="recommendTpl">
                     <form class="layui-form">
-                        <input class="demoCheck" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend" value="{{d.fdId}}" {{d.fdRecommend ==1?"checked":""}}>
+                        <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend"  {{d.fdRecommend ==1?"checked":""}}>
                     </form>
                 </script>
                 <script type="text/html" id="statusTpl">
                     <form class="layui-form">
-                        <input type="checkbox" lay-filter="fdStatus" name="fdStatus" lay-skin="switch" lay-text="上架|已下架" value="{{d.fdId}}" {{d.fdStatus ==1?"checked":""}}>
+                        <input id="fdStatus" type="checkbox" lay-filter="fdStatus" name="fdStatus" lay-skin="switch" lay-text="正常|已下架"  {{d.fdStatus ==1?"checked":""}}>
                     </form>
-                </script>
-                <script type="text/html" id="priceTpl">
-                    <span >{{d.fdPrice + '/元'}}</span>
-                </script>
-                <script type="text/html" id="mpriceTpl">
-                    <span >{{d.fdMprice + '/元'}}</span>
                 </script>
                 <script type="text/html" id="operateTpl">
                     <a title="编辑" onclick="WeAdminEdit('编辑','./edit', this, 600, 400)" href="javascript:;">

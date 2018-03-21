@@ -21,9 +21,9 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
             }, {
                 field: 'fdName', title: '菜品名称', templet: '#usernameTpl'
             }, {
-                field: 'fdPrice', title: '价格', sort: true, templet: '#priceTpl', style: "text-align:center"
+                field: 'fdPrice', title: '价格', sort: true
             }, {
-                field: 'fdMprice', title: '会员价', sort: true, templet: '#mpriceTpl', style: "text-align:center"
+                field: 'fdMprice', title: '会员价', sort: true
             }, {
                 field: 'fdRecommend', title: '推荐', sort: true, templet: '#recommendTpl'
             }, {

@@ -58,21 +58,21 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="fdStatus" class="layui-form-label">
-                <span class="we-red">*</span>上架状态
-            </label>
-            <div class="layui-input-inline">
-                <input type="checkbox" id="fdStatus" name="fdStatus" lay-text="上架|下架"
-                       autocomplete="off" lay-skin="switch"  class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
             <label for="fdRecommend" class="layui-form-label">
                 <span class="we-red">*</span>推荐
             </label>
             <div class="layui-input-inline">
-                <input type="checkbox" id="fdRecommend" name="fdRecommend" lay-text="已推荐|未推荐"
-                        lay-skin="switch">
+                <input type="checkbox" id="fdRecommend" name="fdRecommend" lay-text="已推荐|OFF"
+                       lay-skin="switch" VALUE="1">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="fdStatus" class="layui-form-label">
+                <span class="we-red">*</span>上架状态
+            </label>
+            <div class="layui-input-block">
+                <input type="checkbox" id="fdStatus" name="fdStatus" lay-text="正常|下架"
+                       autocomplete="off" lay-skin="switch"  class="layui-input" VALUE="1">
             </div>
         </div>
         <div class="layui-form-item">
@@ -88,15 +88,17 @@
             <label for="fdRemark" class="layui-form-label">
                 <span class="we-red">*</span>简介
             </label>
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <textarea id="fdRemark" name="fdRemark" autocomplete="off" class="layui-textarea"></textarea>
             </div>
         </div>
 
         <div class="layui-form-item">
-            <button  class="layui-btn" lay-filter="edit" lay-submit="">
-                修改
-            </button>
+            <div class="layui-input-block">
+                <button  class="layui-btn" lay-filter="edit" lay-submit="">
+                    修改
+                </button>
+            </div>
         </div>
     </form>
 </div>
@@ -125,7 +127,7 @@
         });
 
         //监听提交
-        form.on('submit(add)', function(data){
+        form.on('submit(edit)', function(data){
             console.log(data);
             //发异步，把数据提交给php
             layer.alert("增加成功", {icon: 6},function () {
