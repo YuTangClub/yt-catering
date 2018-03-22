@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -72,7 +73,7 @@ public class OrderDishesServiceImpl implements IOrderDishesService {
             criteria.andOrIdEqualTo(shopOrders.getOrId());
             criteria.andFdIdEqualTo(foodOrderDetail.getFdId());
             List<FoodOrderDetail> foodOrderDetails =foodOrderDetailMapper.selectByExample(example);
-            if(foodOrderDetails.size() == 0){
+            if(foodOrderDetails.size() == 0){//如果不存在该菜品
                 UUID uuid=UUID.randomUUID();
                 String odtId=uuid.toString().replace("-","");
                 foodOrderDetail.setOdtId(odtId);
@@ -95,8 +96,7 @@ public class OrderDishesServiceImpl implements IOrderDishesService {
         FoodOrderDetailExample.Criteria criteria=example.createCriteria();
         criteria.andOrIdEqualTo(shopOrders.getOrId());
         List<FoodOrderDetail> foodOrderDetails=foodOrderDetailMapper.selectByExample(example);
-        //总价
-        double sum=0.00;
+        double sum=0.00; //总价
         //遍历订单详情,计算总价
         for(FoodOrderDetail foodOrderDetail:foodOrderDetails){
             //FoodExample fe=new FoodExample();//fe:foodExample
@@ -105,23 +105,23 @@ public class OrderDishesServiceImpl implements IOrderDishesService {
             Food food=foodMapper.selectByPrimaryKey(foodOrderDetail.getFdId());
             double fdPrice=food.getFdPrice();
             int fdCount=foodOrderDetail.getFdCount();
-            sum+=fdCount*fdPrice;
+            sum+=fdCount*fdPrice;//非会员总价
         }
         //更新餐桌状态
-
         DinnerTableExample tbExample=new DinnerTableExample();
         DinnerTableExample.Criteria tbCriteria=tbExample.createCriteria();
-        tbCriteria.andTbIdEqualTo(shopOrders.getTbId());
+        tbCriteria.andTbIdEqualTo(shopOrders.getTbId());//更新餐桌条件tbId
         DinnerTable dinnerTable=new DinnerTable();
-        dinnerTable.setTbStatus(0);
+        dinnerTable.setTbStatus(0);//更新餐桌状态
         dinnerTableMapper.updateByExampleSelective(dinnerTable,tbExample);
         //更新订单状态
         FoodOrdersExample orExample=new FoodOrdersExample();
         FoodOrdersExample.Criteria orCriteria=orExample.createCriteria();
-        criteria.andOrIdEqualTo(shopOrders.getOrId());
+        criteria.andOrIdEqualTo(shopOrders.getOrId()); //更新订单条件orId
         ShopOrders shopOrder=new ShopOrders();
-        shopOrder.setOrStatus(1);
-        shopOrder.setOrEndtime(new Date());
+        shopOrder.setOrStatus(1);//更新订单状态为结账
+        shopOrder.setOrTotalprice(sum);//总价
+        shopOrder.setOrEndtime(new Date());//结账时间
         foodOrdersMapper.updateByExampleSelective(shopOrder,orExample);
         return sum;
     }
