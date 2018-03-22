@@ -91,7 +91,7 @@
         <input type="checkbox" name="lock" value="10002" title="审核" lay-filter="lockDemo">
     </script>
     <script type="text/html" id="operateTpl">
-        <a title="编辑" onclick="WeAdminEdit('编辑','./edit.html', 2, 600, 400)" href="javascript:;">
+        <a title="编辑" onclick="WeAdminEdit('编辑','./edit.jsp', 2, 600, 400)" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
         <a title="查看" onclick="WeAdminShow('查看文章','./show.html',600,400)" href="javascript:;">

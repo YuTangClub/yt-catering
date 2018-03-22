@@ -1,6 +1,7 @@
 package cn.yutang.backend.dao;
 
 import cn.yutang.backend.pojo.dto.Page;
+import cn.yutang.backend.pojo.po.DinnerTable;
 import cn.yutang.backend.pojo.vo.DinnerTableCustom;
 import cn.yutang.backend.pojo.vo.LikeQuery;
 import org.apache.ibatis.annotations.Param;
@@ -19,4 +20,5 @@ public interface DinnerTableCustomMapper {
 
     long countDinnertable(@Param("query") LikeQuery query);
 
+    int searchDinnerTableByTbName(DinnerTable dinnertable);
 }

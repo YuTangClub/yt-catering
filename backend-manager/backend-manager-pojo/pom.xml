@@ -12,5 +12,17 @@
     <artifactId>backend-manager-pojo</artifactId>
 
     <packaging>jar</packaging>
-
+    <!--二维码生成工具依赖包-->
+    <dependencies>
+    <dependency>
+        <groupId>Qrcode</groupId>
+        <artifactId>Qrcode</artifactId>
+        <version>3.0</version>
+    </dependency>
+    <!--用于上传的工具包-->
+    <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+    </dependency>
+    </dependencies>
 </project>

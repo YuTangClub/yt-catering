@@ -100,7 +100,7 @@
             render: function(row) {
                 return '<a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用"><i class="layui-icon">&#xe601;</i></a>'+
                     '<a title="添加子类" onclick="WeAdminShow(\'添加\',\'./add.html\')" href="javascript:;"><i class="layui-icon">&#xe654;</i></a>'+
-                    '<a title="编辑" onclick="WeAdminShow(\'编辑\',\'./edit.html\')" href="javascript:;"><i class="layui-icon">&#xe642;</i></a>'+
+                    '<a title="编辑" onclick="WeAdminShow(\'编辑\',edit.jsp" href="javascript:;"><i class="layui-icon">&#xe642;</i></a>'+
                     '<a title="删除" onclick="del(' + row.id + ')" href="javascript:;">\<i class="layui-icon">&#xe640;</i></a>';
                 //return '<a class="layui-btn layui-btn-danger layui-btn-mini" onclick="del(' + row.id + ')"><i class="layui-icon">&#xe640;</i> 删除</a>'; //列渲染
             }

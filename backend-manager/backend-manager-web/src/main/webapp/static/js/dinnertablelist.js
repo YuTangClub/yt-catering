@@ -64,13 +64,14 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
                         {'ids[]': ids},
                         //success
                         function (data) {
-                            console.log(data);
+                           console.log(data);
                         }
                     );
                     //提示用户删除成功
                     layer.msg('删除成功', {
                         icon: 1
                     });
+                    window.location.reload();
                 });
             } else {
                 layer.msg("请先选择需要删除的餐桌！");
@@ -87,14 +88,32 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
+    /*餐桌-删除*/
+    window.dinnerTable_del = function dinnerTable1(obj, tbId) {
+        layer.confirm('确认要删除吗？', function (index) {
+            //发异步删除数据
+            $(obj).parents("tr").remove();
+            $.post(
+                //url
+                '../../dinnerTableDel',
+                //data
+                {'tbId': tbId},
+                //success
+                function (data) {
+                    console.log(data);
+                }
+            );
+            layer.msg('已删除!', {
+                icon: 1,
+                time: 500
+            });
+
+            window.location.reload();
+        });
+    }
     //修改状态
     //监听上架操作
-    form.on('checkbox(lockDemo)', function(obj){
-        //this.value是当前列的id
-        console.log(this.value)
-        //obj.elem.checked 是锁定的状态
-        console.log(obj.elem.checked)
-        // layer.tips('锁定状态：' + obj.elem.checked, obj.othis);
+    form.on('switch(lockDemo)', function(obj){
         var data = null;
         if(obj.elem.checked){
             data = {'tbId':this.value,'tbStatus':0};
@@ -105,6 +124,7 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
             url:'../../editStatus',
             data:data,
             success:function (v) {
+
                 if(v==1){
 
                     layer.msg('状态修改成功!');
@@ -115,5 +135,8 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
             dataType:'json'
         })
     });
+
+
+
 });
 

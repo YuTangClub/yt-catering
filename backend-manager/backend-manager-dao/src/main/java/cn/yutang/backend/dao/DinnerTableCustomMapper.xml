@@ -26,8 +26,7 @@
         left join dinnertabletype t on i.tt_id=t.tt_id
         left join shop s on i.shop_id=s.shop_id
         <include refid="Where_Clause"></include>
-        order by i.tb_status,
-        i.tb_id
+        order by i.tb_id
         limit #{page.offset},#{page.limit}
     </select>
 
@@ -35,6 +34,11 @@
         select count(1)
         from dinnertable i
         <include refid="Where_Clause"></include>
+    </select>
+    <select id="searchDinnerTableByTbName" resultType="_int">
+        select count(1)
+        from dinnertable
+        where tb_name=#{tbName} and shop_id=#{shopId}
     </select>
 
 </mapper>

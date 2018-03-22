@@ -59,6 +59,7 @@
                     <password>admin123</password>
                     <update>true</update>
                     <path>/backend</path>
+                    <uriEncoding>utf-8</uriEncoding>
                 </configuration>
             </plugin>
             <plugin>
