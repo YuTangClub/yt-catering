@@ -108,6 +108,7 @@ public class OrderDishesServiceImpl implements IOrderDishesService {
             sum+=fdCount*fdPrice;
         }
         //更新餐桌状态
+
         DinnerTableExample tbExample=new DinnerTableExample();
         DinnerTableExample.Criteria tbCriteria=tbExample.createCriteria();
         tbCriteria.andTbIdEqualTo(shopOrders.getTbId());
