@@ -3,6 +3,7 @@ package cn.yutang.backend.controller;
 import cn.yutang.backend.pojo.dto.MessageResult;
 import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.DinnerTable;
+import cn.yutang.backend.pojo.po.Shop;
 import cn.yutang.backend.pojo.vo.DinnerTableCustom;
 import cn.yutang.backend.pojo.vo.LikeQuery;
 import cn.yutang.backend.service.DinnerTableService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -23,8 +25,12 @@ public class BackendDinnerTableController {
 
     @ResponseBody
     @RequestMapping(value = "/dinnerTable",method = RequestMethod.GET)
-    public MessageResult<DinnerTableCustom> listDinnerTableToJson(Page page, LikeQuery query) {
+    public MessageResult<DinnerTableCustom> listDinnerTableToJson(HttpSession session,Page page, LikeQuery query) {
 
+        Shop sessionShop= (Shop) session.getAttribute("sessionShop");
+        if(sessionShop!=null){
+            query.setShopId(sessionShop.getShopId());
+        }
         //从后台把所有商品的数据查询到List，把List封装MessageResult
         MessageResult<DinnerTableCustom> messageResult = new MessageResult<DinnerTableCustom>();
         try {

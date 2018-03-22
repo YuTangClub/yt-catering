@@ -38,9 +38,10 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
     var active = {
         reload:function(){
            var keyWord=$.trim($('#keyWord').val());
+            var shopId=$('#shopId').val();
            table.reload('dinnertableList',{
                page:{curr:1},
-               where:{keyWord:keyWord}
+               where:{keyWord:keyWord,shopId:shopId}
            });
         },
         getCheckData: function () { //获取选中数据

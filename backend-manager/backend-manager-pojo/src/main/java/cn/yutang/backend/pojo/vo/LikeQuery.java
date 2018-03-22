@@ -4,6 +4,7 @@ public class LikeQuery {
     private String keyWord;
     private String status;
     private long  tbId;
+    private Integer shopId;
 
     public String getKeyWord() {
         return keyWord;
@@ -27,5 +28,13 @@ public class LikeQuery {
 
     public void setTbId(long tbId) {
         this.tbId = tbId;
+    }
+
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
     }
 }

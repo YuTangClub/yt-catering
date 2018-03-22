@@ -54,6 +54,7 @@
         <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
             餐桌搜索：
             <div class="layui-inline">
+                <input type="hidden" id="shopId" name="shopId" value="${sessionShop.shopId}">
                 <input type="text" id="keyWord" name="keyWord" placeholder="请输入餐桌名关键字" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
@@ -77,7 +78,7 @@
     </script>
     <script type="text/html" id="shelfTpl">
         <form class="layui-form" onsubmit="return false;">
-        <input type="checkbox" value="{{d.tbId}}" lay-filter="lockDemo"  lay-skin="switch" lay-text="空闲|使用中" {{ 0==d.tbStatus?'checked':''}}/>
+        <input type="checkbox" value="{{d.tbId}}" lay-filter="lockDemo"  disabled="disabled" lay-skin="switch" lay-text="空闲|使用中" {{ 0==d.tbStatus?'checked':''}}/>
         </form>
     </script>
 

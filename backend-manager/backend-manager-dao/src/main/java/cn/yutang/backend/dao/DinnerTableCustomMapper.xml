@@ -16,6 +16,9 @@
             <if test="query != null and query.status != null and query.status != 0">
                 and i.tb_status = #{query.status}
             </if>
+            <if test="query != null and query.shopId != null and query.shopId != 0">
+                and i.shop_id = #{query.shopId}
+            </if>
         </where>
     </sql>
 
