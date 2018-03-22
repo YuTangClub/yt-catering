@@ -19,7 +19,7 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
             }, {
                 field: 'fdImg', title: '图片', sort: true
             }, {
-                field: 'fdName', title: '菜品名称', templet: '#usernameTpl'
+                field: 'fdName', title: '菜品名称'
             }, {
                 field: 'fdPrice', title: '价格', sort: true
             }, {

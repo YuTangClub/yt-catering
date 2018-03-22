@@ -357,39 +357,38 @@
         -->
         update Food
         <set>
-            <if test="fdName != null">
+            <if test="fdName != null and fdName != ''">
                 fd_name = #{fdName,jdbcType=VARCHAR},
             </if>
-            <if test="ftId != null">
+            <if test="ftId != null and ftId != ''">
                 ft_id = #{ftId,jdbcType=INTEGER},
             </if>
-            <if test="fdPrice != null">
+            <if test="fdPrice != null and fdPrice != ''">
                 fd_price = #{fdPrice,jdbcType=DOUBLE},
             </if>
-            <if test="fdMprice != null">
+            <if test="fdMprice != null and fdMprice != ''">
                 fd_mprice = #{fdMprice,jdbcType=DOUBLE},
             </if>
-            <if test="fdStock != null">
+            <if test="fdStock != null and fdStock != ''">
                 fd_stock = #{fdStock,jdbcType=INTEGER},
             </if>
-            <if test="fdStatus != null">
+            <if test="fdStatus != null and fdStatus != ''">
                 fd_status = #{fdStatus,jdbcType=INTEGER},
             </if>
-            <if test="fdUnit != null">
+            <if test="fdUnit != null and fdUnit != ''">
                 fd_unit = #{fdUnit,jdbcType=VARCHAR},
             </if>
-            <if test="fdRemark != null">
+            <if test="fdRemark != null and fdRemark != ''">
                 fd_remark = #{fdRemark,jdbcType=VARCHAR},
             </if>
-            <if test="fdImg != null">
+            <if test="fdImg != null and fdImg != ''">
                 fd_img = #{fdImg,jdbcType=VARCHAR},
             </if>
-            <if test="shopId != null">
+            <if test="shopId != null and shopId != ''">
                 shop_id = #{shopId,jdbcType=VARCHAR},
             </if>
-            <if test="fdRecommend != null">
-                fd_recommend = #{fdRecommend,jdbcType=INTEGER},
-            </if>
+            fd_recommend = #{fdRecommend,jdbcType=INTEGER},
+
         </set>
         where fd_id = #{fdId,jdbcType=INTEGER}
     </update>

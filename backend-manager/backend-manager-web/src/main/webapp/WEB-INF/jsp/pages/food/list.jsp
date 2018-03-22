@@ -93,6 +93,7 @@
                 <script type="text/html" id="recommendTpl">
                     <form class="layui-form">
                         <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend"  {{d.fdRecommend ==1?"checked":""}}>
+                        <input type="hidden" id="fdId" value="{{d.fdId}}">
                     </form>
                 </script>
                 <script type="text/html" id="statusTpl">

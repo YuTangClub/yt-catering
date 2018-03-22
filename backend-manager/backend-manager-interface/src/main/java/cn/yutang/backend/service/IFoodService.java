@@ -14,5 +14,8 @@ public interface IFoodService {
 	Integer countTotal(Food food);
 
 	//通过id设置food的可选属性
+	Integer setFoodByIdSelective(Food food);
+
+	//通过id设置food的所有属性
 	Integer setFoodById(Food food);
 }

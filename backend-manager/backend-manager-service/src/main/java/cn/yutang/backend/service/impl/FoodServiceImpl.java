@@ -26,7 +26,12 @@ public class FoodServiceImpl implements IFoodService {
 	}
 
 	@Override
-	public Integer setFoodById(Food food) {
+	public Integer setFoodByIdSelective(Food food) {
 		return foodCustomMapper.updateByPrimaryKeySelective(food);
+	}
+
+	@Override
+	public Integer setFoodById(Food food) {
+		return foodCustomMapper.updateByPrimaryKey(food);
 	}
 }

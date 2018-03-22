@@ -359,6 +359,8 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
 
         //var rows = $("#foodList").datagrid("getRows");
         var cols = $(obj).parents('tr').children('td');
+        var fdId = cols.find("#fdId").val();
+        var fdImg = cols.eq(1).text();
         var fdName = cols.eq(2).text();
         var fdPrice = cols.eq(3).text();
         var fdMprice = cols.eq(4).text();
@@ -367,7 +369,7 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
         var fdStatus = cols.eq(7).find("#fdStatus").get(0).checked;
         var fdUnit = cols.eq(8).text();
         var fdRemark = cols.eq(9).text();
-
+        //debugger;
 
 
         if (title == null || title == '') {
@@ -406,11 +408,17 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
                 body.contents().find("#fdStock").val(fdStock);
                 body.contents().find("#fdUnit").val(fdUnit);
                 body.contents().find("#fdRemark").val(fdRemark);
+                debugger;
+                var temp = body.contents().find("#fdId");
+                body.contents().find("#fdId").val(fdId);
+                body.contents().find("#index").val(index);
 
-                debugger
+                //debugger
                 body.contents().find("#fdRecommend").attr('checked',fdRecommend);
                 body.contents().find("#fdStatus").attr('checked',fdStatus);
                 var temp = body.contents().find("#fdRecommend");
+
+
 
 
                 console.log(id);
