@@ -80,4 +80,31 @@ public class DinnerTableServiceImpl implements DinnerTableService {
         }
         return i;
     }
+
+    @Override
+    public int searchDinnerTableByTbName(DinnerTable dinnertable) {
+        int i = 0;
+        try {
+            //i就是受到影响的行数
+            i = dinnerTableCustomDao.searchDinnerTableByTbName(dinnertable);
+        } catch (Exception e) {
+            logger.debug(e.getMessage(), e);
+        }
+        return i;
+    }
+
+    @Override
+    public void addDinnerTable(DinnerTable dinnertable) {
+        dinnerTableDao.insert(dinnertable);
+    }
+
+    @Override
+    public DinnerTable findDinnerTableByTbId(Long tbId) {
+        return dinnerTableDao.selectByPrimaryKey(tbId);
+    }
+
+    @Override
+    public void updateDinnerTable(DinnerTable dinnertable) {
+        dinnerTableDao.updateByPrimaryKeySelective(dinnertable);
+    }
 }

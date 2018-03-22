@@ -33,4 +33,12 @@ public interface DinnerTableService {
     int batchUpdate(List<Long> ids);
 
     int updateDinnerTableStatus(DinnerTable dinnertable);
+
+    int searchDinnerTableByTbName(DinnerTable dinnertable);
+
+    void addDinnerTable(DinnerTable dinnertable);
+
+    DinnerTable findDinnerTableByTbId(Long tbId);
+
+    void updateDinnerTable(DinnerTable dinnertable);
 }

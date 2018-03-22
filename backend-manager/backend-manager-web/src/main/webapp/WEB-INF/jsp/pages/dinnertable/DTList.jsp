@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -54,6 +54,7 @@
         <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
             餐桌搜索：
             <div class="layui-inline">
+                <input type="hidden" id="shopId" name="shopId" value="${sessionShop.shopId}">
                 <input type="text" id="keyWord" name="keyWord" placeholder="请输入餐桌名关键字" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
@@ -61,23 +62,23 @@
     </div>
     <div class="weadmin-block demoTable">
         <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除</button>
-        <button class="layui-btn" onclick="WeAdminShow('添加餐桌','./add',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
+        <button class="layui-btn" onclick="WeAdminShow('添加餐桌','${pageContext.request.contextPath}/pages/dinnertable/add',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
     </div>
     <table class="layui-hide" id="dinnertableList"></table>
 
 
 
     <script type="text/html" id="operateTpl">
-        <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+        <a title="编辑" onclick="WeAdminEdit('编辑','${pageContext.request.contextPath}/toEditDinnerTable?tbId={{d.tbId}}', 2, 600, 400)" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
-        <a title="删除" onclick="dinnerTable_del(this,'要删除的id')" href="javascript:;">
+        <a title="删除" onclick="dinnerTable_del(this,'{{d.tbId}}')" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
         </a>
     </script>
     <script type="text/html" id="shelfTpl">
-        <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
-        <input type="checkbox" name="tbStatus" value="{{d.tbId}}" lay-filter="lockDemo" lay-skin="switch" lay-text="正常|停用" {{ 0==d.tbStatus?'checked':''}}/>
+        <form class="layui-form" onsubmit="return false;">
+        <input type="checkbox" value="{{d.tbId}}" lay-filter="lockDemo"  disabled="disabled" lay-skin="switch" lay-text="空闲|使用中" {{ 0==d.tbStatus?'checked':''}}/>
         </form>
     </script>
 
