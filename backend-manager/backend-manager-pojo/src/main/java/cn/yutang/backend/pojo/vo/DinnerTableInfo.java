@@ -2,7 +2,10 @@ package cn.yutang.backend.pojo.vo;
 
 import cn.yutang.backend.pojo.po.DinnerTable;
 
-public class DinnerTableInfo extends DinnerTable {
+import cn.yutang.backend.pojo.po.DinnerTableType;
+
+public class DinnerTableInfo extends DinnerTable{
+
 
     private String ttName;
     private Integer ttCapacity;

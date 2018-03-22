@@ -594,7 +594,7 @@ table td {
   top: 46px;
   right: 0;
   bottom: 42px;
-  left: 0px;
+  left: 221px;
   overflow: hidden;
   z-index: 1;
 }
@@ -623,7 +623,7 @@ table td {
   z-index: 100;
 }
 .page-content-tb .layui-tab-title li {
-  line-height: 35px;width: 25%;text-align:center;
+  line-height: 35px;
 }
 .page-content-tb .layui-tab-title li .layui-tab-close {
   border-radius: 50%;
