@@ -92,13 +92,13 @@
 
                 <script type="text/html" id="recommendTpl">
                     <form class="layui-form">
-                        <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend"  {{d.fdRecommend ==1?"checked":""}}>
-                        <input type="hidden" id="fdId" value="{{d.fdId}}">
+                        <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" value="{{d.fdId}}" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend"  {{d.fdRecommend ==1?"checked":""}}>
                     </form>
+                    <input type="hidden" id="fdId" name="fdId" value="{{d.fdId}}"/>
                 </script>
                 <script type="text/html" id="statusTpl">
                     <form class="layui-form">
-                        <input id="fdStatus" type="checkbox" lay-filter="fdStatus" name="fdStatus" lay-skin="switch" lay-text="正常|已下架"  {{d.fdStatus ==1?"checked":""}}>
+                        <input id="fdStatus" type="checkbox" lay-filter="fdStatus" name="fdStatus" value="{{d.fdId}}" lay-skin="switch" lay-text="正常|已下架"  {{d.fdStatus ==1?"checked":""}}>
                     </form>
                 </script>
                 <script type="text/html" id="operateTpl">

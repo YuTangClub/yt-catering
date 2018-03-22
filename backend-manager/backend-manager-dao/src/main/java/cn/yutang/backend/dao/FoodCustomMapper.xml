@@ -378,7 +378,7 @@
             <if test="fdUnit != null and fdUnit != ''">
                 fd_unit = #{fdUnit,jdbcType=VARCHAR},
             </if>
-            <if test="fdRemark != null and fdRemark != ''">
+            <if test="fdRemark != null">
                 fd_remark = #{fdRemark,jdbcType=VARCHAR},
             </if>
             <if test="fdImg != null and fdImg != ''">

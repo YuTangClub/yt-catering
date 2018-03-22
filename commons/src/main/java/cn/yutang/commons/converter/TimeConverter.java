@@ -13,7 +13,7 @@ public class TimeConverter implements Converter<String, Date> {
 	public Date convert(String s) {
 		try {
 			if(s != null && !"".equals(s)){
-				Date date = new SimpleDateFormat("yyyy-MM-dd").parse(s);
+				Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(s);
 				return date;
 			}
 		} catch (ParseException e) {

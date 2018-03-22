@@ -1,4 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <html>
 <!DOCTYPE html>
 <html>
@@ -31,176 +35,112 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <form class="layui-form layui-col-md12 we-search" onsubmit="return false">
             <div class="layui-inline">
-                <input class="layui-input" placeholder="开始日" name="start" id="start">
-            </div>
-            <div class="layui-inline">
-                <input class="layui-input" placeholder="截止日" name="end" id="end">
-            </div>
-            <div class="layui-input-inline">
-                <select name="contrller">
-                    <option>支付状态</option>
-                    <option>已支付</option>
-                    <option>未支付</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="contrller">
-                    <option>支付方式</option>
-                    <option>支付宝</option>
-                    <option>微信</option>
-                    <option>货到付款</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="contrller">
-                    <option value="">订单状态</option>
-                    <option value="0">待确认</option>
-                    <option value="1">已确认</option>
-                    <option value="2">已收货</option>
-                    <option value="3">已取消</option>
-                    <option value="4">已完成</option>
-                    <option value="5">已作废</option>
-                </select>
+                <input class="layui-input" placeholder="开始日" name="orBegintime" id="start">
             </div>
             <div class="layui-inline">
-                <input type="text" name="username" placeholder="请输入订单号" autocomplete="off" class="layui-input">
+                <input class="layui-input" placeholder="截止日" name="orEndtime" id="end">
             </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            <div class="layui-inline">
+                <input type="text" name="tbId" placeholder="请输入餐桌号" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-inline">
+                <input type="text" name="orId" placeholder="请输入订单号" autocomplete="off" class="layui-input">
+            </div>
+            <button class="layui-btn" lay-submit lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
-    <div class="weadmin-block">
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="WeAdminShow('添加订单','./add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="fr" style="line-height:40px">共有数据：88 条</span>
-    </div>
-    <table class="layui-table">
-        <thead>
-        <tr>
-            <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-            <th>订单编号</th>
-            <th>收货人</th>
-            <th>总金额</th>
-            <th>应付金额</th>
-            <th>订单状态</th>
-            <th>支付状态</th>
-            <th>发货状态</th>
-            <th>支付方式</th>
-            <th>配送方式</th>
-            <th>下单时间</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>2017009171822298053</td>
-            <td>老王:18925139194</td>
-            <td>7829.10</td>
-            <td>7854.10</td>
-            <td>待确认</td>
-            <td>未支付</td>
-            <td>未发货</td>
-            <td>其他方式</td>
-            <td>申通物流</td>
-            <td>2017-08-17 18:22</td>
-            <td class="td-manage">
-                <a title="查看" onclick="WeAdminShow('编辑','order-view.html')" href="javascript:;">
-                    <i class="layui-icon">&#xe63c;</i>
-                </a>
-                <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                    <i class="layui-icon">&#xe640;</i>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
-    </div>
+    <table class="layui-hide" id="articleList" ></table>
+
+
+
+
 
 </div>
+<script type="text/html" id="dateTpl">
+    <span>{{=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(orEndtime)}} </span>
+</script>
 <script>
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
-    layui.use(['laydate','jquery','admin'], function() {
+    layui.use(['laydate','jquery','admin','table','form'], function() {
         var laydate = layui.laydate,
             $ = layui.jquery,
-            admin = layui.admin;
-        //执行一个laydate实例
+            admin = layui.admin,
+            table = layui.table,
+            form = layui.form;
+
         laydate.render({
-            elem: '#start' //指定元素
-        });
-        //执行一个laydate实例
+            elem:'#start',
+            type:'datetime'
+
+            })
         laydate.render({
-            elem: '#end' //指定元素
+            elem:'#end',
+            type:'datetime'
+
+        })
+        table.render({
+            //容器元素
+            elem: '#articleList',
+            //最小宽度
+            cellMinWidth: 80,
+
+            //列,field\title属于列属性，cols属于表格属性
+            cols: [
+                [{
+                    type: 'checkbox'
+                }, {
+                    field: 'shopId', title: '门店', sort: true
+                }, {
+                    field: 'orId', title: '订单号'
+                }, {
+                    field: 'tbId', title: '餐桌号'
+                }, {
+                    field: 'orTotalprice', title: '订单金额'
+                }, {
+                    field: 'orEndtime', title: '订单时间'
+                }, {
+                    field: 'orStatus', title: '订单状态'
+                }]
+            ],
+            //通过URL进行数据绑定
+            url: '../../orderList',
+            //是否开启分页
+            page: true,
+            limit: 5,
+            limits: [5, 10, 15],
+            done:function () {
+
+                $("[data-field='orStatus']").children().each(function(){
+                    if($(this).text()=='1'){
+                        $(this).text("已付款")
+                    }else if($(this).text()=='2'){
+                        $(this).text("未付款")
+                    }
+                })
+                $("[data-field='orEndtime']").children().each(function(){
+                        var a= $(this).text();
+                        console.log(a);
+                        $(this).text(a.format("yyyy-MM-dd hh:mm:ss.S"));
+                })
+            }
+
         });
-
-        /*用户-停用*/
-        function member_stop(obj, id) {
-            layer.confirm('确认要停用吗？', function(index) {
-                if($(obj).attr('title') == '启用') {
-                    //发异步把用户状态进行更改
-                    $(obj).attr('title', '停用')
-                    $(obj).find('i').html('&#xe62f;');
-
-                    $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                    layer.msg('已停用!', {
-                        icon: 5,
-                        time: 1000
-                    });
-
-                } else {
-                    $(obj).attr('title', '启用')
-                    $(obj).find('i').html('&#xe601;');
-
-                    $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                    layer.msg('已启用!', {
-                        icon: 5,
-                        time: 1000
-                    });
-                }
+        form.on('submit(sreach)',function (data) {
+           table.reload('articleList', {
+                url: '../../orderList'
+                ,where: data.field
             });
-        }
 
-        /*用户-删除*/
-        function member_del(obj, id) {
-            layer.confirm('确认要删除吗？', function(index) {
-                //发异步删除数据
-                $(obj).parents("tr").remove();
-                layer.msg('已删除!', {
-                    icon: 1,
-                    time: 1000
-                });
-            });
-        }
+        })
 
-        function delAll(argument) {
-            var data = tableCheck.getData();
-            layer.confirm('确认要删除吗？' + data, function(index) {
-                //捉到所有被选中的，发异步进行删除
-                layer.msg('删除成功', {
-                    icon: 1
-                });
-                $(".layui-form-checked").not('.header').parents('tr').remove();
-            });
-        }
-    });
+    }); 
 
 </script>
+
 </body>
 
 </html>

@@ -93,7 +93,6 @@
                 <textarea id="fdRemark" name="fdRemark" autocomplete="off" class="layui-textarea"></textarea>
             </div>
         </div>
-        <input type="hidden" id="index" name="index">
         <input type="hidden" id="fdId" name="fdId">
 
         <div class="layui-form-item">
@@ -116,7 +115,7 @@
         //监听提交
         form.on('submit(edit)', function (data) {
 
-            debugger
+            //debugger
             $.post(
                 "edit.do",
                 data.field,
@@ -125,7 +124,9 @@
                     if (msg == 1) {
                         debugger
                         //var temp = data.field.index;
-                        layer.close(index);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        parent.location.reload();
                         layer.msg('修改成功');
                     }
                 },

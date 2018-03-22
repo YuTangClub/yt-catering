@@ -255,7 +255,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/finance/list">
+                        <a _href="${pageContext.request.contextPath}/pages/order/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>财务对账</cite>
                         </a>

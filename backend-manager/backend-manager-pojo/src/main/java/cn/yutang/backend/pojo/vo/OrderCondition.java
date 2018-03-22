@@ -1,11 +1,10 @@
 package cn.yutang.backend.pojo.vo;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class OrderCondition  implements Serializable {
+public class OrderCondition implements Serializable {
 
     private Date orBegintime;
     private Date orEndtime;

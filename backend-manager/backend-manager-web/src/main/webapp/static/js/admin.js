@@ -397,7 +397,6 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
             shade: 0.4,
             title: title,
             content: url,
-            btn:['按钮一', '按钮二'],
             success: function (layero, index) {
                 //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
                 //debugger;
@@ -411,7 +410,6 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
                 debugger;
                 var temp = body.contents().find("#fdId");
                 body.contents().find("#fdId").val(fdId);
-                body.contents().find("#index").val(index);
 
                 //debugger
                 body.contents().find("#fdRecommend").attr('checked',fdRecommend);
