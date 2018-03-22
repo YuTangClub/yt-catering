@@ -2,8 +2,10 @@
 
 import cn.yutang.backend.dao.FoodCustomMapper;
 import cn.yutang.backend.dao.FoodMapper;
+import cn.yutang.backend.dao.MemberMapper;
+import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
-import cn.yutang.commons.page.Page;
+import cn.yutang.backend.pojo.po.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +19,25 @@ import java.util.List;
 public class GeneralTest {
 
 	@Autowired
-	FoodCustomMapper mapper;
+    MemberMapper memberMapper;
 
 
 
 	@Test
 	public void verifyShop() {
-		/*Page page = new Page();
+
+        Member member=new Member();
+        member.setMember_phone("55");
+		Page page=new Page();
 		page.setPage(1);
-		page.setLimit(5);
-		Food food = new Food();
-		food.setFdName("小");
-		Integer count = mapper.countTotal(food);*/
+		page.setLimit(10);
+
+		memberMapper.listMemberByPage(page,member);
+
+
+
+        System.out.println(memberMapper.countTotal(member));
+
+
 	}
 }

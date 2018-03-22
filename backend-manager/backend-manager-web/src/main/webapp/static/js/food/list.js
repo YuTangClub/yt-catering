@@ -36,7 +36,7 @@ layui.use(['table', 'jquery', 'admin','laypage'], function() {
 				field: 'operate',title: '操作',toolbar: '#operateTpl',unresize: true
 			}]
 		],
-		url:"../../list.do",
+		url:"list.do",
 		event: true,
 		page: true,
 		limit:10,

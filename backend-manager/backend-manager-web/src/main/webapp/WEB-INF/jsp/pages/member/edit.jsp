@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>会员资料编辑-后台管理系统-Admin 1.0</title>
@@ -20,52 +19,14 @@
 
 <body>
 <div class="weadmin-body">
-    <form class="layui-form">
+    <form class="layui-form" action="${pageContext.request.contextPath}/pages/member/editMember">
         <div class="layui-form-item">
             <label for="L_username" class="layui-form-label">
-                <span class="we-red">*</span>登录名
+                <span class="we-red">*</span>会员名
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_username" name="username" lay-verify="required|nikename" autocomplete="off" class="layui-input">
             </div>
-            <div class="layui-form-mid layui-word-aux">
-                请设置至少5个字符，将会成为您唯一的登录名
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="L_sex" class="layui-form-label">性别</label>
-            <div class="layui-input-block" id="L_sex">
-                <input type="radio" name="sex" value="男" title="男" checked>
-                <input type="radio" name="sex" value="女" title="女">
-                <input type="radio" name="sex" value="未知" title="未知">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
-                <span class="we-red">*</span>手机
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_phone" name="phone" lay-verify="required|phone" autocomplete="" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
-                <span class="we-red">*</span>邮箱
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_email" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <label for="L_address" class="layui-form-label">
-                <span class="we-red"></span>地址
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_address" name="address" autocomplete="off" class="layui-input">
-            </div>
-
         </div>
         <div class="layui-form-item">
             <label for="L_pass" class="layui-form-label">
@@ -79,17 +40,32 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_repass" class="layui-form-label">
-                <span class="we-red">*</span>确认密码
+            <label for="L_phone" class="layui-form-label">
+                <span class="we-red">*</span>手机
             </label>
             <div class="layui-input-inline">
-                <input type="password" id="L_repass" name="repass" lay-verify="required|repass" autocomplete="off" class="layui-input">
+                <input type="text" id="L_phone" name="phone" lay-verify="required|phone" autocomplete="" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_repass" class="layui-form-label">
+            <label for="L_sex" class="layui-form-label">性别</label>
+            <div class="layui-input-block" id="L_sex">
+                <input type="radio" name="sex" value="男" title="男" checked>
+                <input type="radio" name="sex" value="女" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_level" class="layui-form-label">
+                <span class="we-red">*</span>等级
             </label>
-            <button class="layui-btn" lay-filter="add" lay-submit="">确定</button>
+            <div class="layui-input-inline">
+                <input type="text" id="L_level" name="level" lay-verify="level" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-filter="update" lay-submit="">确定</button>
             <input type="hidden" name="dataId" id="dataId" value="" />
         </div>
     </form>
@@ -98,7 +74,7 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
-    layui.use(['form', 'jquery', 'admin','layer'], function() {
+    layui.use(['form', 'jquery','layer'], function() {
         var form = layui.form,
             $ = layui.jquery,
             admin = layui.admin,
@@ -107,78 +83,56 @@
         //自定义验证规则
         form.verify({
             nikename: function(value) {
-                if(value.length < 5) {
-                    return '昵称至少得5个字符啊';
+                if(value.length < 2) {
+                    return '昵称不少于2个字符';
                 }
             },
             pass: [/(.+){6,12}$/, '密码必须6到12位'],
-            repass: function(value) {
-                if($('#L_pass').val() != $('#L_repass').val()) {
-                    return '两次密码不一致';
-                }
-            }
         });
         //页面初始化加载
         $(function(){
             setTimeout(function(){
                 var dataId = $('input[name="dataId"]').val();
                 var index = parent.layer.getFrameIndex(window.name);
-                console.log(dataId);
                 parent.$("#memberList tr").each(function(){
                     if($(this).attr('data-id')==dataId){
-                        console.log($(this));
                         var tdArr=$(this).children('td');
                         var username = tdArr.eq(2).text(); //姓名
-                        var sex = tdArr.eq(3).text(); //性别
-                        var phone = tdArr.eq(4).text(); //电话
-                        var email = tdArr.eq(5).text(); //邮箱
-                        var address = tdArr.eq(6).text(); //地址
+                        var password = tdArr.eq(3).text(); //密码
+                        var phone = tdArr.eq(4).text(); //手机
+                        var sex = tdArr.eq(5).text(); //性别
+                        var level = tdArr.eq(6).text(); //等级
 
                         $('input[name="username"]').val(username);
-                        //$('input[name="sex"]').val(sex);
-                        console.log("sex:"+sex);
-                        //$(':radio[name="sex"][value="' + sex + '"]').prop("checked", "checked");
-                        $('input[name="sex"][value="'+sex+'"]').attr("checked",true);
-                        //$("input[name='radioName'][value=2]").attr("checked",true);
+                        $('input[name="password"]').val(password);
                         $('input[name="phone"]').val(phone);
-                        $('input[name="email"]').val(email);
-                        $('input[name="address"]').val(address);
-
-//								$('[name=sex]').each(function(i,item){
-//								    if($(item).val()==res.sex){
-//								        $(item).prop('checked',true);
-//								        layui.use('form',function(){
-//								        <span style="white-space:pre">  </span>var form = layui.form();
-//								        <span style="white-space:pre">  </span>form.render();
-//								    <span style="white-space:pre">  </span>});
-//								    }
-//								});
+                        $('input[name="sex"][value="'+sex+'"]').attr("checked",true);
+                        $('input[name="level"]').val(level);
                     }else{
-
-                        console.log("aaa");
                     }
-
                 });
             },1000);
-
-            //parent.$("#id").val();
-            //var dataTr = parent.$("tr").find("td").attr('data-id','dataId');
         });
         //监听提交
-        form.on('submit(add)', function(data) {
-            console.log(data);
+        form.on('submit(update)', function(data) {
             //发异步，把数据提交给php
-            layer.alert("增加成功", {
-                icon: 6
-            }, function() {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/pages/member/editMember",
+                dataType:"JSON",
+                async:false,
+                success:function (data) {
+                    layer.alert("修改成功", {
+                        icon: 6
+                    }, function() {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                    });
+                }
             });
             return false;
         });
-
     });
 </script>
 </body>

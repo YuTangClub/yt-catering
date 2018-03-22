@@ -151,45 +151,11 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath}/pages/member/list">
+                        <a _href="${pageContext.request.contextPath}/pages/member/memberList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
 
                         </a>
-                    </li>
-                    <li>
-                        <a _href="${pageContext.request.contextPath}/pages/member/del">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员删除</cite>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="${pageContext.request.contextPath}/pages/member/addInput">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>输入框操作</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="${pageContext.request.contextPath}/pages/404">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="${pageContext.request.contextPath}/pages/404">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>等级管理</cite>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </li>
