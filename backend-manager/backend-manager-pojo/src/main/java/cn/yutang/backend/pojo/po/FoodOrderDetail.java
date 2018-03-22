@@ -208,13 +208,4 @@ public class FoodOrderDetail implements Serializable {
     public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
-
-    public FoodOrderDetail(String odtId, String orId, Integer fdId, Integer fdCount, String cookMethod, Integer shopId) {
-        this.odtId = odtId;
-        this.orId = orId;
-        this.fdId = fdId;
-        this.fdCount = fdCount;
-        this.cookMethod = cookMethod;
-        this.shopId = shopId;
-    }
 }

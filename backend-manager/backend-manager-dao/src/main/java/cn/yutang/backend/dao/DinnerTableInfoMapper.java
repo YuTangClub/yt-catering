@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DinnerTableInfoMapper {
-    List<DinnerTableInfo> selectByPage(@Param("ttId") Integer ttId, @Param("page") Page page );
+    List<DinnerTableInfo> selectByPage(@Param("ttId") Integer ttId, @Param("page") Page page);
 }

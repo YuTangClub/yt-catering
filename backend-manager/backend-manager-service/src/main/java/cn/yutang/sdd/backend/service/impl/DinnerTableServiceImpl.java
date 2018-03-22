@@ -1,11 +1,11 @@
-package cn.yutang.backend.service.impl;
+package cn.yutang.sdd.backend.service.impl;
 
 
 import cn.yutang.backend.dao.DinnerTableInfoMapper;
 import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.dto.MessageResult;
 import cn.yutang.backend.pojo.vo.DinnerTableInfo;
-import cn.yutang.backend.service.IDinnerTableService;
+import cn.yutang.sdd.backend.service.IDinnerTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

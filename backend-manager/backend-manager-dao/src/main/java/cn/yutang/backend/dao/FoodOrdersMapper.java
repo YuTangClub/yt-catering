@@ -3,8 +3,6 @@ package cn.yutang.backend.dao;
 import cn.yutang.backend.pojo.po.FoodOrders;
 import cn.yutang.backend.pojo.po.FoodOrdersExample;
 import java.util.List;
-
-import cn.yutang.backend.pojo.po.ShopOrders;
 import org.apache.ibatis.annotations.Param;
 
 public interface FoodOrdersMapper {
@@ -95,6 +93,4 @@ public interface FoodOrdersMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(FoodOrders record);
-
-
 }

@@ -136,7 +136,7 @@
     -->
     insert into CookMethod (cm_id, cm_name, shop_id
       )
-    values (#{cmId,jdbcType=INTEGER}, #{cmName,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}
+    values (#{cmId,jdbcType=INTEGER}, #{cmName,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.yutang.backend.pojo.po.CookMethod">
@@ -164,7 +164,7 @@
         #{cmName,jdbcType=VARCHAR},
       </if>
       <if test="shopId != null">
-        #{shopId,jdbcType=VARCHAR},
+        #{shopId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -192,7 +192,7 @@
         cm_name = #{record.cmName,jdbcType=VARCHAR},
       </if>
       <if test="record.shopId != null">
-        shop_id = #{record.shopId,jdbcType=VARCHAR},
+        shop_id = #{record.shopId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -207,7 +207,7 @@
     update CookMethod
     set cm_id = #{record.cmId,jdbcType=INTEGER},
       cm_name = #{record.cmName,jdbcType=VARCHAR},
-      shop_id = #{record.shopId,jdbcType=VARCHAR}
+      shop_id = #{record.shopId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -223,7 +223,7 @@
         cm_name = #{cmName,jdbcType=VARCHAR},
       </if>
       <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=VARCHAR},
+        shop_id = #{shopId,jdbcType=INTEGER},
       </if>
     </set>
     where cm_id = #{cmId,jdbcType=INTEGER}
@@ -235,7 +235,7 @@
     -->
     update CookMethod
     set cm_name = #{cmName,jdbcType=VARCHAR},
-      shop_id = #{shopId,jdbcType=VARCHAR}
+      shop_id = #{shopId,jdbcType=INTEGER}
     where cm_id = #{cmId,jdbcType=INTEGER}
   </update>
 </mapper>

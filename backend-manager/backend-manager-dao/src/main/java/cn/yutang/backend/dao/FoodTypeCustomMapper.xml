@@ -8,7 +8,7 @@
         -->
         <id column="ft_id" jdbcType="INTEGER" property="ftId" />
         <result column="ft_name" jdbcType="VARCHAR" property="ftName" />
-        <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+        <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <!--

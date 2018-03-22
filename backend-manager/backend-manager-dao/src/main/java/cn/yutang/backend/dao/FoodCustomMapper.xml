@@ -16,7 +16,7 @@
         <result column="fd_unit" jdbcType="VARCHAR" property="fdUnit"/>
         <result column="fd_remark" jdbcType="VARCHAR" property="fdRemark"/>
         <result column="fd_img" jdbcType="VARCHAR" property="fdImg"/>
-        <result column="shop_id" jdbcType="INTEGER" property="shopId"/>
+        <result column="shop_id" jdbcType="VARCHAR" property="shopId"/>
         <result column="fd_recommend" jdbcType="INTEGER" property="fdRecommend"/>
     </resultMap>
     <sql id="Example_Where_Clause">
