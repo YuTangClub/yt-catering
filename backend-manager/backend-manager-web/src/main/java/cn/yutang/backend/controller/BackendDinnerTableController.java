@@ -7,12 +7,11 @@ import cn.yutang.backend.pojo.po.Shop;
 import cn.yutang.backend.pojo.vo.DinnerTableCustom;
 import cn.yutang.backend.pojo.vo.LikeQuery;
 import cn.yutang.backend.service.DinnerTableService;
-import cn.yutang.backend.pojo.util.QrFtpUpload;
+import cn.yutang.backend.pojo.util.QrFtpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -115,7 +114,7 @@ public class BackendDinnerTableController {
         if(updateDinnerTable!=null){
             if(updateDinnerTable.getTbQrcode()!=null){
             }else{
-                String filename=QrFtpUpload.qrFtpUpload(updateDinnerTable);
+                String filename= QrFtpUtils.qrFtpUpload(updateDinnerTable);
                 String path="http://106.15.95.200/images/"+filename;
                 updateDinnerTable.setTbQrcode(path);
                 dinnerTableService.updateDinnerTable(updateDinnerTable);
@@ -129,5 +128,15 @@ public class BackendDinnerTableController {
     public String updateDinnerTable(DinnerTable dinnertable){
         dinnerTableService.updateDinnerTable(dinnertable);
         return "0";
+    }
+    @ResponseBody
+    @RequestMapping(value = "/qrcodeImgDownload")
+    public String qrcodeImgDownload(DinnerTable dinnertable){
+        Boolean result=QrFtpUtils.qrFtpDownload(dinnertable);
+        if(result){
+            return "0";
+        }else {
+            return "1";
+        }
     }
 }

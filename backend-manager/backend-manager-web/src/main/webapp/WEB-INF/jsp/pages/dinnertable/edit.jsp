@@ -46,15 +46,23 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_QRCODE" class="layui-form-label">餐桌二维码</label>
+            <label for="L_QRCODE" class="layui-form-label"><br>
+                <c:if test="${updateDinnerTable.tbQrcode !=null}"><br>餐厅二维码
+                <button type="button"  	class="layui-btn layui-btn-xs" lay-filter="download" lay-submit>
+                    <i class="layui-icon">&#xe601;</i>下载</button>
+                </c:if>
+            </label>
+
             <div class="layui-input-block" id="L_QRCODE">
-                <img src="${updateDinnerTable.tbQrcode}">
+                <img src="${updateDinnerTable.tbQrcode}"height="140" width="200">
+                <font style="font-size: 12px;color: #8D8D8D">预览</font>
             </div>
+
         </div>
         <div class="layui-form-item" >
             <input type="hidden" value="${updateDinnerTable.tbQrcode}" name="tbQrcode"/>
             <input type="hidden" value="${updateDinnerTable.tbId}" name="tbId"/>
-            <input type="hidden" value="${sessionShop.shopId}" name="shopId"/>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="hidden" value="${sessionShop.shopId}" name="shopId"/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="layui-btn" lay-filter="update" lay-submit > &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;确定   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</button>
         </div>
     </form>
@@ -91,6 +99,35 @@
                 },
                 dataType:'text',
                 async:false
+            })
+
+
+        });
+        //监听下载
+        form.on('submit(download)', function(data) {
+            debugger
+            $.ajax({
+                url:'${pageContext.request.contextPath}/qrcodeImgDownload',
+                data:data.field,
+                type:'POST',
+                success : function(rec) {
+                    if(rec=='0'){
+                        layer.msg('下载成功!', {
+                            time: 2000
+                        });
+                    }else{
+                        layer.msg('下载失败!', {
+                            time: 2000
+                        });
+                    }
+
+                },
+                error:function (data) {
+                    parent.layer.msg('网络异常!', {
+                        time: 2000
+                    });
+                },
+                dataType:'text'
             })
 
 
