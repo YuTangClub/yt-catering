@@ -153,6 +153,26 @@
         from Food
         where fd_id = #{fdId,jdbcType=INTEGER}
     </select>
+
+    <delete id="deleteByIds">
+        DELETE FROM Food
+        WHERE fd_id IN
+        <foreach collection="list" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="setRecommendByIds">
+        UPDATE Food
+        SET  fd_recommend = 1
+        WHERE fd_id IN
+        <foreach collection="list" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         <!--
           WARNING - @mbg.generated
@@ -387,10 +407,26 @@
             <if test="shopId != null and shopId != ''">
                 shop_id = #{shopId,jdbcType=VARCHAR},
             </if>
-            fd_recommend = #{fdRecommend,jdbcType=INTEGER},
+            <if test="fdRecommend != null and fdRecommend != ''">
+                fd_recommend = #{fdRecommend,jdbcType=INTEGER},
+            </if>
 
         </set>
         where fd_id = #{fdId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKeysSelective">
+        UPDATE Food
+        <set>
+            <if test="f.fdStatus != null and f.fdStatus != ''">
+                fd_status = #{f.fdStatus,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE fd_id IN
+        <foreach collection="list" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </update>
     <update id="updateByPrimaryKey" parameterType="cn.yutang.backend.pojo.po.Food">
         <!--

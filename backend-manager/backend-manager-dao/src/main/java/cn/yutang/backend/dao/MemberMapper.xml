@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射接口 -->
+<mapper namespace="cn.yutang.backend.dao.MemberMapper">
+    <sql id="Base_Column_List">
+        member_id,member_name, member_password, member_phone, member_gender,member_level
+    </sql>
+
+
+
+
+<sql id="Where_Clause">
+<where>
+    <if test="member != null">
+        <if test="member.member_phone != null and member.member_phone != ''">
+            member_phone like '%${member.member_phone}%'
+        </if>
+    </if>
+</where>
+</sql>
+
+    <select id="listMemberByPage" resultType="cn.yutang.backend.pojo.po.Member">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM Member
+    <include refid="Where_Clause"></include>
+        limit #{page.offset},#{page.limit}
+    </select>
+
+    <select id="countTotal" resultType="int">
+        SELECT COUNT(*) FROM Member
+        <include refid="Where_Clause"></include>
+    </select>
+
+</mapper>

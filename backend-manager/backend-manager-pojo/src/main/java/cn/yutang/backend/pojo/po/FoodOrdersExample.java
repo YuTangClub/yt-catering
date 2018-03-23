@@ -624,6 +624,126 @@ public class FoodOrdersExample {
             addCriterion("shop_id not between", value1, value2, "shopId");
             return (Criteria) this;
         }
+
+        public Criteria andCtIdIsNull() {
+            addCriterion("ct_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdIsNotNull() {
+            addCriterion("ct_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdEqualTo(Integer value) {
+            addCriterion("ct_id =", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdNotEqualTo(Integer value) {
+            addCriterion("ct_id <>", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdGreaterThan(Integer value) {
+            addCriterion("ct_id >", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ct_id >=", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdLessThan(Integer value) {
+            addCriterion("ct_id <", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdLessThanOrEqualTo(Integer value) {
+            addCriterion("ct_id <=", value, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdIn(List<Integer> values) {
+            addCriterion("ct_id in", values, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdNotIn(List<Integer> values) {
+            addCriterion("ct_id not in", values, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdBetween(Integer value1, Integer value2) {
+            addCriterion("ct_id between", value1, value2, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCtIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ct_id not between", value1, value2, "ctId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdIsNull() {
+            addCriterion("pm_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdIsNotNull() {
+            addCriterion("pm_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdEqualTo(Integer value) {
+            addCriterion("pm_id =", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdNotEqualTo(Integer value) {
+            addCriterion("pm_id <>", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdGreaterThan(Integer value) {
+            addCriterion("pm_id >", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pm_id >=", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdLessThan(Integer value) {
+            addCriterion("pm_id <", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pm_id <=", value, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdIn(List<Integer> values) {
+            addCriterion("pm_id in", values, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdNotIn(List<Integer> values) {
+            addCriterion("pm_id not in", values, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdBetween(Integer value1, Integer value2) {
+            addCriterion("pm_id between", value1, value2, "pmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pm_id not between", value1, value2, "pmId");
+            return (Criteria) this;
+        }
     }
 
     /**

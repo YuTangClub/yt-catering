@@ -407,13 +407,15 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
                 body.contents().find("#fdStock").val(fdStock);
                 body.contents().find("#fdUnit").val(fdUnit);
                 body.contents().find("#fdRemark").val(fdRemark);
-                debugger;
+                //debugger;
                 var temp = body.contents().find("#fdId");
                 body.contents().find("#fdId").val(fdId);
 
                 //debugger
                 body.contents().find("#fdRecommend").attr('checked',fdRecommend);
+                body.contents().find("#fd_recommend").val(fdRecommend?1:0);
                 body.contents().find("#fdStatus").attr('checked',fdStatus);
+                body.contents().find("#fd_status").val(fdStatus?1:0);
                 var temp = body.contents().find("#fdRecommend");
 
 

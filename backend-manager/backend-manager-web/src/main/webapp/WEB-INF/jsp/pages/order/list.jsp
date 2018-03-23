@@ -122,9 +122,9 @@
                     }
                 })
                 $("[data-field='orEndtime']").children().each(function(){
-                        var a= $(this).text();
-                        console.log(a);
-                        $(this).text(a.format("yyyy-MM-dd hh:mm:ss.S"));
+                        // var a= $(this).text();
+                        // console.log(a);
+                        // $(this).text(a.format("yyyy-MM-dd hh:mm:ss.S"));
                 })
             }
 

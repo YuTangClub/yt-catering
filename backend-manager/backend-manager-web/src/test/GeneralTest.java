@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,35 +36,15 @@ public class GeneralTest {
 	JedisClient jedisClient;
 
 	@Autowired
-	FoodOrdersCustomMapper foodOrdersCustomMapper;
+	FoodCustomMapper foodCustomMapper;
 
 	@Test
 	public void verifyShop() {
 
-
-
-		/*try {
-			Page page = new Page();
-			page.setPage(1);
-			page.setLimit(10);
-
-			OrderCondition condition = new OrderCondition();
-			condition.setShopId(1);
-			condition.setOrEndtime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2018-03-13 00:01:00"));
-
-			List<FoodOrders> orders = foodOrdersCustomMapper.findOrders(page, condition);
-			if (orders != null) {
-				System.out.println(orders);
-			}else {
-				System.out.println("####orders is null####");
-			}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}*/
-		/*Food food = new Food();
-		food.setFdId(1);
-		food.setFdRecommend(0);
-		mapper.updateByPrimaryKeySelective(food);*/
+		/*List<Long> ids = new ArrayList<>();
+		ids.add((long)15);
+		ids.add((long)16);
+		Integer integer = foodCustomMapper.deleteByIds(ids);*/
 
 	}
 

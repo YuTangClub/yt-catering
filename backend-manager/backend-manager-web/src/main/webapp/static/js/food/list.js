@@ -108,47 +108,103 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
 
     var active = {
         getCheckData: function () { //获取选中数据
-            var checkStatus = table.checkStatus('articleList'),
+            var checkStatus = table.checkStatus('foodList'),
                 data = checkStatus.data;
-            //console.log(data);
-            //layer.alert(JSON.stringify(data));
+            var Ids = [];
             if (data.length > 0) {
-                layer.confirm('确认要删除吗？' + JSON.stringify(data), function (index) {
-                    layer.msg('删除成功', {
-                        icon: 1
-                    });
+                layer.confirm('确认要删除这'+data.length+'条记录吗？', function (index) {
+                    for(var i=0; i<data.length;i++){
+                        Ids.push(data[i].fdId);
+                    }
+                    debugger;
+                    $.post(
+                        "delete.do",
+                        {"Ids[]":Ids},
+                        function (msg) {
+                        },
+                        "text"
+                    );
                     //找到所有被选中的，发异步进行删除
                     $(".layui-table-body .layui-form-checked").parents('tr').remove();
+                    layer.msg('删除成功', {
+                        icon: 1,
+                        time: 1500
+                    },function () {
+                        location.reload();
+                    });
                 });
             } else {
-                layer.msg("请先选择需要删除的文章！");
+                layer.msg("请先选择菜品！",{
+                    time:1500
+                });
             }
 
         },
         Recommend: function () {
-            var checkStatus = table.checkStatus('articleList'),
+            var checkStatus = table.checkStatus('foodList'),
                 data = checkStatus.data;
+            var Ids = [];
             if (data.length > 0) {
-                layer.msg("您点击了推荐操作");
-                for (var i = 0; i < data.length; i++) {
-                    console.log("a:" + data[i].recommend);
-                    data[i].recommend = "checked";
-                    console.log("aa:" + data[i].recommend);
-                    form.render();
+                for(var i=0; i<data.length;i++){
+                    Ids.push(data[i].fdId);
                 }
+                debugger;
+                $.post(
+                    "setRecommend.do",
+                    {"Ids[]":Ids},
+                    function (msg) {
+                    },
+                    "text"
+                );
 
+                layer.msg('设置成功', {
+                    icon: 1,
+                    time: 1500
+                },function () {
+                    location.reload();
+                });
             } else {
-                console.log("b");
-                layer.msg("请先选择");
+                layer.msg("请先选择菜品！",{
+                    time:1500
+                });
             }
 
             //$(".layui-table-body .layui-form-checked").parents('tr').children().children('input[name="zzz"]').attr("checked","checked");
         },
-        Top: function () {
-            layer.msg("您点击了置顶操作");
+        OnSale: function () {
+            var checkStatus = table.checkStatus('foodList'),
+                data = checkStatus.data;
+            var Ids = [];
+            if (data.length > 0) {
+                for(var i=0; i<data.length;i++){
+                    Ids.push(data[i].fdId);
+                }
+                debugger;
+                $.post(
+                    url,
+                    {
+                        "Ids[]":Ids,
+                        "fdStatus":status
+                    },
+                    function (msg) {
+                    },
+                    "text"
+                );
+
+                layer.msg('设置成功', {
+                    icon: 1,
+                    time: 1500
+                },function () {
+                    location.reload();
+                });
+            } else {
+                layer.msg("请先选择菜品！", {
+                    time: 1500
+                });
+            }
         },
-        Review: function () {
-            layer.msg("您点击了审核操作");
+        OffSale: function () {
+            layer.msg("商品下架了");
         },
         setRecommend:function () {
             debugger
@@ -203,23 +259,71 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
     //     );
     // })
 
+    /**
+     * 设置菜品的状态
+     */
+    window.setStatus = function (url,status,msg) {
+        var checkStatus = table.checkStatus('foodList'),
+            data = checkStatus.data;
+        var Ids = [];
+        if (data.length > 0) {
+            for(var i=0; i<data.length;i++){
+                Ids.push(data[i].fdId);
+            }
+            debugger;
+            $.post(
+                url,
+                {
+                    "Ids[]":Ids,
+                    "fdStatus":status
+                },
+                function (msg) {
+                },
+                "text"
+            );
+
+            layer.msg('设置成功', {
+                icon: 1,
+                time: 1500
+            },function () {
+                location.reload();
+            });
+        } else {
+            layer.msg("请先选择菜品！", {
+                time: 1500
+            });
+        }
+    }
+
     /*用户-删除*/
     window.member_del = function (obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
-            var fdId = $(obj).parents("tr").find("fdId");
+            var fdId = $(obj).parents("tr").find("#fdId").val();
+            var Ids = new Array();
+            Ids.push(fdId);
+            //debugger;
             //发异步删除数据
             $.post(
                 "delete.do",
-                {"Ids[]":[fdId]},
+                {"Ids[]":Ids},
                 function (msg) {
-                    if(msg == 1){
+                    if(msg != 0){
                         $(obj).parents("tr").remove();
-                        layer.msg('已删除!', {
+
+                        layer.msg('删除'+msg+'条记录', {
                             icon: 1,
-                            time: 1000
+                            time: 2000
+                        },function () {
+                            location.reload();
+                        });
+                    }else {
+                        layer.msg('请选择元素', {
+                            icon: 1,
+                            time: 2000
                         });
                     }
-                }
+                },
+                "text"
             );
         });
     }

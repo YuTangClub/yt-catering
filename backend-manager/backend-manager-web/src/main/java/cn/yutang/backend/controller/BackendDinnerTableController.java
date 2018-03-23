@@ -7,7 +7,6 @@ import cn.yutang.backend.pojo.po.Shop;
 import cn.yutang.backend.pojo.vo.DinnerTableCustom;
 import cn.yutang.backend.pojo.vo.LikeQuery;
 import cn.yutang.backend.service.DinnerTableService;
-import cn.yutang.backend.pojo.util.QrFtpUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -104,26 +103,26 @@ public class BackendDinnerTableController {
         }
         return i.toString();
     }
-    /*
-	 * 转到待更新指定餐桌页面
-	 */
-    @RequestMapping("/toEditDinnerTable")
-    public String toEditDinnerTable(HttpServletRequest request, HttpSession session) throws IOException {
-       Long tbId= Long.valueOf(request.getParameter("tbId"));
-
-       DinnerTable updateDinnerTable=dinnerTableService.findDinnerTableByTbId(tbId);
-        if(updateDinnerTable!=null){
-            if(updateDinnerTable.getTbQrcode()!=null){
-            }else{
-                String filename=QrFtpUpload.qrFtpUpload(updateDinnerTable);
-                String path="http://106.15.95.200/images/"+filename;
-                updateDinnerTable.setTbQrcode(path);
-                dinnerTableService.updateDinnerTable(updateDinnerTable);
-            }
-        }
-        session.setAttribute("updateDinnerTable",updateDinnerTable);
-        return "pages/dinnertable/edit";
-    }
+//    /*
+//	 * 转到待更新指定餐桌页面
+//	 */
+//    @RequestMapping("/toEditDinnerTable")
+//    public String toEditDinnerTable(HttpServletRequest request, HttpSession session) throws IOException {
+//       Long tbId= Long.valueOf(request.getParameter("tbId"));
+//
+//       DinnerTable updateDinnerTable=dinnerTableService.findDinnerTableByTbId(tbId);
+//        if(updateDinnerTable!=null){
+//            if(updateDinnerTable.getTbQrcode()!=null){
+//            }else{
+//                String filename=QrFtpUpload.qrFtpUpload(updateDinnerTable);
+//                String path="http://106.15.95.200/images/"+filename;
+//                updateDinnerTable.setTbQrcode(path);
+//                dinnerTableService.updateDinnerTable(updateDinnerTable);
+//            }
+//        }
+//        session.setAttribute("updateDinnerTable",updateDinnerTable);
+//        return "pages/dinnertable/edit";
+//    }
     @ResponseBody
     @RequestMapping(value = "/updateDinnerTable")
     public String updateDinnerTable(DinnerTable dinnertable){

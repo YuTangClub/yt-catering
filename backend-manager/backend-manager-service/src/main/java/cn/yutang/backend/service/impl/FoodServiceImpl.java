@@ -34,4 +34,19 @@ public class FoodServiceImpl implements IFoodService {
 	public Integer setFoodById(Food food) {
 		return foodCustomMapper.updateByPrimaryKey(food);
 	}
+
+	@Override
+	public Integer deleteFoods(List<Long> ids) {
+		return foodCustomMapper.deleteByIds(ids);
+	}
+
+	@Override
+	public Integer setRecommendByIds(List<Long> ids) {
+		return foodCustomMapper.setRecommendByIds(ids);
+	}
+
+	@Override
+	public Integer setFoodStatusByIds(List<Long> ids, Food food) {
+		return foodCustomMapper.updateByPrimaryKeysSelective(ids,food);
+	}
 }

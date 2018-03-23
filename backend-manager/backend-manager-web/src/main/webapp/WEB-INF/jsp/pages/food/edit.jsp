@@ -63,8 +63,9 @@
                 <span class="we-red">*</span>推荐
             </label>
             <div class="layui-input-inline">
-                <input type="checkbox" id="fdRecommend" name="fdRecommend" lay-text="已推荐|OFF"
-                       lay-skin="switch" VALUE="1">
+                <input lay-filter="status" type="checkbox" id="fdRecommend" lay-text="已推荐|OFF"
+                       lay-skin="switch">
+                <input type="hidden" id="fd_recommend" class="status" name="fdRecommend">
             </div>
         </div>
         <div class="layui-form-item">
@@ -72,8 +73,9 @@
                 <span class="we-red">*</span>上架状态
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" id="fdStatus" name="fdStatus" lay-text="正常|下架"
-                       autocomplete="off" lay-skin="switch" class="layui-input" VALUE="1">
+                <input lay-filter="status" type="checkbox" id="fdStatus" lay-text="正常|下架"
+                       autocomplete="off" lay-skin="switch" class="layui-input">
+                <input type="hidden" id="fd_status" class="status" name="fdStatus">
             </div>
         </div>
         <div class="layui-form-item">
@@ -112,10 +114,22 @@
             layer = layui.layer,
             $ = layui.jquery;
 
+        //监听switch，状态为true，则将影藏值改为1，反之改为0
+        form.on('switch(status)',function (data) {
+            var dom = data.elem;
+            var flag = dom.checked;
+            debugger;
+            if(flag ){
+                $(dom).parent('div').children('input').eq(1).val(1);
+            }else {
+                $(dom).parent('div').children('input').eq(1).val(0);
+            }
+        })
+
         //监听提交
         form.on('submit(edit)', function (data) {
 
-            //debugger
+            debugger
             $.post(
                 "edit.do",
                 data.field,

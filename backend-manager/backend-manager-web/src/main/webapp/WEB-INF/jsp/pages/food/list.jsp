@@ -79,12 +79,12 @@
                     </button>
                     <button class="layui-btn" data-type="Recommend"><i class="layui-icon">&#xe6c6;</i>推荐
                     </button>
-                    <button class="layui-btn" data-type="Top"><i class="layui-icon">&#xe619;</i>置顶</button>
-                    <button class="layui-btn" data-type="Review"><i class="layui-icon">&#xe6b2;</i>审核</button>
+                    <button class="layui-btn" data-type="OnSale" onclick="setStatus('onsale.set',1,'菜品已上架')"><i class="layui-icon">&#xe619;</i>上架</button>
+                    <button class="layui-btn" data-type="OffSale" onclick="setStatus('onsale.set',0,'菜品已下架')"><i class="layui-icon">&#xe61a;</i>下架</button>
                     <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i
                             class="layui-icon">&#xe61f;</i>添加
                     </button>
-                    <span class="fr" style="line-height:40px">共有数据：count 条</span>
+                    <span class="fr" style="line-height:40px">共有数据：${count} 条</span>
                 </div>
                 <table class="layui-hide" id="foodList" lay-filter="searchResult"></table>
 
