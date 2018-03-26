@@ -12,16 +12,17 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格  第三个兼容支持图片下载download属性-->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body>
 <div class="weadmin-body">
-    <form class="layui-form" id="myform">
+    <form class="layui-form" id="myform" >
         <div class="layui-form-item">
             <label for="L_tabelname" class="layui-form-label">
                 <span class="we-red">*</span>餐桌编辑
@@ -46,21 +47,22 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_QRCODE" class="layui-form-label"><br>
-                <c:if test="${updateDinnerTable.tbQrcode !=null}"><br>餐厅二维码
-                <button type="button"  	class="layui-btn layui-btn-xs" lay-filter="download" lay-submit>
-                    <i class="layui-icon">&#xe601;</i>下载</button>
+            <label for="L_QRCODE" class="layui-form-label">
+                <c:if test="${updateDinnerTable.tbQrcode !=null}">餐厅二维码
+                <button type="button"  	class="layui-btn layui-btn-xs" lay-filter="downloadQR" lay-submit>
+                    <i class="layui-icon">&#xe601;</i>
+                </button>
+                    <a href="${updateDinnerTable.tbQrcode}"download="timg.png"><font style="font-size: 12px;color: #8D8D8D">打开</font> </a>
                 </c:if>
             </label>
 
             <div class="layui-input-block" id="L_QRCODE">
-                <img src="${updateDinnerTable.tbQrcode}"height="140" width="200">
-                <font style="font-size: 12px;color: #8D8D8D">预览</font>
+                <img src="${updateDinnerTable.tbQrcode}"  height="70" width="100">
             </div>
 
         </div>
         <div class="layui-form-item" >
-            <input type="hidden" value="${updateDinnerTable.tbQrcode}" name="tbQrcode"/>
+            <input  type="hidden" value="${updateDinnerTable.tbQrcode}" name="tbQrcode"/>
             <input type="hidden" value="${updateDinnerTable.tbId}" name="tbId"/>
             <input type="hidden" value="${sessionShop.shopId}" name="shopId"/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="layui-btn" lay-filter="update" lay-submit > &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;确定   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</button>
@@ -104,7 +106,7 @@
 
         });
         //监听下载
-        form.on('submit(download)', function(data) {
+        form.on('submit(downloadQR)', function(data) {
             debugger
             $.ajax({
                 url:'${pageContext.request.contextPath}/qrcodeImgDownload',

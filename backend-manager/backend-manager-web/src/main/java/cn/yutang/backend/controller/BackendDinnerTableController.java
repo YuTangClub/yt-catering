@@ -9,12 +9,18 @@ import cn.yutang.backend.pojo.vo.LikeQuery;
 import cn.yutang.backend.service.DinnerTableService;
 import cn.yutang.backend.pojo.util.QrFtpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -139,4 +145,24 @@ public class BackendDinnerTableController {
             return "1";
         }
     }
+    /*
+	 * 下载指定邮件的附件
+	 */
+//    @RequestMapping("/fileDownLoad.action/{eid}")
+//    public ResponseEntity<byte[]> download(@PathVariable(value = "eid") Integer eid, HttpServletRequest request) throws IOException {
+//        Emails emails = new Emails();
+//        emails.setEid(eid);
+//        String path = eser.findEmailsByEid(emails).getEnclosure();
+//        File file = new File("D:/temp/"+path);
+//        byte[] body = null;
+//        InputStream is = new FileInputStream(file);
+//        body = new byte[is.available()];
+//        is.read(body);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition", "attchement;filename=" + new String(path.getBytes("gb2312"),"ISO8859-1"));
+//        HttpStatus statusCode = HttpStatus.OK;
+//        ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
+//        return entity;
+//
+//    }
 }
