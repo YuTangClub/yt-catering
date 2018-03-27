@@ -565,66 +565,6 @@ public class FoodOrdersExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopIdIsNull() {
-            addCriterion("shop_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdIsNotNull() {
-            addCriterion("shop_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdEqualTo(Integer value) {
-            addCriterion("shop_id =", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotEqualTo(Integer value) {
-            addCriterion("shop_id <>", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdGreaterThan(Integer value) {
-            addCriterion("shop_id >", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("shop_id >=", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdLessThan(Integer value) {
-            addCriterion("shop_id <", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdLessThanOrEqualTo(Integer value) {
-            addCriterion("shop_id <=", value, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdIn(List<Integer> values) {
-            addCriterion("shop_id in", values, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotIn(List<Integer> values) {
-            addCriterion("shop_id not in", values, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdBetween(Integer value1, Integer value2) {
-            addCriterion("shop_id between", value1, value2, "shopId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("shop_id not between", value1, value2, "shopId");
-            return (Criteria) this;
-        }
-
         public Criteria andCtIdIsNull() {
             addCriterion("ct_id is null");
             return (Criteria) this;
@@ -685,63 +625,123 @@ public class FoodOrdersExample {
             return (Criteria) this;
         }
 
-        public Criteria andPmIdIsNull() {
-            addCriterion("pm_id is null");
+        public Criteria andShopIdIsNull() {
+            addCriterion("shop_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdIsNotNull() {
-            addCriterion("pm_id is not null");
+        public Criteria andShopIdIsNotNull() {
+            addCriterion("shop_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdEqualTo(Integer value) {
-            addCriterion("pm_id =", value, "pmId");
+        public Criteria andShopIdEqualTo(Integer value) {
+            addCriterion("shop_id =", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdNotEqualTo(Integer value) {
-            addCriterion("pm_id <>", value, "pmId");
+        public Criteria andShopIdNotEqualTo(Integer value) {
+            addCriterion("shop_id <>", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdGreaterThan(Integer value) {
-            addCriterion("pm_id >", value, "pmId");
+        public Criteria andShopIdGreaterThan(Integer value) {
+            addCriterion("shop_id >", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pm_id >=", value, "pmId");
+        public Criteria andShopIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shop_id >=", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdLessThan(Integer value) {
-            addCriterion("pm_id <", value, "pmId");
+        public Criteria andShopIdLessThan(Integer value) {
+            addCriterion("shop_id <", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdLessThanOrEqualTo(Integer value) {
-            addCriterion("pm_id <=", value, "pmId");
+        public Criteria andShopIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shop_id <=", value, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdIn(List<Integer> values) {
-            addCriterion("pm_id in", values, "pmId");
+        public Criteria andShopIdIn(List<Integer> values) {
+            addCriterion("shop_id in", values, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdNotIn(List<Integer> values) {
-            addCriterion("pm_id not in", values, "pmId");
+        public Criteria andShopIdNotIn(List<Integer> values) {
+            addCriterion("shop_id not in", values, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdBetween(Integer value1, Integer value2) {
-            addCriterion("pm_id between", value1, value2, "pmId");
+        public Criteria andShopIdBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id between", value1, value2, "shopId");
             return (Criteria) this;
         }
 
-        public Criteria andPmIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("pm_id not between", value1, value2, "pmId");
+        public Criteria andShopIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shop_id not between", value1, value2, "shopId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountIsNull() {
+            addCriterion("or_pcount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountIsNotNull() {
+            addCriterion("or_pcount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountEqualTo(Integer value) {
+            addCriterion("or_pcount =", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountNotEqualTo(Integer value) {
+            addCriterion("or_pcount <>", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountGreaterThan(Integer value) {
+            addCriterion("or_pcount >", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("or_pcount >=", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountLessThan(Integer value) {
+            addCriterion("or_pcount <", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountLessThanOrEqualTo(Integer value) {
+            addCriterion("or_pcount <=", value, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountIn(List<Integer> values) {
+            addCriterion("or_pcount in", values, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountNotIn(List<Integer> values) {
+            addCriterion("or_pcount not in", values, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountBetween(Integer value1, Integer value2) {
+            addCriterion("or_pcount between", value1, value2, "orPcount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrPcountNotBetween(Integer value1, Integer value2) {
+            addCriterion("or_pcount not between", value1, value2, "orPcount");
             return (Criteria) this;
         }
     }

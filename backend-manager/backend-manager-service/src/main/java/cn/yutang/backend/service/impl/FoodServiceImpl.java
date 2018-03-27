@@ -49,4 +49,9 @@ public class FoodServiceImpl implements IFoodService {
 	public Integer setFoodStatusByIds(List<Long> ids, Food food) {
 		return foodCustomMapper.updateByPrimaryKeysSelective(ids,food);
 	}
+
+	@Override
+	public Integer addFood(Food food) {
+		return foodCustomMapper.insertSelective(food);
+	}
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,31 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="fdName" name="fdName" required="" lay-verify="required"
-                       autocomplete="off" class="layui-input">
+                       autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="fdName" class="layui-form-label">
+                <span class="we-red">*</span>菜品图片
+            </label>
+            <div class="layui-input-inline">
+                <span id="imgUrl"></span>
+                <button type="button" class="layui-btn" id="upload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <input type="hidden" id="fdImg" name="fdImg">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="fdPrice" class="layui-form-label">
+                <span class="we-red">*</span>菜品价格
+            </label>
+            <div class="layui-input-inline">
+                <select id="ftId" name="ftId">
+                    <c:forEach items="${foodtypeList}" var="fl">
+                        <option value="${fl.ftId}">${fl.ftName}</option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
@@ -96,11 +121,12 @@
             </div>
         </div>
         <input type="hidden" id="fdId" name="fdId">
+        <input type="hidden" id="shopId" name="shopId" value="${sessionShop.shopId}">
 
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-filter="edit" lay-submit>
-                    修改
+                    提交
                 </button>
             </div>
         </div>
@@ -109,10 +135,11 @@
 </div>
 <script type="text/javascript">
 
-    layui.use(['form', 'layer', 'jquery'], function () {
+    layui.use(['form', 'layer', 'jquery','upload'], function () {
         var form = layui.form,
             layer = layui.layer,
-            $ = layui.jquery;
+            $ = layui.jquery,
+            upload = layui.upload;
 
         //监听switch，状态为true，则将影藏值改为1，反之改为0
         form.on('switch(status)',function (data) {
@@ -122,7 +149,7 @@
             if(flag ){
                 $(dom).parent('div').children('input').eq(1).val(1);
             }else {
-                $(dom).parent('div').children('input').eq(1).val(0);
+                $(dom).parent('div').children('input').eq(1).val(-1);
             }
         })
 
@@ -141,12 +168,41 @@
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                         parent.location.reload();
-                        layer.msg('修改成功');
+                        layer.msg('编辑成功');
                     }
                 },
                 "text"
             );
             return false;
+        });
+
+        upload.render({
+            elem: '#upload' //绑定元素
+            ,url: 'upload' //上传接口
+            ,done: function(res, index, upload){
+                //debugger;
+                if(res.code == 0){
+                    //上传完毕回调
+                    layer.msg('上传成功',{
+                        time:1500
+                    })
+                    $('#imgUrl').html('<a href="'+res.src+'" download="'+res.imgName+'">'+res.imgName+'</a>');
+                    $('#fdImg').val(res.src);
+
+                }else {
+                    //上传失败
+                    layer.msg('上传失败',{
+                        time:1500
+                    })
+                }
+
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.msg('上传接口异常',{
+                    time:1500
+                })
+            }
         });
 
 

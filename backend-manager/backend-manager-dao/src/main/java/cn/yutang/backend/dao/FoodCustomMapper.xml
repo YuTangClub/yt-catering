@@ -110,6 +110,9 @@
                 <if test="f.fdRecommend != null and f.fdRecommend != ''">
                     AND fd_recommend = #{f.fdRecommend,jdbcType=INTEGER}
                 </if>
+                <if test="f.shopId != null and f.shopId != ''">
+                    AND shop_id = #{f.shopId,jdbcType=INTEGER}
+                </if>
             </if>
         </where>
     </sql>
@@ -418,12 +421,15 @@
     <update id="updateByPrimaryKeysSelective">
         UPDATE Food
         <set>
+            <if test="f.fdRecommend != null and f.fdRecommend != ''">
+                fd_recommend = #{f.fdRecommend,jdbcType=INTEGER},
+            </if>
             <if test="f.fdStatus != null and f.fdStatus != ''">
                 fd_status = #{f.fdStatus,jdbcType=INTEGER},
             </if>
         </set>
         WHERE fd_id IN
-        <foreach collection="list" item="id" index="index"
+        <foreach collection="ids" item="id" index="index"
                  open="(" close=")" separator=",">
             #{id}
         </foreach>

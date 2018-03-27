@@ -57,4 +57,11 @@ public interface IFoodService {
 	 * @return
 	 */
 	Integer setFoodStatusByIds(List<Long> ids, Food food);
+
+	/**
+	 * 添加食物
+	 * @param food
+	 * @return
+	 */
+	Integer addFood(Food food);
 }

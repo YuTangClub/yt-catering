@@ -64,8 +64,10 @@
         <!--<table schema="general" tableName="Food" domainObjectName="Food"/>-->
         <!--<table schema="general" tableName="FoodOrderDetail" domainObjectName="FoodOrderDetail"/>-->
         <table schema="general" tableName="FoodOrders" domainObjectName="FoodOrders"/>
-        <table schema="general" tableName="CustomerType" domainObjectName="CustomerType"/>
-        <table schema="general" tableName="PayMethod" domainObjectName="PayMethod"/>
+        <!--<table schema="general" tableName="CustomerType" domainObjectName="CustomerType"/>-->
+        <!--<table schema="general" tableName="PayMethod" domainObjectName="PayMethod"/>-->
+        <!--<table schema="general" tableName="PayDetail" domainObjectName="PayDetail"/>-->
+        <!--<table schema="general" tableName="CustomerType" domainObjectName="CustomerType"/>-->
 
         <!--<table schema="general" tableName="FoodType" domainObjectName="FoodType"/>-->
         <!--<table schema="general" tableName="Shop" domainObjectName="Shop"/>-->

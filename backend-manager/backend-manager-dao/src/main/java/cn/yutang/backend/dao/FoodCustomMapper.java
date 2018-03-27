@@ -45,5 +45,5 @@ public interface FoodCustomMapper extends FoodMapper {
 	 * @param food 里面封装了food的状态属性：如上下架状态，是否推荐
 	 * @return 返回更新条数
 	 */
-	Integer updateByPrimaryKeysSelective(@Param("ids") List<Long> ids,@RequestParam("f") Food food);
+	Integer updateByPrimaryKeysSelective(@Param("ids") List<Long> ids,@Param("f") Food food);
 }

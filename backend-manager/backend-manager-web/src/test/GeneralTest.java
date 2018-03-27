@@ -8,6 +8,7 @@ import cn.yutang.backend.pojo.po.Food;
 import cn.yutang.backend.pojo.po.FoodOrders;
 import cn.yutang.backend.pojo.vo.OrderCondition;
 import cn.yutang.commons.redis.JedisClient;
+import cn.yutang.commons.util.*;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.junit.Test;
@@ -19,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,8 +34,6 @@ public class GeneralTest {
 	@Autowired
 	FoodCustomMapper mapper;
 
-	@Autowired
-	JedisClient jedisClient;
 
 	@Autowired
 	FoodCustomMapper foodCustomMapper;
@@ -41,31 +41,17 @@ public class GeneralTest {
 	@Test
 	public void verifyShop() {
 
-		/*List<Long> ids = new ArrayList<>();
-		ids.add((long)15);
-		ids.add((long)16);
-		Integer integer = foodCustomMapper.deleteByIds(ids);*/
-
+		/*Food food = new Food();
+		food.setFdRecommend(-1);
+		List<Long> ids = new ArrayList<>();
+		ids.add((long)1);
+		ids.add((long)2);
+		Integer update = foodCustomMapper.updateByPrimaryKeysSelective(ids, food);*/
 	}
 
 	@Test
 	public void testFtpUpload() throws IOException {
-		//创建FTPClient客户端
-		FTPClient ftpClient = new FTPClient();
-		//创建FTP连接
-		ftpClient.connect("139.224.9.221",21);
-		//登录
-		ftpClient.login("ftpuser","yup123yup");
-		//读取本地文件
-		FileInputStream fileInputStream = new FileInputStream(new File("/Users/yu/Pictures/teamviewer.tiff"));
-		//配置上传参数
-		ftpClient.changeWorkingDirectory("/home/ftpuser/www/img");
-		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-		//上传文件
-		ftpClient.storeFile("teamviewer.tiff",fileInputStream);
-		//关闭连接
-		fileInputStream.close();
-		ftpClient.logout();
+
 
 	}
 }

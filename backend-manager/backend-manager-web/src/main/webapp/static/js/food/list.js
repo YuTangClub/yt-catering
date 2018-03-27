@@ -12,12 +12,13 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
 
     table.render({
         elem: '#foodList',
+        skin: 'line',
         cellMinWidth: 80,
         cols: [
             [{
                 type: 'checkbox'
             }, {
-                field: 'fdImg', title: '图片', sort: true
+                field: 'fdImg', title: '图片',width:'10%',style:'',templet:'#imgTpl'
             }, {
                 field: 'fdName', title: '菜品名称'
             }, {
@@ -53,24 +54,29 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
         //debugger
         table.reload('foodList', {
             url: "list.do",
-            where: data.field
+            where: data.field,
+            page:{
+                curr:1
+            }
         });
         return false;
     });
 
     form.on('switch(fdRecommend)',function (data) {
-        //debugger;
+        debugger;
         var flag = data.elem.checked;
         var fdId = data.value;
-        var fdRecommend = 0;
+        var fdRecommend = -1;
+        var Ids = [];
+        Ids.push(fdId);
         if(flag){
             fdRecommend = 1;
         }
         $.post(
-            "edit.do",
+            "setStatus.do",
             {
                 "fdRecommend":fdRecommend,
-                "fdId":fdId
+                "Ids[]":Ids
             },
             function (msg) {
                 if(msg == "1"){
@@ -83,18 +89,20 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
 
 
     form.on('switch(fdStatus)',function (data) {
-        //debugger;
+        debugger;
         var flag = data.elem.checked;
         var fdId = data.value;
-        var fdStatus = 0;
+        var fdStatus = -1;
+        var Ids = [];
+        Ids.push(fdId);
         if(flag){
             fdStatus = 1;
         }
         $.post(
-            "edit.do",
+            "setStatus.do",
             {
                 "fdStatus":fdStatus,
-                "fdId":fdId
+                "Ids[]":Ids
             },
             function (msg) {
                 if(msg == "1"){
@@ -128,7 +136,7 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
                     $(".layui-table-body .layui-form-checked").parents('tr').remove();
                     layer.msg('删除成功', {
                         icon: 1,
-                        time: 1500
+                        time: 1000
                     },function () {
                         location.reload();
                     });
@@ -139,93 +147,6 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
                 });
             }
 
-        },
-        Recommend: function () {
-            var checkStatus = table.checkStatus('foodList'),
-                data = checkStatus.data;
-            var Ids = [];
-            if (data.length > 0) {
-                for(var i=0; i<data.length;i++){
-                    Ids.push(data[i].fdId);
-                }
-                debugger;
-                $.post(
-                    "setRecommend.do",
-                    {"Ids[]":Ids},
-                    function (msg) {
-                    },
-                    "text"
-                );
-
-                layer.msg('设置成功', {
-                    icon: 1,
-                    time: 1500
-                },function () {
-                    location.reload();
-                });
-            } else {
-                layer.msg("请先选择菜品！",{
-                    time:1500
-                });
-            }
-
-            //$(".layui-table-body .layui-form-checked").parents('tr').children().children('input[name="zzz"]').attr("checked","checked");
-        },
-        OnSale: function () {
-            var checkStatus = table.checkStatus('foodList'),
-                data = checkStatus.data;
-            var Ids = [];
-            if (data.length > 0) {
-                for(var i=0; i<data.length;i++){
-                    Ids.push(data[i].fdId);
-                }
-                debugger;
-                $.post(
-                    url,
-                    {
-                        "Ids[]":Ids,
-                        "fdStatus":status
-                    },
-                    function (msg) {
-                    },
-                    "text"
-                );
-
-                layer.msg('设置成功', {
-                    icon: 1,
-                    time: 1500
-                },function () {
-                    location.reload();
-                });
-            } else {
-                layer.msg("请先选择菜品！", {
-                    time: 1500
-                });
-            }
-        },
-        OffSale: function () {
-            layer.msg("商品下架了");
-        },
-        setRecommend:function () {
-            debugger
-            var fdRecommend = $(this).val();
-            if (fdRecommend == 1) {
-                fdRecommend = 0;
-            } else {
-                fdRecommend = 1;
-            }
-            $.post(
-                "setFoodInfo",
-                {'fdRecommend': fdRecommend},
-                function (data) {
-                    if (data == 1) {
-                        layer.msg('修改成功', {
-                            timeout: 1500
-                        })
-                    }
-                },
-                "text"
-            );
         }
 
     };
@@ -235,29 +156,42 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
         active[type] ? active[type].call(this) : '';
     });
 
-
-
-    // $('.recommend').on('click', function () {
-    //     debugger
-    //     var fdRecommend = $(this).val();
-    //     if (fdRecommend == 1) {
-    //         fdRecommend = 0;
-    //     } else {
-    //         fdRecommend = 1;
-    //     }
-    //     $.post(
-    //         "setFoodInfo",
-    //         {'fdRecommend': fdRecommend},
-    //         function (data) {
-    //             if (data == 1) {
-    //                 layer.msg('修改成功', {
-    //                     timeout: 1500
-    //                 })
-    //             }
-    //         },
-    //         "text"
-    //     );
-    // })
+    /**
+     * 设置菜品的推荐
+     */
+    window.setRecommend = function (url,status,msg) {
+        var checkStatus = table.checkStatus('foodList'),
+            data = checkStatus.data;
+        var Ids = [];
+        if (data.length > 0) {
+            for(var i=0; i<data.length;i++){
+                Ids.push(data[i].fdId);
+            }
+            debugger;
+            $.post(
+                url,
+                {
+                    "Ids[]":Ids,
+                    "fdRecommend":status
+                },
+                function (msg) {
+                },
+                "text"
+            );
+            debugger;
+            // location.reload();
+            layer.msg('设置成功', {
+                icon: 1,
+                time: 1000
+            },function () {
+                location.reload();
+            });
+        } else {
+            layer.msg("请先选择菜品！", {
+                time: 1500
+            });
+        }
+    }
 
     /**
      * 设置菜品的状态
@@ -281,7 +215,7 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
                 },
                 "text"
             );
-
+            debugger;
             layer.msg('设置成功', {
                 icon: 1,
                 time: 1500
@@ -326,31 +260,6 @@ layui.use(['table', 'jquery', 'admin', 'layer', 'form'], function () {
                 "text"
             );
         });
-    }
-
-    /*
-    * 修改推荐属性
-    * */
-    window.setRecommend = function (obj) {
-        debugger
-        var fdRecommend = $(obj).val();
-        if (fdRecommend == 1) {
-            fdRecommend = 0;
-        } else {
-            fdRecommend = 1;
-        }
-        $.post(
-            "setFoodInfo",
-            {'fdRecommend': fdRecommend},
-            function (data) {
-                if (data == 1) {
-                    layer.msg('修改成功', {
-                        timeout: 1500
-                    })
-                }
-            },
-            "text"
-        );
     }
 
 });

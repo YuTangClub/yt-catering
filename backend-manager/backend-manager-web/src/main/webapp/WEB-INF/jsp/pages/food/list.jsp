@@ -3,7 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
-
+<style type="text/css">
+</style>
 <head>
     <meta charset="UTF-8">
     <title>文章列表-后台管理系统-Admin 1.0</title>
@@ -69,53 +70,81 @@
                         <div class="layui-inline">
                             <input type="text" name="fdName" placeholder="请输入菜品关键字" autocomplete="off"
                                    class="layui-input">
+                            <input type="hidden" name="shopId" value="${sessionShop.shopId}">
                         </div>
                         <button class="layui-btn" lay-submit lay-filter="search"><i
                                 class="layui-icon">&#xe615;</i></button>
                     </form>
                 </div>
                 <div class="weadmin-block demoTable">
-                    <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除
+                    <button class="layui-btn layui-btn-danger" data-type="getCheckData">
+                        <i class="layui-icon">&#xe640;</i>批量删除
                     </button>
-                    <button class="layui-btn" data-type="Recommend"><i class="layui-icon">&#xe6c6;</i>推荐
+                    <button class="layui-btn" onclick="setRecommend('setStatus.do',1,'设置成功')">
+                        <i class="layui-icon">&#xe6c6;</i>推荐
                     </button>
-                    <button class="layui-btn" data-type="OnSale" onclick="setStatus('onsale.set',1,'菜品已上架')"><i class="layui-icon">&#xe619;</i>上架</button>
-                    <button class="layui-btn" data-type="OffSale" onclick="setStatus('onsale.set',0,'菜品已下架')"><i class="layui-icon">&#xe61a;</i>下架</button>
-                    <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i
-                            class="layui-icon">&#xe61f;</i>添加
+                    <button class="layui-btn" onclick="setRecommend('setStatus.do',-1,'设置成功')">
+                        <i class="layui-icon">&#xe6c5;</i>普通
+                    </button>
+                    <button class="layui-btn" onclick="setStatus('setStatus.do',1,'菜品已上架')">
+                        <i class="layui-icon">&#xe619;</i>上架
+                    </button>
+                    <button class="layui-btn" onclick="setStatus('setStatus.do',-1,'菜品已下架')">
+                        <i class="layui-icon">&#xe61a;</i>下架
+                    </button>
+                    <button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)">
+                        <i class="layui-icon">&#xe61f;</i>添加
                     </button>
                     <span class="fr" style="line-height:40px">共有数据：${count} 条</span>
                 </div>
-                <table class="layui-hide" id="foodList" lay-filter="searchResult"></table>
+                <table class="layui-hide layui-table-cell" id="foodList" lay-filter="searchResult"></table>
 
-
-
-                <script type="text/html" id="recommendTpl">
-                    <form class="layui-form">
-                        <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" value="{{d.fdId}}" lay-skin="switch" lay-text="已推荐|未推荐"  class="recommend"  {{d.fdRecommend ==1?"checked":""}}>
-                    </form>
-                    <input type="hidden" id="fdId" name="fdId" value="{{d.fdId}}"/>
-                </script>
-                <script type="text/html" id="statusTpl">
-                    <form class="layui-form">
-                        <input id="fdStatus" type="checkbox" lay-filter="fdStatus" name="fdStatus" value="{{d.fdId}}" lay-skin="switch" lay-text="正常|已下架"  {{d.fdStatus ==1?"checked":""}}>
-                    </form>
-                </script>
-                <script type="text/html" id="operateTpl">
-                    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', this, 600, 400)" href="javascript:;">
-                        <i class="layui-icon">&#xe642;</i>
-                    </a>
-                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                        <i class="layui-icon">&#xe640;</i>
-                    </a>
-                </script>
             </div>
         </div>
-        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">
+            <table class="layui-table layui-table-cell" id="foodList2" lay-filter="searchResult">
+                <tr>
+                    <td>姓名</td>
+                    <td>分数</td>
+                </tr>
+                <tr>
+                    <td>Peter</td>
+                    <td>98</td>
+                </tr>
+                <tr>
+                    <td>Jack</td>
+                    <td>88</td>
+                </tr>
+            </table>
+        </div>
         <div class="layui-tab-item">内容3</div>
     </div>
 </div>
 
 </body>
+<script type="text/html" id="imgTpl">
+    <img src="{{ d.fdImg}}" style="height: 100%">
+</script>
+<script type="text/html" id="recommendTpl">
+    <form class="layui-form">
+        <input id="fdRecommend" lay-filter="fdRecommend" type="checkbox" name="fdRecommend" value="{{d.fdId}}"
+               lay-skin="switch" lay-text="已推荐|未推荐" class="recommend" {{d.fdRecommend==1?"checked":""}}>
+    </form>
+    <input type="hidden" id="fdId" name="fdId" value="{{d.fdId}}"/>
+</script>
+<script type="text/html" id="statusTpl">
+    <form class="layui-form">
+        <input id="fdStatus" type="checkbox" lay-filter="fdStatus" name="fdStatus" value="{{d.fdId}}" lay-skin="switch"
+               lay-text="正常|已下架" {{d.fdStatus==1?"checked":""}}>
+    </form>
+</script>
+<script type="text/html" id="operateTpl">
+    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', this, 600, 400)" href="javascript:;">
+        <i class="layui-icon">&#xe642;</i>
+    </a>
+    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+        <i class="layui-icon">&#xe640;</i>
+    </a>
+</script>
 
 </html>
