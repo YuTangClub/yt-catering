@@ -20,9 +20,9 @@ layui.use(['form','table', 'jquery', 'admin'], function () {
             }, {
                 field: 'tbName', title: '餐桌名称', sort: true
             },  {
-                field: 'ttName', title: '餐桌类型'
+                field: 'ttName', title: '餐桌类型', sort: true
             },  {
-                field: 'tbStatus', title: '餐桌状态', templet:'#shelfTpl'
+                field: 'tbStatus', title: '餐桌状态', templet:'#shelfTpl', sort: true
             },{
                 field: 'shopName', title: '所属商家'
             }, {
