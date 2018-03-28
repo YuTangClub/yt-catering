@@ -83,10 +83,35 @@
         -->
         ft_id, ft_name, shop_id
     </sql>
+    <sql id="Base_Where_Clause">
+        <where>
+            <if test="f.ftId != null and f.ftId != ''">
+                ft_id=#{f.ftId}
+            </if>
+            <if test="f.ftName != null and f.ftName != ''">
+                ft_name=#{f.ft_name}
+            </if>
+            <if test="f.shopId != null and f.shopId != ''">
+                shop_id=#{f.shopId}
+            </if>
+        </where>
+    </sql>
     <select id="listAllByShop" parameterType="Shop" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM FoodType
         WHERE shop_id=#{shopId}
+    </select>
+    <select id="selectByPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM FoodType
+        <include refid="Base_Where_Clause"/>
+        limit #{p.offset},#{p.limit}
+    </select>
+    <select id="countByAttribute" resultType="_int">
+        SELECT COUNT(1)
+        FROM FoodType
+        <include refid="Base_Where_Clause"/>
     </select>
 </mapper>

@@ -3,10 +3,13 @@
 import cn.yutang.backend.dao.FoodCustomMapper;
 import cn.yutang.backend.dao.FoodMapper;
 import cn.yutang.backend.dao.FoodOrdersCustomMapper;
+import cn.yutang.backend.dao.FoodTypeMapper;
 import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
 import cn.yutang.backend.pojo.po.FoodOrders;
+import cn.yutang.backend.pojo.po.FoodType;
 import cn.yutang.backend.pojo.vo.OrderCondition;
+import cn.yutang.backend.service.IFoodTypeService;
 import cn.yutang.commons.redis.JedisClient;
 import cn.yutang.commons.util.*;
 import org.apache.commons.net.ftp.FTP;
@@ -38,6 +41,9 @@ public class GeneralTest {
 	@Autowired
 	FoodCustomMapper foodCustomMapper;
 
+	@Autowired
+	IFoodTypeService foodTypeService;
+
 	@Test
 	public void verifyShop() {
 
@@ -52,6 +58,12 @@ public class GeneralTest {
 	@Test
 	public void testFtpUpload() throws IOException {
 
+
+		/*FoodType foodType = new FoodType();
+		foodType.setShopId(1);
+		foodType.setFtName("满汉全席");
+		//List<FoodType> foodTypes = foodTypeService.listFoodTypeByPage(page,foodType);
+		Integer totalCount = foodTypeService.addFoodType(foodType);*/
 
 	}
 }

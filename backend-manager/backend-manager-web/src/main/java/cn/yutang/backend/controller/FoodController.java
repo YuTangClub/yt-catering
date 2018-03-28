@@ -76,6 +76,20 @@ public class FoodController {
 		return "0";
 	}
 
+	//编辑food
+	@ResponseBody
+	@RequestMapping("/addcategory.do")
+	public String addFoodType(FoodType foodType){
+
+		//通过id以及可选条件，设置food的属性
+		Integer result = foodTypeService.addFoodType(foodType);
+		if(result > 0){
+			return "1";
+		}
+
+		return "0";
+	}
+
 	@ResponseBody
 	@RequestMapping("upload")
 	public Map<String,Object> upload(MultipartFile file){
@@ -97,21 +111,6 @@ public class FoodController {
 		}
 		return map;
 	}
-
-//	@ResponseBody
-//	@RequestMapping("/setRecommend.do")
-//	public String setRecommend(@RequestParam("Ids[]") List<Long> Ids,Food food){
-//
-//		//批量改变recommend状态
-//		Integer count = foodService.setRecommendByIds(Ids);
-//		if(count !=0){
-//			//如果更改记录大于0，返回1
-//			return ""+count;
-//		}
-//		return "0";
-//	}
-
-
 
 	@ResponseBody
 	@RequestMapping("/list.do")
@@ -146,6 +145,7 @@ public class FoodController {
 		return "0";
 	}
 
+	//设置food的状态
 	@ResponseBody
 	@RequestMapping("/setStatus.do")
 	public String setStatus(@RequestParam("Ids[]") List<Long> Ids,Food food){
@@ -157,5 +157,21 @@ public class FoodController {
 			return ""+count;
 		}
 		return "0";
+	}
+
+	//封装foodType，返回给前台
+	@ResponseBody
+	@RequestMapping("clist.do")
+	public MessageResult<FoodType> listFoodTypeDo(HttpSession session, Page page, FoodType foodType){
+
+		MessageResult<FoodType> result = new MessageResult<>();
+		Shop shop = (Shop) session.getAttribute("sessionShop");
+		foodType.setShopId(shop.getShopId());
+		List<FoodType> foodTypeList = foodTypeService.listFoodTypeByPage(page,foodType);
+		Integer count = foodTypeService.getTotalCount(foodType);
+		result.setCount(count);
+		result.setData(foodTypeList);
+		session.setAttribute("ftCount",count);
+		return result;
 	}
 }
