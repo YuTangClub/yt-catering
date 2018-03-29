@@ -1,9 +1,9 @@
 package cn.yutang.backend.service;
 
+import cn.yutang.backend.pojo.dto.MessageResult;
+import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
 
-import java.util.List;
-
 public interface IOrderService {
-    List<Food> selectByExample();
+    MessageResult<Food> selectByPage(Page page);
 }

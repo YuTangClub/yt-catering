@@ -12,22 +12,22 @@ import java.io.*;
 
 public class QrFtpUtils {
 
-    public  static String qrFtpUpload(DinnerTable dinnerTable ) throws IOException {
+    public  static String qrFtpUpload(DinnerTable dinnerTable, String realPath ) throws IOException {
         //创建FTPClient客户端
         FTPClient ftpClient = new FTPClient();
         //创建FTP连接
         ftpClient.setControlEncoding("UTF-8");
-        ftpClient.connect("106.15.95.200",21);
+        ftpClient.connect("www.yummm.cn",21);
         //登录
-        ftpClient.login("ftpuser","323223jyf123150hjf");
+        ftpClient.login("ftpuser","yup123yup");
         //读取本地文件
         String id= IDUtils.genImageName();
-        String path="c:\\java\\"+id+".png";
+        String path=realPath+id+".png";
         String content="http://106.15.95.200/{"+dinnerTable.getTbId()+"}";
-        MatrixToImageWriter.encode(content,512,512,"C:\\Users\\jinyefei\\Desktop\\logo.png",path);
+        MatrixToImageWriter.encode(content,512,512,realPath+"logo.png",realPath,path);
         FileInputStream fileInputStream = new FileInputStream(new File(path));
         //配置上传参数
-        ftpClient.changeWorkingDirectory("/home/ftpuser/www/images");
+        ftpClient.changeWorkingDirectory("/home/ftpuser/www/img");
         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
         String filename=id+".png";
         //上传文件
@@ -45,8 +45,8 @@ public class QrFtpUtils {
      * @param下载后保存到本地的路径
      * @return
      */
-    public static boolean qrFtpDownload(DinnerTable dinnerTable) {
-        String remotePath="http://106.15.95.200/images/";
+    /*public static boolean qrFtpDownload(DinnerTable dinnerTable) {
+        String remotePath="http://www.yummm.cn/img/";
         String fileName=dinnerTable.getTbQrcode();
         fileName= fileName.replaceAll(remotePath, "");
         String localPath="C:\\Users\\jinyefei\\Desktop\\";
@@ -91,5 +91,5 @@ public class QrFtpUtils {
             }
         }
         return result;
-    }
+    }*/
 }

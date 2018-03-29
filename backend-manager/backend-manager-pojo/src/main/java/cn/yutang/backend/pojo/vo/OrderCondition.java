@@ -11,6 +11,24 @@ public class OrderCondition implements Serializable {
     private Integer tbId;
     private String orId;
     private Integer shopId;
+    private Integer pmId;
+    private Integer ctId;
+
+    public Integer getPmId() {
+        return pmId;
+    }
+
+    public void setPmId(Integer pmId) {
+        this.pmId = pmId;
+    }
+
+    public Integer getCtId() {
+        return ctId;
+    }
+
+    public void setCtId(Integer ctId) {
+        this.ctId = ctId;
+    }
 
     public Integer getShopId() {
         return shopId;
@@ -66,6 +84,8 @@ public class OrderCondition implements Serializable {
                 ", tbId=" + tbId +
                 ", orId='" + orId + '\'' +
                 ", shopId=" + shopId +
+                ", pmId=" + pmId +
+                ", ctId=" + ctId +
                 '}';
     }
 }

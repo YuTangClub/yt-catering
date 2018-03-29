@@ -4,24 +4,20 @@ import cn.yutang.backend.pojo.dto.MessageResult;
 import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.DinnerTable;
 import cn.yutang.backend.pojo.po.Shop;
+import cn.yutang.backend.pojo.util.QrFtpUtils;
 import cn.yutang.backend.pojo.vo.DinnerTableCustom;
 import cn.yutang.backend.pojo.vo.LikeQuery;
 import cn.yutang.backend.service.DinnerTableService;
-
-import cn.yutang.backend.pojo.util.QrFtpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -31,7 +27,7 @@ public class BackendDinnerTableController {
 
     @ResponseBody
     @RequestMapping(value = "/dinnerTable",method = RequestMethod.GET)
-    public MessageResult<DinnerTableCustom> listDinnerTableToJson(HttpSession session,Page page, LikeQuery query) {
+    public MessageResult<DinnerTableCustom> listDinnerTableToJson(HttpSession session, Page page, LikeQuery query) {
 
         Shop sessionShop= (Shop) session.getAttribute("sessionShop");
         if(sessionShop!=null){
@@ -118,12 +114,14 @@ public class BackendDinnerTableController {
     public String toEditDinnerTable(HttpServletRequest request, HttpSession session) throws IOException {
        Long tbId= Long.valueOf(request.getParameter("tbId"));
 
-       DinnerTable updateDinnerTable=dinnerTableService.findDinnerTableByTbId(tbId);
+        String realPath = request.getServletContext().getRealPath("/static/attachments/")+"/";
+
+        DinnerTable updateDinnerTable=dinnerTableService.findDinnerTableByTbId(tbId);
         if(updateDinnerTable!=null){
             if(updateDinnerTable.getTbQrcode()!=null){
             }else{
-                String filename= QrFtpUtils.qrFtpUpload(updateDinnerTable);
-                String path="http://106.15.95.200/images/"+filename;
+                String filename= QrFtpUtils.qrFtpUpload(updateDinnerTable,realPath);
+                String path="http://www.yummm.cn/img/"+filename;
                 updateDinnerTable.setTbQrcode(path);
                 dinnerTableService.updateDinnerTable(updateDinnerTable);
             }
@@ -140,31 +138,12 @@ public class BackendDinnerTableController {
     @ResponseBody
     @RequestMapping(value = "/qrcodeImgDownload")
     public String qrcodeImgDownload(DinnerTable dinnertable){
-        Boolean result=QrFtpUtils.qrFtpDownload(dinnertable);
+        /*Boolean result= QrFtpUtils.qrFtpDownload(dinnertable);
         if(result){
             return "0";
         }else {
-            return "1";
-        }
+        }*/
+        return "0";
     }
-    /*
-	 * 下载指定邮件的附件
-	 */
-//    @RequestMapping("/fileDownLoad.action/{eid}")
-//    public ResponseEntity<byte[]> download(@PathVariable(value = "eid") Integer eid, HttpServletRequest request) throws IOException {
-//        Emails emails = new Emails();
-//        emails.setEid(eid);
-//        String path = eser.findEmailsByEid(emails).getEnclosure();
-//        File file = new File("D:/temp/"+path);
-//        byte[] body = null;
-//        InputStream is = new FileInputStream(file);
-//        body = new byte[is.available()];
-//        is.read(body);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Content-Disposition", "attchement;filename=" + new String(path.getBytes("gb2312"),"ISO8859-1"));
-//        HttpStatus statusCode = HttpStatus.OK;
-//        ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
-//        return entity;
-//
-//    }
+
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -14,7 +15,7 @@
 		<link rel="stylesheet" href="../../static/css/layui.css">
 		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 		<script src="../../lib/layui/layui.js" charset="utf-8"></script>
-		<script src="../../static/js/tbList.js" type="text/javascript" charset="utf-8"></script>
+		<%--<script src="../../static/js/tbList.js" type="text/javascript" charset="utf-8"></script>--%>
 		
 		<!--<script type="text/javascript" src="../../static/js/admin.js"></script>-->
 		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -51,52 +52,49 @@
 		<div class="">
 			<div class="layui-tab layui-tab-brief" lay-filter="tt_tab">
 				<ul class="layui-tab-title">
-					<li class="layui-this">所有餐桌</li>
-					<li value="111"><a onclick="renderContent('1')">大厅</a></li>
+					<li class="layui-this" >所有餐桌</li>
+					<li value="111" >大厅</li>
 					<li value="222">卡包</li>
 					<li value="333">包厢</li>
 				</ul>
-				<div class="layui-tab-content">
-					<div class="layui-tab-item layui-show">
-						<div id="tbId" type="button" style="height: 150px;width: 150px;background: red;margin:20px;border:1px;padding:20px;" >
-							<div style=" height: 10px;width: 40px; margin-top: 5px;margin-left: 5px;"><p>桌号</p> </div>
-							<div style=" height: 20px;width: 40px; margin-top: 45px;margin-left: 55px;"><p>大厅</p> </div>
-							<div style=" height: 10px;width: 50px; margin-top: 30px;margin-left: 45px;"><p>10分钟</p> </div>
-						</div>
+				<div class="layui-tab-content" >
+					<div class="layui-tab-item layui-show" style="height: 500px;">
+						<iframe id="all" src="${pageContext.request.contextPath}/pages/cashier/allTable.do?page=1&limit=10" name="tableFrame"  frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%" scrolling="no"></iframe>
 					</div>
-					<div class="layui-tab-item">内容2</div>
-					<div class="layui-tab-item">内容3</div>
+					<div class="layui-tab-item" style="height: 500px;">
+						<iframe id="dating"src="${pageContext.request.contextPath}/pages/cashier/datingTable.do?page=1&limit=10" name="tableFrame"  frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%" scrolling="no"></iframe>
+					</div>
+					<div class="layui-tab-item" style="height: 500px;">
+						<iframe id="kabao" src="${pageContext.request.contextPath}/pages/cashier/kabaoTable.do?page=1&limit=10" name="tableFrame"  frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%" scrolling="no"></iframe>
+					</div>
+					<div class="layui-tab-item" style="height: 500px;">
+						<iframe id="bao" src="${pageContext.request.contextPath}/pages/cashier/baoTable.do?page=1&limit=10" name="tableFrame"  frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%"  scrolling="no"></iframe>
+					</div>
 				</div>
 			</div>
-			<%--<div class="layui-tab tab" lay-filter="tt_tab">
-				<ul class="layui-tab-title">
-					<li class=" layui-this" ><a href="">所有餐桌</a></li>
-					<li ><a href="">大厅</a></li>
-					<li ><a href="">卡包</a></li>
-					<li ><a href="">包厢</a></li>
-				</ul>
-				&lt;%&ndash;<span class="layui-nav-bar" style="left: 162px; top: 55px; width: 0px; opacity: 0;"></span>&ndash;%&gt;
-				<div class="layui-tab-content">
-					<div class="layui-tab-item layui-show">
-						<div id="tbId" type="button" style="height: 150px;width: 150px;background: red;margin:20px;border:1px;padding:20px;" >
-							<div style=" height: 10px;width: 40px; margin-top: 5px;margin-left: 5px;"><p>桌号</p> </div>
-							<div style=" height: 20px;width: 40px; margin-top: 45px;margin-left: 55px;"><p>大厅</p> </div>
-							<div style=" height: 10px;width: 50px; margin-top: 30px;margin-left: 45px;"><p>10分钟</p> </div>
-						</div>
-					</div>
-					<div class="layui-tab-item" >内容2</div>
-					<div class="layui-tab-item" >内容3</div>
-					<div class="layui-tab-item" >内容4</div>
-				</div>
-			</div>--%>
+
 		</div>
 		<div class="page-content-tb-bg"></div>
 	</body>
-<script>
-    layui.use('element', function(){
-        var element = layui.element;
+	<script>
+        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+            var element = layui.element;
 
-        //…
-    });
-</script>
+            //…
+        });
+
+        /*function SetCwinHeight() {
+            var iframeid = document.getElementById("iframeid"); //iframe id
+            if (document.getElementById) {
+                if (iframeid && !window.opera) {
+                    if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight) {
+                        iframeid.height = iframeid.contentDocument.body.offsetHeight;
+                    } else if (iframeid.Document && iframeid.Document.body.scrollHeight) {
+                        iframeid.height = iframeid.Document.body.scrollHeight;
+                    }
+                }
+            }
+        }*/
+	</script>
 </html>

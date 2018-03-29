@@ -1,5 +1,7 @@
 package cn.yutang.backend.controller;
 
+import cn.yutang.backend.pojo.dto.MessageResult;
+import cn.yutang.backend.pojo.dto.Page;
 import cn.yutang.backend.pojo.po.Food;
 import cn.yutang.backend.pojo.po.ShopOrders;
 import cn.yutang.backend.pojo.vo.DinnerTableInfo;
@@ -8,13 +10,12 @@ import cn.yutang.backend.service.IOrderDishesService;
 import cn.yutang.backend.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
-@RequestMapping("cashier")
+@RequestMapping("/pages/cashier")
 public class CashierController {
 
     @Autowired
@@ -26,22 +27,78 @@ public class CashierController {
     @Autowired
 	IOrderDishesService orderDishesServiceImpl;
 
-    @RequestMapping("/getTables")
-    public List<DinnerTableInfo> getTables(Integer ttId){
-        List<DinnerTableInfo> tableList=dinnerTableService.listTables(ttId);
-        System.out.print(tableList);
-        return tableList;
+    @RequestMapping("/tbList")
+    public String tbListPage(){
+        return "/pages/cashier/tbList";
     }
-    @RequestMapping("/orderController")
-    public String foodList(ModelAndView foodModel) {
-       List<Food> foods=orderServiceImpl.selectByExample();
-       foodModel.addObject("foods",foods);
-       return "";
-    }
+    //获得餐桌信息
 
-    @RequestMapping("/orderController2")
+    @RequestMapping("/allTable.do")
+    public String allTables(Page page, Model model){
+        MessageResult<DinnerTableInfo> allTable =dinnerTableService.listTables(0,page);
+        //return allTable;
+        model.addAttribute("allTable",allTable);
+        model.addAttribute("allPage",page);
+        return "pages/cashier/allTable";
+    }
+   /* @RequestMapping("/allTable.do")
+    @ResponseBody
+    public List<DinnerTableInfo> allTables(){
+        return dinnerTableService.allTables();
+    }*/
+    @RequestMapping("/datingTable.do")
+    public String datingTables(Page page, Model model){
+        MessageResult<DinnerTableInfo> datingTable =dinnerTableService.listTables(1,page);
+        model.addAttribute("datingPage",page);
+        model.addAttribute("datingTable",datingTable);
+        return "pages/cashier/datingTable";
+    }
+    @RequestMapping("/kabaoTable.do")
+    public String kabaoTables(Page page, Model model){
+        MessageResult<DinnerTableInfo> kabaoTable = dinnerTableService.listTables(2,page);
+        model.addAttribute("kabaoTable",kabaoTable);
+        model.addAttribute("kabaoPage",page);
+        return "pages/cashier/kabaoTable";
+    }
+    @RequestMapping("/baoTable.do")
+    public String baoTables(Page page, Model model){
+        MessageResult<DinnerTableInfo> baoTable = dinnerTableService.listTables(3,page);
+        model.addAttribute("baoTable",baoTable);
+        model.addAttribute("baoPage",page);
+        return "pages/cashier/baoTable";
+    }
+    //获得菜单
+    @RequestMapping("/dishesMenu")
+    public MessageResult<Food> foodList(Page page) {
+        MessageResult<Food> messageResult = null;
+        try {
+            messageResult =orderServiceImpl.selectByPage(page);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return messageResult;
+    }
+    //点菜
+    @RequestMapping("/orderDishes")
     public String orderDishes(ShopOrders shopOrders){
         orderDishesServiceImpl.orderDishes(shopOrders);
         return "0";
     }
+    //加菜
+    @RequestMapping("/addDishes")
+    public void addDishes(ShopOrders shopOrders){
+        orderDishesServiceImpl.addDishes(shopOrders);
+    }
+    //退菜
+    @RequestMapping("/untread")
+    public void untread(ShopOrders shopOrders){
+        orderDishesServiceImpl.untread(shopOrders);
+    }
+    //结算
+    @RequestMapping("/pay4Dishes")
+    public  void payForDishes(ShopOrders shopOrders){
+        orderDishesServiceImpl.payForDishes(shopOrders);
+    }
+
 }
+

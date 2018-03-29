@@ -1,25 +1,21 @@
 package cn.yutang.commons.converter;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MatrixToImageWriter {
     private static final int IMAGE_WIDTH = 100;
@@ -29,10 +25,11 @@ public class MatrixToImageWriter {
     private static MultiFormatWriter mutiWriter = new MultiFormatWriter();
 
     public static void encode(String content, int width, int height,
-                              String srcImagePath, String destImagePath) {
+                              String srcImagePath, String realPath,String path) {
         try {
-            ImageIO.write(genBarcode(content, width, height, srcImagePath),
-                    "jpg", new File(destImagePath));
+            File file=new File(path);
+            ImageIO.write(genBarcode(content, width, height, srcImagePath,realPath),
+                    "png", file);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (WriterException e) {
@@ -41,7 +38,7 @@ public class MatrixToImageWriter {
     }
 
     private static BufferedImage genBarcode(String content, int width,
-                                            int height, String srcImagePath) throws WriterException,
+                                            int height, String srcImagePath,String realPath) throws WriterException,
             IOException {
         BufferedImage scaleImage = scale(srcImagePath, IMAGE_WIDTH,
                 IMAGE_HEIGHT, true);
@@ -115,11 +112,11 @@ public class MatrixToImageWriter {
         BufferedImage image = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         image.getRaster().setDataElements(0, 0, width, height, pixels);
-        return addBackImg(image);
+        return addBackImg(image,realPath);
     }
-    private static BufferedImage addBackImg(BufferedImage destImage) throws IOException {
+    private static BufferedImage addBackImg(BufferedImage destImage, String realPath) throws IOException {
         BufferedImage image= destImage;//二维码
-        BufferedImage bg= ImageIO.read(new File("C:\\Users\\jinyefei\\Desktop\\background.png"));//获取背景图片
+        BufferedImage bg= ImageIO.read(new File(realPath+"background.png"));//获取背景图片
         Graphics2D g=bg.createGraphics();
         int width=image.getWidth(null) > bg.getWidth() * 5/10? (bg.getWidth() * 5/10) : image.getWidth(null);
         int height=image.getHeight(null) > bg.getHeight() *5 /10? (bg.getHeight() * 5/10) : image.getWidth(null);

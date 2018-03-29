@@ -24,6 +24,10 @@ layui.use(['jquery','form','layer','table'],function () {
         limits: [5, 10, 20, 50]
     });
 
+    form.on('submit(search)',function () {
+
+    });
+
     window.addFoodType = function (title, url, w, h) {
         debugger;
         if (title == null || title == '') {

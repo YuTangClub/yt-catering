@@ -33,6 +33,10 @@
     <a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
+<div class=weadin-body">
+    <span class="layui-badge-rim">本月订单总额：${MonthCount}</span>
+    <span class="layui-badge-rim">本日订单总额：${DayCount}</span>
+</div>
 <div class="weadmin-body">
     <div class="layui-row">
         <form class="layui-form layui-col-md12 we-search" onsubmit="return false">
@@ -48,6 +52,23 @@
             <div class="layui-inline">
                 <input type="text" name="orId" placeholder="请输入订单号" autocomplete="off" class="layui-input">
             </div>
+            <div class="layui-input-inline" type="width:100px">
+                <select name="pmId" >
+                    <option value="">下单方式</option>
+                    <c:forEach items="${payMethodSession}" var="mm">
+                    <option value="${mm.pmId}">${mm.pmName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="layui-input-inline" type="width:100px">
+                <select name="ctId" >
+                    <option value="">客户类型</option>
+                    <c:forEach items="${customerSession}" var="cm">
+                        <option value="${cm.ctId}">${cm.ctName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
             <button class="layui-btn" lay-submit lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
@@ -58,9 +79,12 @@
 
 
 </div>
-<script type="text/html" id="dateTpl">
-    <span>{{=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(orEndtime)}} </span>
+<script type="text/html" id="pmTpl">
+    {{#  layui.each(d.pm, function(index, item){ }}
+        <span>{{ item.pmName }}</span>
+    {{#  }); }}
 </script>
+
 <script>
     layui.extend({
         admin: '{/}../../static/js/admin'
@@ -99,6 +123,10 @@
                 }, {
                     field: 'tbId', title: '餐桌号'
                 }, {
+                    field: 'pm', title: '下单方式',templet:'#pmTpl'
+                }, {
+                    field: 'ctName', title: '客户类型'
+                }, {
                     field: 'orTotalprice', title: '订单金额'
                 }, {
                     field: 'orEndtime', title: '订单时间'
@@ -107,7 +135,7 @@
                 }]
             ],
             //通过URL进行数据绑定
-            url: '../../orderList',
+            url: 'orderList',
             //是否开启分页
             page: true,
             limit: 5,
@@ -121,22 +149,20 @@
                         $(this).text("未付款")
                     }
                 })
-                $("[data-field='orEndtime']").children().each(function(){
-                        // var a= $(this).text();
-                        // console.log(a);
-                        // $(this).text(a.format("yyyy-MM-dd hh:mm:ss.S"));
-                })
+
             }
 
         });
         form.on('submit(sreach)',function (data) {
            table.reload('articleList', {
-                url: '../../orderList'
-                ,where: data.field
+                url: 'orderList'
+                ,where: data.field,
+               page:{
+                    curr:1
+               }
             });
 
         })
-
     }); 
 
 </script>

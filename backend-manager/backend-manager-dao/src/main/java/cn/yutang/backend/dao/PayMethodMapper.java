@@ -2,8 +2,9 @@ package cn.yutang.backend.dao;
 
 import cn.yutang.backend.pojo.po.PayMethod;
 import cn.yutang.backend.pojo.po.PayMethodExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PayMethodMapper {
     /**
