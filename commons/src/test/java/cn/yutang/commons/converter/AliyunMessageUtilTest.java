@@ -13,7 +13,7 @@ import java.util.Map;
  * Date:     2018/3/26 16:17
  */
 public class AliyunMessageUtilTest {
-    @Test
+    /*@Test
     public  static void sendMsg() throws ClientException {
         String phoneNumber = "13967026666";
         String randomNum = createRandomNum(6);
@@ -33,11 +33,11 @@ public class AliyunMessageUtilTest {
             }
         }
     }
-    /**
+    *//**
      * 生成随机数
      * @param code 位数
      * @return
-     */
+     *//*
     public static String createRandomNum(int code){
         String randomNumStr = "";
         for(int i = 0; i < code;i ++){
@@ -45,5 +45,5 @@ public class AliyunMessageUtilTest {
             randomNumStr += randomNum;
         }
         return randomNumStr;
-    }
+    }*/
 }
