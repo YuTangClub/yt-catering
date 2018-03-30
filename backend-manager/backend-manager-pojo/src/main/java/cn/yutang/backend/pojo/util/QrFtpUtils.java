@@ -23,7 +23,7 @@ public class QrFtpUtils {
         //读取本地文件
         String id= IDUtils.genImageName();
         String path=realPath+id+".png";
-        String content="http://106.15.95.200/{"+dinnerTable.getTbId()+"}";
+        String content="http://www.yummm.cn/web/{"+dinnerTable.getTbId()+"}";
         MatrixToImageWriter.encode(content,512,512,realPath+"logo.png",realPath,path);
         FileInputStream fileInputStream = new FileInputStream(new File(path));
         //配置上传参数
@@ -35,6 +35,9 @@ public class QrFtpUtils {
 //        关闭连接
         fileInputStream.close();
         ftpClient.logout();
+        //删除缓存二维码
+        File file=new File(path);
+        file.delete();
         return filename;
     }
 

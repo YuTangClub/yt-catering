@@ -1,25 +1,63 @@
-package cn.yutang.commons.converter;
+package cn.yutang.backend.controller;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
+import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 
+import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Author:   jinyefei
- * Date:     2018/3/26 16:14
+ * Date:     2018/3/26 16:17
  */
-public class AliyunMessageUtil {
+public class AliyunMessageUtil{
     private static final String product = "Dysmsapi";
     //产品域名,开发者无需替换
     private static final String domain = "dysmsapi.aliyuncs.com";
     // 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     private static final String accessKeyId = "LTAIICc0N4Y6jY7Z";
     private static final String accessKeySecret = "fnCYiAR1boGSXHpmMySyCBmg4rRJ4N";
+
+    public  static String sendMsg( String phoneNumber) throws ClientException {
+        String randomNum = createRandomNum(6);
+        String jsonContent = "{\"code\":\"" + randomNum + "\"}";
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("phoneNumber", phoneNumber);
+        paramMap.put("msgSign", "鱼塘餐软");
+        paramMap.put("templateCode", "SMS_128965073");
+        paramMap.put("jsonContent", jsonContent);
+        SendSmsResponse sendSmsResponse = sendSms(paramMap);
+        if(!(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK"))) {
+            if(sendSmsResponse.getCode() == null) {
+                //这里可以抛出自定义异常
+            }
+            if(!sendSmsResponse.getCode().equals("OK")) {
+                //这里可以抛出自定义异常
+            }
+        }
+        return randomNum;
+    }
+    /**
+     * 生成随机数
+     * @param code 位数
+     * @return
+     */
+    public static String createRandomNum(int code){
+        String randomNumStr = "";
+        for(int i = 0; i < code;i ++){
+            int randomNum = (int)(Math.random() * 10);
+            randomNumStr += randomNum;
+        }
+        return randomNumStr;
+    }
+
+
     public static SendSmsResponse sendSms(Map<String, String> paramMap) throws com.aliyuncs.exceptions.ClientException {
         //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
