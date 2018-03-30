@@ -107,7 +107,6 @@
         });
         //监听下载
         form.on('submit(downloadQR)', function(data) {
-            debugger
             $.ajax({
                 url:'${pageContext.request.contextPath}/qrcodeImgDownload',
                 data:data.field,

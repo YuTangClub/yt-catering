@@ -22,18 +22,17 @@
     <select id="selectByPage" resultType="cn.yutang.backend.pojo.vo.DinnerTableCustom">
         select
         <include refid="Base_Column_List1" />
-        from dinnertable i
-        left join dinnertabletype t on i.tt_id=t.tt_id
-        left join shop s on i.shop_id=s.shop_id
+        from DinnerTable i
+        left join DinnerTableType t on i.tt_id=t.tt_id
+        left join Shop s on i.shop_id=s.shop_id
         <include refid="Where_Clause"></include>
-        order by i.tb_status,
-        i.tb_id
+        order by i.tb_id
         limit #{page.offset},#{page.limit}
     </select>
 
     <select id="countDinnertable" resultType="_long">
         select count(1)
-        from dinnertable i
+        from DinnerTable i
         <include refid="Where_Clause"></include>
     </select>
 

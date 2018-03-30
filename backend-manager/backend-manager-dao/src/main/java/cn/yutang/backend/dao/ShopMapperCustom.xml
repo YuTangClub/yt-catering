@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yutang.backend.dao.ShopMapperCustom">
+  <resultMap id="BaseResultMap" type="cn.yutang.backend.pojo.po.Shop">
+
+    <id column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="shop_nickname" jdbcType="VARCHAR" property="shopNickname" />
+    <result column="shop_password" jdbcType="VARCHAR" property="shopPassword" />
+    <result column="shop_tel" jdbcType="VARCHAR" property="shopTel" />
+    <result column="shop_status" jdbcType="INTEGER" property="shopStatus" />
+    <result column="shop_logo" jdbcType="VARCHAR" property="shopLogo" />
+    <result column="shop_openTime" jdbcType="VARCHAR" property="shopOpentime" />
+    <result column="shop_closeTime" jdbcType="VARCHAR" property="shopClosetime" />
+    <result column="contract_term" jdbcType="INTEGER" property="contractTerm" />
+    <result column="contract_startTime" jdbcType="DATE" property="contractStarttime" />
+    <result column="contract_endTime" jdbcType="DATE" property="contractEndtime" />
+    <result column="verify_code" jdbcType="VARCHAR" property="verifyCode" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.yutang.backend.pojo.po.ShopWithBLOBs">
+
+    <result column="shop_address" jdbcType="LONGVARCHAR" property="shopAddress" />
+    <result column="shop_announce" jdbcType="LONGVARCHAR" property="shopAnnounce" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    shop_id, shop_name, shop_nickname, shop_password, shop_tel, shop_status, shop_logo, 
+    shop_openTime, shop_closeTime, contract_term, contract_startTime, contract_endTime,verify_code
+  </sql>
+  <sql id="Blob_Column_List">
+    shop_address, shop_announce
+  </sql>
+
+  <select id="searchShopByShopTel" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from Shop
+    where shop_tel = #{shopTel,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+</mapper>
