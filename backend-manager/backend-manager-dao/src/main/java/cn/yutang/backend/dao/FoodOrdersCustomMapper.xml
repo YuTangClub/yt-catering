@@ -102,13 +102,13 @@
 
 
   <select id="getMonthCount" resultType="Double">
-    SELECT  SUM(or_totalPrice)  FROM  foodOrders
+    SELECT  SUM(or_totalPrice)  FROM  FoodOrders
     WHERE or_endTime >= #{date1} AND or_endTime <![CDATA[ <= ]]> #{date2}
   </select>
 
 
   <select id="getDayCount" resultType="Double">
-    SELECT  SUM(or_totalPrice)  FROM  foodOrders
+    SELECT  SUM(or_totalPrice)  FROM  FoodOrders
     WHERE or_endTime >= #{day1} AND or_endTime <![CDATA[ <= ]]> #{day2}
   </select>
 
