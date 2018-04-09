@@ -1,0 +1,286 @@
+html {
+  font-size: 16px; }
+
+body {
+  margin: 0;
+  background: #f4f4f4; }
+
+body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td, img {
+  margin: 0;
+  padding: 0; }
+
+.nav {
+  position: relative;
+  z-index: 888;
+  background: #fff;
+  height: 2.8125rem;
+  padding-left: 1.875rem;
+  box-sizing: border-box; }
+  .nav > ul {
+    display: inline-block;
+    height: 100%; }
+    .nav > ul > li {
+      height: 100%;
+      float: left;
+      list-style: none;
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 2.8125rem; }
+      .nav > ul > li.active {
+        color: #000; }
+      .nav > ul > li.esp i {
+        display: inline-block;
+        vertical-align: middle;
+        width: 0.5rem;
+        height: 0.3125rem;
+        margin-left: 0.625rem;
+        background: url(../images/nav-jiantou-down.png);
+        background-size: 0.5rem 0.3125rem; }
+      .nav > ul > li.esp .change-bg {
+        background: url(../images/nav-jiantou-up.png);
+        background-size: 0.5rem 0.3125rem; }
+      .nav > ul > li.esp .category-list {
+        display: none;
+        position: absolute;
+        left: 0;
+        z-index: 999;
+        top: 2.8125rem;
+        width: 100%;
+        background: #fff; }
+        .nav > ul > li.esp .category-list > li {
+          list-style: none;
+          text-align: center; }
+          .nav > ul > li.esp .category-list > li a {
+            display: inline-block;
+            width: calc(100% - 2.5rem);
+            font-size: 0.875rem;
+            color: #000;
+            text-decoration: none;
+            text-align: left;
+            padding-left: 1.0625rem;
+            border-bottom: 1px solid #e9e9e9; }
+          .nav > ul > li.esp .category-list > li.active {
+            background: #f9f9f9; }
+            .nav > ul > li.esp .category-list > li.active a {
+              color: #ff6e17; }
+      .nav > ul > li:nth-child(1) {
+        padding-right: 1.0625rem; }
+      .nav > ul > li:nth-child(2) {
+        padding: 0 1.0625rem; }
+      .nav > ul > li:nth-child(3) {
+        padding: 0 0.9375rem 0 1.0625rem; }
+  .nav > a {
+    height: 1.625rem;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.625rem;
+    margin: 0.5625rem 0;
+    color: #666;
+    font-size: 0.875rem;
+    line-height: 1.625rem;
+    float: right;
+    border-left: 1px solid #d8d8d8;
+    box-sizing: border-box; }
+    .nav > a i {
+      display: inline-block;
+      vertical-align: sub;
+      margin-right: 0.625rem;
+      width: 0.9375rem;
+      height: 0.9375rem;
+      background: url(../images/inputsearch-icon.png);
+      background-size: 0.9375rem 0.9375rem; }
+
+.stores {
+  margin-top: 0.75rem;
+  background: #fff; }
+  .stores .stores-list {
+    padding: 0 0.6875rem; }
+    .stores .stores-list > li {
+      padding: 0 0.3125rem 0 0.3125rem;
+      list-style: none;
+      border-bottom: 1px solid #e9e9e9;
+      padding-bottom: 0.8125rem;
+      padding-top: 1rem; }
+      .stores .stores-list > li > div {
+        display: inline-block;
+        vertical-align: top; }
+        .stores .stores-list > li > div:nth-child(1) {
+          position: relative;
+          overflow: hidden;
+          width: 6.25rem;
+          height: 5.375rem;
+          border-radius: 0.125rem;
+          margin-right: 0.5rem; }
+          .stores .stores-list > li > div:nth-child(1) img {
+            width: 6.25rem;
+            height: 5.375rem; }
+          .stores .stores-list > li > div:nth-child(1) p {
+            width: 100%;
+            height: 1.25rem;
+            font-size: 0.6875rem;
+            color: #fff;
+            background: #666;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            line-height: 1.25rem; }
+        .stores .stores-list > li > div:nth-child(2) {
+          width: calc(100% - 7.25rem); }
+          .stores .stores-list > li > div:nth-child(2) h2 {
+            font-size: 1rem;
+            color: #000;
+            font-weight: normal;
+            line-height: 1rem; }
+            .stores .stores-list > li > div:nth-child(2) h2 i {
+              display: inline-block;
+              width: 0.875rem;
+              height: 0.875rem;
+              float: right; }
+              .stores .stores-list > li > div:nth-child(2) h2 i:nth-child(2) {
+                background: url(../images/pay.png);
+                background-size: 0.875rem 0.875rem; }
+              .stores .stores-list > li > div:nth-child(2) h2 i:nth-child(1) {
+                background: url(../images/ticket.png);
+                background-size: 0.875rem 0.875rem;
+                margin-left: 0.375rem; }
+          .stores .stores-list > li > div:nth-child(2) h3 {
+            margin: 0.625rem 0 0.5625rem 0;
+            color: #666;
+            font-weight: normal;
+            font-size: 0.8125rem; }
+            .stores .stores-list > li > div:nth-child(2) h3 span {
+              float: right;
+              color: #999;
+              font-size: 0.625rem; }
+          .stores .stores-list > li > div:nth-child(2) div:nth-child(1) {
+            height: 4.9375rem;
+            padding-top: 0.4375rem; }
+            .stores .stores-list > li > div:nth-child(2) div:nth-child(1) > ul li {
+              float: left;
+              list-style: none;
+              font-size: 0.6875rem;
+              line-height: 0.6875rem;
+              color: #666;
+              margin-right: 0.375rem; }
+              .stores .stores-list > li > div:nth-child(2) div:nth-child(1) > ul li:nth-child(2) {
+                border-left: 1px solid #ccc;
+                padding-left: 0.375rem; }
+              .stores .stores-list > li > div:nth-child(2) div:nth-child(1) > ul li:nth-child(3) {
+                border-left: 1px solid #ccc;
+                padding-left: 0.375rem; }
+          .stores .stores-list > li > div:nth-child(2) div:nth-child(2) {
+            border-top: 1px dashed #e9e9e9;
+            padding-top: 0.625rem; }
+            .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > ul {
+              display: inline-block;
+              vertical-align: top;
+              width: 80%;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis; }
+              .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > ul li {
+                list-style: none;
+                color: #999;
+                font-size: 0.6875rem;
+                padding-bottom: 0.3125rem;
+                box-sizing: border-box !important; }
+                .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > ul li img {
+                  display: inline-block;
+                  vertical-align: sub;
+                  width: 0.875rem;
+                  height: 0.875rem;
+                  margin-right: 0.3125rem; }
+            .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > a {
+              display: inline-block;
+              color: #999;
+              font-size: 0.6875rem;
+              text-decoration: none;
+              float: right; }
+              .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > a i {
+                display: inline-block;
+                vertical-align: middle;
+                width: 0.375rem;
+                height: 0.1875rem;
+                margin-left: 0.4375rem;
+                background: url(../images/nav-jiantou-down.png);
+                background-size: 0.375rem 0.1875rem; }
+              .stores .stores-list > li > div:nth-child(2) div:nth-child(2) > a .change-bg {
+                background: url(../images/nav-jiantou-up.png);
+                background-size: 0.375rem 0.1875rem; }
+  .stores .collect {
+    display: none; }
+
+.search {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  display: none; }
+  .search > div:nth-child(1) {
+    height: 2.8125rem;
+    border: 1px solid #e9e9e9; }
+    .search > div:nth-child(1) input {
+      width: 21.125rem;
+      height: 1.9375rem;
+      background: #e9e9e9;
+      border-radius: 0.1875rem;
+      border: none;
+      margin: 0.375rem 0.4375rem 0.375rem 0.9375rem;
+      padding-left: 0.5625rem;
+      vertical-align: middle; }
+    .search > div:nth-child(1) input::-webkit-input-placeholder {
+      background: url("../images/search-icon1.png") no-repeat 0 center;
+      background-size: 0.8125rem;
+      font-size: 0.75rem;
+      color: #999;
+      padding-left: 1.5625rem; }
+    .search > div:nth-child(1) a {
+      font-size: 0.9375rem;
+      color: #000;
+      text-decoration: none; }
+  .search > div:nth-child(2) {
+    padding: 0.9375rem 0 0 0.9375rem; }
+    .search > div:nth-child(2) > h2 {
+      margin-bottom: 0.9375rem;
+      font-size: 0.9375rem;
+      color: #1a1a1a; }
+    .search > div:nth-child(2) .search-list a {
+      display: inline-block;
+      width: 7.0625rem;
+      height: 1.9375rem;
+      background: #f4f4f4;
+      margin: 0 1.25rem 1.1875rem 0;
+      border-radius: 0.125rem;
+      text-align: center;
+      line-height: 1.9375rem;
+      font-size: 0.8125rem; }
+  .search > div:nth-child(3) {
+    height: 3.125rem;
+    margin-top: 0.9375rem; }
+    .search > div:nth-child(3) button {
+      width: 50%;
+      line-height: 3.125rem;
+      border: none;
+      font-size: 0.9375rem; }
+      .search > div:nth-child(3) button:nth-child(1) {
+        background: #e9e9e9;
+        color: #666; }
+      .search > div:nth-child(3) button:nth-child(2) {
+        background: #ff6e17;
+        color: #fff; }
+
+.box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  background: #000;
+  opacity: .5;
+  display: none; }
+  .box.show {
+    display: block; }
+
+/*# sourceMappingURL=main.css.map */

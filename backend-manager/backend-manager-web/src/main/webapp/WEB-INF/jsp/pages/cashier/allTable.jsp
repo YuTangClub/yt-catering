@@ -17,12 +17,13 @@
     <link rel="stylesheet" href="../../static/css/layui.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="../../lib/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/js/admin-sdd.js" charset="utf-8"></script>
     <script src="../../static/js/jquery-1.8.3.js" charset="utf-8"></script>
 </head>
 <body>
 <div id="tbList">
     <c:forEach items="${allTable.data}" var="al">
-        <div id="${al.tbId}" onclick="tableController()"
+        <div id="${al.tbId}_tb" onclick="test()"
              style="height: 150px;width: 150px;background: ${al.tbStatus==0?"#8fb82c":"red"};margin:20px;border:1px;padding:5px;float: left;color: #FFFFFF;">
             <div style=" height: 20px;width: 60px;margin-top: 0px;margin-left: 0px;line-height: 5px;"><p>${al.tbId}号桌</p></div>
             <div style=" height: 20px;width: 100px; margin-top: 0px;margin-left: 25px;text-align: center;">
@@ -38,11 +39,9 @@
                     <p id="_${al.tbId}" ></p>
                     <script>
                         $(function () {
-                            debugger;
                             var t_${al.tbId} = orderTime("${al.orderDate}");
                             $('#_${al.tbId}').text(t_${al.tbId});
                             function orderTime(orderDate){
-                                debugger;
                                 var beginTime=new Date(orderDate);
                                 var now =new Date();
                                 var sec=14*60*60+parseInt(now-beginTime)/1000;//java内CST被认为是美国时间,而不是中国时间,时差为14小时
@@ -81,8 +80,14 @@
         }
         });
     });
-    function tableController() {
-        alert("进来了")
+    function test() {
+        layer.open({
+            type: 2,
+            title:'收银台',
+            maxmin: false, //关闭最大化最小化按钮
+            area: ['100%', '100%'],
+            content: ['dishes','no']
+        })
     }
 </script>
 </body>

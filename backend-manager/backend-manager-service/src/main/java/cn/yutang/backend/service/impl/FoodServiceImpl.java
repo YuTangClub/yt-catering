@@ -54,4 +54,9 @@ public class FoodServiceImpl implements IFoodService {
 	public Integer addFood(Food food) {
 		return foodCustomMapper.insertSelective(food);
 	}
+
+	@Override
+	public Food getFoodById(Integer id) {
+		return foodCustomMapper.selectByPrimaryKey(id);
+	}
 }

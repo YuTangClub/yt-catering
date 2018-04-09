@@ -55,27 +55,27 @@
         <constructor-arg name="jedisClusterNode">
             <set>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9001"></constructor-arg>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9002"></constructor-arg>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9003"></constructor-arg>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9004"></constructor-arg>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9005"></constructor-arg>
                 </bean>
                 <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="139.224.9.221"></constructor-arg>
+                    <constructor-arg name="host" value="www.yummm.cn"></constructor-arg>
                     <constructor-arg name="port" value="9006"></constructor-arg>
                 </bean>
             </set>

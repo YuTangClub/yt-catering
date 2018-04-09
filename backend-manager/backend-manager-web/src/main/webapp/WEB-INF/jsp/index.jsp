@@ -87,12 +87,12 @@
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
-                    <li>
+                    <%--<li>
                         <a _href="${pageContext.request.contextPath}/pages/cashier/order">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>收银台</cite>
                         </a>
-                    </li>
+                    </li>--%>
                     <li>
                         <a _href="${pageContext.request.contextPath}/pages/cashier/tbList">
                             <i class="iconfont">&#xe6a7;</i>
@@ -120,7 +120,7 @@
                             <cite>菜品分类</cite>
                         </a>
                     </li>
-                    <li>
+                    <%--<li>
                         <a _href="${pageContext.request.contextPath}/pages/food/cook-method">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>口味管理</cite>
@@ -131,7 +131,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>加料管理</cite>
                         </a>
-                    </li>
+                    </li>--%>
                 </ul>
             </li>
             <li>
@@ -175,7 +175,6 @@
                         <a _href="${pageContext.request.contextPath}/pages/member/memberList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
-
                         </a>
                     </li>
                 </ul>

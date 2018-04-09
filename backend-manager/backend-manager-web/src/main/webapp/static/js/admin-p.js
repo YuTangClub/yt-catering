@@ -412,12 +412,10 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
                 body.contents().find("#fdId").val(fdId);
 
                 //debugger
-                body.contents().find("#fdRecommend").attr('checked',fdRecommend);
-                body.contents().find("#fd_recommend").val(fdRecommend?1:-1);
-                body.contents().find("#fdStatus").attr('checked',fdStatus);
-                body.contents().find("#fd_status").val(fdStatus?1:-1);
-
-
+                body.contents().find("#fdRecommend").attr('checked', fdRecommend);
+                body.contents().find("#fd_recommend").val(fdRecommend ? 1 : -1);
+                body.contents().find("#fdStatus").attr('checked', fdStatus);
+                body.contents().find("#fd_status").val(fdStatus ? 1 : -1);
 
 
                 console.log(id);
@@ -539,6 +537,8 @@ layui.define(['jquery', 'form', 'layer', 'element'], function (exports) {
      */
 
     exports('admin', {});
+
+
 
 
 });

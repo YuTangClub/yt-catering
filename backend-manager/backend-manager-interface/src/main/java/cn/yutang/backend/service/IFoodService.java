@@ -64,4 +64,11 @@ public interface IFoodService {
 	 * @return
 	 */
 	Integer addFood(Food food);
+
+	/**
+	 * 通过id获取food
+	 * @param id
+	 * @return
+	 */
+	Food getFoodById(Integer id);
 }

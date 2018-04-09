@@ -11,6 +11,7 @@
         <module>../commons</module>
         <module>../client-manager</module>
         <module>../backend-manager</module>
+        <module>../activemq</module>
     </modules>
 
     <packaging>pom</packaging>
